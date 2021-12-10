@@ -6,7 +6,12 @@ struct ResultView: View {
     
  
     
-    @Binding var goToResultView  : Bool
+    @Binding var  goBackToRootView  : Bool
+    
+    @State private var goToAllParticipantView = false
+    
+    @State private var setAndGetData = SetAndGetData()
+    
     
     var body: some View {
         
@@ -17,10 +22,21 @@ struct ResultView: View {
            
             VStack{
                 
+                
+                Spacer(minLength: 50)
+                
+                
+                Text("result view")
+                
+                
+                HStack{
+                    
+                Spacer(minLength: 20)
+                    
                 Button(action: {
                     
                     
-                   goToResultView = false
+                    goBackToRootView = false
                     
                     
                     
@@ -28,14 +44,39 @@ struct ResultView: View {
                     SmallButtonView(buttonText: "Home")
                     
                 }
+                 
+                    
+                    
+                    
+                   
+                    
+                    NavigationLink(destination:AllParticipantView(), isActive: $goToAllParticipantView){
+                        
+                        Button(action: {
+                            
+                      
+                            
+                  
+                            goToAllParticipantView = true
+                            
+                        }) {
+                            SmallButtonView(buttonText: "All Participant")
+                        }
+                        
+                        
+                    }.padding()
+                    
+                    
+                 Spacer(minLength: 20)
+                    
+                }
                 
-                
-                Text("Result view")
+               
                 
              
                 
                 
-            
+            Spacer(minLength: 600)
                 
                 
                 
@@ -52,6 +93,6 @@ struct ResultView: View {
 
 struct ResultView_Previews: PreviewProvider {
     static var previews: some View {
-        ResultView(goToResultView: .constant(false))
+        ResultView(goBackToRootView: .constant(false))
     }
 }

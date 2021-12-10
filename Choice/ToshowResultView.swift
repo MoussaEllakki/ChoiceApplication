@@ -40,7 +40,7 @@ struct ToshowResultView: View {
                 
                 
                 
-                NavigationLink(destination: ResultView(goToResultView: $goToResultView), isActive: $toResultView){
+                NavigationLink(destination: ResultView(goBackToRootView: $goToResultView), isActive: $toResultView){
                     
                    
                     

@@ -10,7 +10,9 @@ struct ShowElectionview: View {
     
     @State var goToVoteView = false
     
-    @State var   isShowingAlert = false
+    @State var   isShowingAlertForDeleteelectionId = false
+    
+    @State var   isShowingAlertForLogOut = false
     
     @Binding  var goBackToRootView : Bool
     
@@ -18,7 +20,7 @@ struct ShowElectionview: View {
     
     @State private var goToResultView = false
     
-    @State private var nickName = ""
+    @State private var nameOfPolledPerson = ""
     
     @State private var wantCreatorVote = false
     
@@ -29,17 +31,17 @@ struct ShowElectionview: View {
             
             BackgroundView()
             
-           
+            
             
             VStack{
                 
-           
-             
-                Spacer(minLength: 140)
-            
                 
-               Text("Share Election ID \(electionId)")
-             
+                
+                Spacer(minLength: 120)
+                
+                
+                Text("Share Election ID \(electionId)")
+                
                 
                 
                 if (wantCreatorVote == true){
@@ -48,54 +50,54 @@ struct ShowElectionview: View {
                     
                     HStack{
                         
-                    
-                    TextField("Write NickName", text: $nickName)
-                    .padding(.leading, 4.0)
-                    .frame(width: 270, height: 35.0)
-                    .background(Color.yellow)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-            
-                     
+                        
+                        TextField("Write NickName", text: $nameOfPolledPerson)
+                            .padding(.leading, 6.0)
+                            .frame(width: 270, height: 35.0)
+                            .background(Color.yellow)
+                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        
+                        
                         
                         Button(action: {
                             
-                            nickName = ""
+                            nameOfPolledPerson = ""
                             wantCreatorVote = false
                             
                             
                             
                         }) {
-                           SmallButtonView(buttonText: "I wont")
+                            SmallButtonView(buttonText: "I wont")
                             
                         }
-
+                        
                         
                     }
-                        
+                    
                     
                     
                 }
                 
-                  
                 
-               
+                
+                
                 
                 
                 
                 ForEach(allChoices.indices){ index in
                     
-                
+                    
                     
                     Text(allChoices[index])
-                    .frame(width: 350.0, height: 35.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        .frame(width: 350.0, height: 35.0)
+                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                     
-                  
+                    
                     
                 }
                 
                 
-                NavigationLink(destination: VoteView( creatorElectionId: electionId, userElectionId:"" , setAndGetData:setAndGetData, nickName: nickName), isActive: $goToVoteView){
+                NavigationLink(destination: VoteView( creatorElectionId: electionId, goBackToRootView: $goBackToRootView, userElectionId:"" , setAndGetData:setAndGetData,nameOfParticipant: nameOfPolledPerson), isActive: $goToVoteView){
                     
                     
                     
@@ -104,43 +106,43 @@ struct ShowElectionview: View {
                         
                         wantCreatorVote = true
                         
-                        if (nickName != ""){
+                        if (nameOfPolledPerson != ""){
                             
+                            
+                            
+                               setAndGetData.getallChoicesFromFb(electionId:electionId){
+                                
+                                goToVoteView = true
+                                
+                                
+                                
+                            }
+                            
+                        }
                         
-                            
-                        setAndGetData.getallChoicesFromFb(electionId:electionId){
-                          
-                            goToVoteView = true
-                          
-                   
-                            
-                        }
-                            
-                        }
-         
                         
                     }) {
                         
-                        ButtonView(buttonText: "Vote")
+                        ButtonView(buttonText: "Poll")
                         
                     }
-                    .padding(.vertical, 20.0)
-                
-                   
+                    .padding()
+                    
+                    
                     
                 }
                 
-          
+                
                 
                 Button(action: {
                     
-                    isShowingAlert =  true
+                    isShowingAlertForDeleteelectionId =  true
                     
                 }) {
                     
                     ButtonView(buttonText: "Create new")
                     
-                }.padding(.bottom, 30.0).alert("Are you sure? you going to delete your already created current Election!", isPresented :$isShowingAlert ){
+                }.alert("Are you sure? you going to delete your already created current Election!", isPresented :$isShowingAlertForDeleteelectionId ){
                     
                     Button("Delete anyway" , role: .destructive) {
                         
@@ -148,15 +150,15 @@ struct ShowElectionview: View {
                         goBackToRootView = false
                         
                     }
-
+                    
+                    
+                    
+                    
+                }
                 
-            
-                
-            }
                
                 
-                
-                NavigationLink(destination: ResultView(goToResultView: $goBackToRootView), isActive: $goToResultView){
+                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView), isActive: $goToResultView){
                     
                     Button(action: {
                         
@@ -164,33 +166,52 @@ struct ShowElectionview: View {
                         goToResultView = true
                         
                     }) {
-                      ButtonView(buttonText: "See Result")
+                        ButtonView(buttonText: "See Result")
                     }
-
                     
-                }
-               
-                
-                
-                
-                Spacer(minLength: 500)
-          
+                    
+                }.padding()
                 
                 
                 
                 
-            .navigationBarBackButtonHidden(true)
-
             
-                Spacer()
+                
+                
+                Button(action: {
+                    
+                
+                   isShowingAlertForLogOut = true
+           
+                    
+                }) {
+                    
+                    ButtonView(buttonText: "Log Out")
+                    
+                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                    
+                    Button("Ok Log Out", role: .destructive) {
+                
+                        goBackToRootView = false
+                        
+                    }
+                    
+                    
+                    }
+                
+                
+                    .navigationBarBackButtonHidden(true)
+                
+                
+                Spacer(minLength: 100)
                 
             }.onAppear(perform: {
                 
-                nickName = ""
+                nameOfPolledPerson = ""
                 wantCreatorVote = false
                 
             })
-      
+            
             
             
         }

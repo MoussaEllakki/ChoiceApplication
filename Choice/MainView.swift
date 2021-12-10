@@ -12,7 +12,7 @@ struct MainView: View {
     
     @State var goBackToRootView : Bool =  false
     
-    @State var goToChooseElectionIdView = false
+    @State var goToChooseElectionIdView : Bool =  false
     
     @State var goToShowElectionView = false
     
@@ -23,12 +23,12 @@ struct MainView: View {
     
     @State var  isShowingAlert = false
     
-    @State var message = ""
+    @State  private var messageToTheUser = ""
     
     
   
     
-    @State var testText = ""
+  
     
     
     var body: some View {
@@ -41,13 +41,14 @@ struct MainView: View {
                 
                 VStack{
                     
-                    Text(testText)
+         
                     
                     
                     Spacer(minLength: 30)
+                    
                     Text("Choice")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                    .font(.largeTitle)
+                    .fontWeight(.bold)
                     
                     
                     HStack(spacing: 10){
@@ -83,9 +84,9 @@ struct MainView: View {
                             
                         }){
                             
-                            ButtonView(buttonText: "Create Vote")
+                            ButtonView(buttonText: "Create Election")
                             
-                        }.alert(message, isPresented :$isShowingAlert ){
+                        }.alert(messageToTheUser, isPresented :$isShowingAlert ){
                             
                             Button("Ok") {
                                 
@@ -101,7 +102,7 @@ struct MainView: View {
                     
                
                     
-                    NavigationLink(destination: ChooseElectionIdView(), isActive: $goToChooseElectionIdView){
+                    NavigationLink(destination: ChooseElectionIdView(goBackToRootView: $goToChooseElectionIdView), isActive: $goToChooseElectionIdView){
                         
                         
                         Button(action: {
@@ -111,7 +112,7 @@ struct MainView: View {
                             
                         }){
                             
-                            ButtonView(buttonText: "Vote")
+                            ButtonView(buttonText: "Poll")
                             
                         }
                         
@@ -140,7 +141,7 @@ struct MainView: View {
                     }
                     
                     
-                    Spacer(minLength:250)
+                    Spacer(minLength:200)
                     
                 }
                 
@@ -176,7 +177,7 @@ struct MainView: View {
             
             if (countOfParticipantToInteger! < 2 ){
                 
-                message = "Minimum 2 Participant"
+                messageToTheUser = "Minimum 2 Participant"
                 
                 isShowingAlert = true
             }
@@ -187,7 +188,7 @@ struct MainView: View {
                     
                     
                     
-                    message = " Choices min 2 and max 5"
+                    messageToTheUser = " Choices min 2 and max 5"
                     
                     isShowingAlert = true
                     
@@ -217,7 +218,7 @@ struct MainView: View {
         
         else {
             
-            message = "Fill information first"
+            messageToTheUser = "Fill information first"
             
             isShowingAlert = true
             

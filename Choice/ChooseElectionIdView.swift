@@ -18,7 +18,9 @@ struct ChooseElectionIdView: View {
     
     @State private var goToVoteView = false
     
-    @State private var nickName = ""
+    @State private var nameOfPolledPerson = ""
+    
+    @Binding var goBackToRootView : Bool
     
     var body: some View {
         
@@ -32,21 +34,21 @@ struct ChooseElectionIdView: View {
                 
                 Spacer(minLength: 60)
                 
-                Text("Write election id")
+                Text("Write election id").padding(20)
                 
                 TextField("Write Election Id", text: $electionId)
                 .padding(.leading, 4.0)
                 .frame(width: 300.0, height: 35.0)
                 .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-     
-                  Spacer(minLength: 10)
+                .keyboardType(.numberPad)
+               
                 
-                TextField("Write nickname", text: $nickName)
+                TextField("Write nickname", text: $nameOfPolledPerson)
                 .padding(.leading, 4.0)
                 .frame(width: 300.0, height: 35.0)
                 .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                 
-                NavigationLink(destination: VoteView(creatorElectionId: "", userElectionId: electionId , setAndGetData: setAndGetData, nickName: nickName) , isActive: $goToVoteView){
+                NavigationLink(destination: VoteView(creatorElectionId: "", goBackToRootView: $goBackToRootView, userElectionId: electionId , setAndGetData: setAndGetData, nameOfParticipant:nameOfPolledPerson) , isActive: $goToVoteView){
                     
                     
                 
@@ -72,7 +74,7 @@ struct ChooseElectionIdView: View {
             }
             
             
-                Spacer(minLength: 600)
+                Spacer(minLength: 300)
             
             
             
@@ -88,7 +90,7 @@ struct ChooseElectionIdView: View {
     
     func controlInputAndElectionID (){
         
-        if (electionId != "" && nickName != ""){
+        if (electionId != "" && nameOfPolledPerson != ""){
             
          
       
@@ -184,6 +186,6 @@ struct ChooseElectionIdView: View {
     
 struct ChooseElectionIdView_Previews: PreviewProvider {
     static var previews: some View {
-        ChooseElectionIdView()
+        ChooseElectionIdView(goBackToRootView: .constant(false))
     }
 }

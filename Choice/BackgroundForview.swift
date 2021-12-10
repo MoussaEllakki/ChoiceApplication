@@ -65,7 +65,7 @@ struct SmallButtonView: View {
                 .font(.title3)
                 .fontWeight(.bold)
         .foregroundColor(Color.black)
-        }.frame(width: 75, height: 30)
+        }.frame(width: 80, height: 30)
         
     
         

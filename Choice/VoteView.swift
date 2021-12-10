@@ -3,9 +3,7 @@ import SwiftUI
 
 struct VoteView: View {
     
-
-    
-    @State private var isVotet = false
+    @State private var ispolled = false
     
     @State private var whichChoice  = -10
     
@@ -13,64 +11,75 @@ struct VoteView: View {
     
     @State  var creatorElectionId = ""
     
+    @Binding  var goBackToRootView : Bool
+    
     @State  var userElectionId = ""
     
     @State private var electionId = ""
     
     @State var setAndGetData = SetAndGetData()
     
-    @State var nickName = ""
+   @State private var goToResultview = false
+    
+    @State var nameOfParticipant = ""
+    
+    @State var messageToUser = ""
+    
+    @State private var isShowingAlertForSeeResult = false
+    
+    @State private var isShowingAlertForLogOut = false
     
     var body: some View {
         
         
         ZStack{
             
-           BackgroundView()
+            BackgroundView()
             
-         
-        
             VStack{
-             
-                Text("Election id is  \(electionId)").padding()
                 
-                Text(nickName).padding()
+                Spacer(minLength: 50)
+
+                
+                
+                
+                Text("Election id is  \(electionId)").padding()
+                Text("Your name \(nameOfParticipant)").padding()
+                
                 
                 
                 ForEach(setAndGetData.allaChoices.indices) { index in
-                
-                
-                 
-                    
-                Button(action: {
                     
                     
                     
-                    if (isVotet == true){
-                     
-                       
+                    Button(action: {
+                        
+                        
+                        if (ispolled == true){
+                            
+                            
+                            
+                            
+                        }
+                        
+                        
+                        else {
+                            
+                            whichChoice = index
+                            whichColor = Color.green
+                            
+                            
+                        }
+                        
+                        
+                    }) {
+                        
+                        Text("\(setAndGetData.allaChoices[index].name)  \(setAndGetData.allaChoices[index].votes)")
+                            .frame(width: 300, height: 30 )
+                            .cornerRadius(25)
+                            .background(whichChoice == index ? .green : .red)
                         
                     }
-                    
-                    else {
-                        
-                        
-                        whichChoice = index
-                       
-                     
-
-                     whichColor = Color.green
-                      
-                        
-                    }
-                    
-                    
-                }) {
-                    
-                    Text("\(setAndGetData.allaChoices[index].name)  \(setAndGetData.allaChoices[index].votes)")
-                        .frame(width: 300, height: 30 )
-                        .cornerRadius(25)
-                        .background(whichChoice == index ? .green : .red)
                     
                     
                     
@@ -80,45 +89,152 @@ struct VoteView: View {
                 
                 
                 
-            }
-        
-                
-                Spacer(minLength: 400)
-        
-            }
-          
-            
-            
-            
-            
-        }  .onAppear(perform: {
-            
-        
-            if (creatorElectionId != ""){
                 
                 
-               electionId = creatorElectionId
+                Button(action: {
+                    
+                    
+                    poll()
+             
+                    
+                }) {
+                    
+                    ButtonView(buttonText: "Poll")
+                    
+                }.padding(20)
                 
                 
-            }
-            
-            
-            else {
                 
-                electionId = userElectionId
+                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView), isActive: $goToResultview){
+                    
+                   
+                    
+                    Button(action: {
+                        
+           
+                        if (ispolled == true){
+                            
+                            
+                            goToResultview = true
+                            
+                        }
+                        
+                        else {
+                            
+                            
+                           isShowingAlertForSeeResult = true
+                            
+                            
+                        }
+                       
+                   
+                        
+                    }){
+                        
+                        ButtonView(buttonText: "See Result")
+                        
+                    }.alert("Poll first", isPresented :$isShowingAlertForSeeResult ){
+                        
+                        Button("Ok") {
+                            
+                        }
+                        
+                    }
+                 
+                    
+                }.padding(30)
                 
                 
-            }
-            
+                
+                
+                
+                
+                
+                Button(action: {
+                    
+                
+                   isShowingAlertForLogOut = true
+           
+                    
+                }) {
+                    
+                    ButtonView(buttonText: "Log Out")
+                    
+                }.padding(20).alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                    
+                    Button("Ok Log out", role: .destructive) {
+                
+                        goBackToRootView = false
+                        
+                    }
+                    
+                    
+                    
+                    
+                }
+                
+                
+                
+                
+                
+                
+                .navigationBarBackButtonHidden(true)
+                
+                Spacer(minLength: 300)
+                
+               }.onAppear(perform: {
+                
+                
+                if (creatorElectionId != ""){
+                    
+                    
+                    electionId = creatorElectionId
+                    
+                    
+                }
+                
+                
+                else {
+                    
+                    electionId = userElectionId
+                    
+                    
+                }
+                
             })
+            
+            
+            
+            
+        }
         
         
         
     }
+    
+    
+    
+    func poll (){
+        
+        
+       ispolled = true
+       
+        
+        setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
+        
+        setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
+        
+        
+    }
+    
+    
+    
+    
+    
 }
 
 struct VoteView_Previews: PreviewProvider {
     static var previews: some View {
-        VoteView()
+        VoteView(goBackToRootView: .constant(false))
     }
 }

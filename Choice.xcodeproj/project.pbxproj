@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3381552F275F4DC600A31B38 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3381552E275F4DC600A31B38 /* ResultView.swift */; };
 		33815535275F6C0600A31B38 /* SetAndGetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33815534275F6C0600A31B38 /* SetAndGetData.swift */; };
+		33A32A61276389BC00E86D6A /* AllParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A32A60276389BC00E86D6A /* AllParticipantView.swift */; };
 		33C64BAF276238100038990D /* ToshowResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C64BAE276238100038990D /* ToshowResultView.swift */; };
 		33E1D884275A0DF200396BBE /* ChoiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E1D883275A0DF200396BBE /* ChoiceApp.swift */; };
 		33E1D886275A0DF200396BBE /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E1D885275A0DF200396BBE /* MainView.swift */; };
@@ -27,6 +28,7 @@
 		088135D5B0D213ECC227F04E /* Pods-Choice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Choice.release.xcconfig"; path = "Target Support Files/Pods-Choice/Pods-Choice.release.xcconfig"; sourceTree = "<group>"; };
 		3381552E275F4DC600A31B38 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		33815534275F6C0600A31B38 /* SetAndGetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAndGetData.swift; sourceTree = "<group>"; };
+		33A32A60276389BC00E86D6A /* AllParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllParticipantView.swift; sourceTree = "<group>"; };
 		33C64BAE276238100038990D /* ToshowResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToshowResultView.swift; sourceTree = "<group>"; };
 		33E1D880275A0DF200396BBE /* Choice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Choice.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		33E1D883275A0DF200396BBE /* ChoiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoiceApp.swift; sourceTree = "<group>"; };
@@ -98,6 +100,7 @@
 				3381552E275F4DC600A31B38 /* ResultView.swift */,
 				33815534275F6C0600A31B38 /* SetAndGetData.swift */,
 				33C64BAE276238100038990D /* ToshowResultView.swift */,
+				33A32A60276389BC00E86D6A /* AllParticipantView.swift */,
 			);
 			path = Choice;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				33C64BAF276238100038990D /* ToshowResultView.swift in Sources */,
 				33E1D8C2275BCC9300396BBE /* VoteView.swift in Sources */,
 				33E1D8C4275BD41600396BBE /* ChooseElectionIdView.swift in Sources */,
+				33A32A61276389BC00E86D6A /* AllParticipantView.swift in Sources */,
 				33E1D884275A0DF200396BBE /* ChoiceApp.swift in Sources */,
 				33E1D8A4275A478E00396BBE /* FillChoicesView.swift in Sources */,
 				33E1D89C275A28AC00396BBE /* BackgroundForview.swift in Sources */,
@@ -380,8 +384,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -411,8 +415,8 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
