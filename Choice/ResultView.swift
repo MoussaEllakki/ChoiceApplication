@@ -10,7 +10,9 @@ struct ResultView: View {
     
     @State private var goToAllParticipantView = false
     
-    @State private var setAndGetData = SetAndGetData()
+    @State var setAndGetData = SetAndGetData()
+    
+    @State var electionId = ""
     
     
     var body: some View {
@@ -23,7 +25,7 @@ struct ResultView: View {
             VStack{
                 
                 
-                Spacer(minLength: 50)
+                Spacer(minLength: 60)
                 
                 
                 Text("result view")
@@ -45,19 +47,55 @@ struct ResultView: View {
                     
                 }
                  
+                    Spacer(minLength: 250)
+                
+                }
+                    
+                
+                ForEach(setAndGetData.allaChoices.indices){ index in
+                    
+                    HStack{
+                        
                     
                     
+                       Text(setAndGetData.allaChoices[index].name)
+             
                     
+                        
+                        Text("\(setAndGetData.allaChoices[index].votes)")
+                 
+                        
+                        
+                    }
+                        
+                    
+                }
                    
                     
-                    NavigationLink(destination:AllParticipantView(), isActive: $goToAllParticipantView){
+                    NavigationLink(destination:AllParticipantView(setAndGetData: setAndGetData), isActive: $goToAllParticipantView){
                         
                         Button(action: {
                             
                       
-                            
+                      
+                            setAndGetData.getCountOfPolled(electionId: electionId){
+                                
+                     
+                                setAndGetData.getAllParticiPant(electionId: electionId){
+                                    
+                      
+                       
+                                    goToAllParticipantView = true
+                       
+                              
+                                }
+                                
+                               print("3")
+
+                            }
                   
-                            goToAllParticipantView = true
+              
+
                             
                         }) {
                             SmallButtonView(buttonText: "All Participant")
@@ -68,7 +106,7 @@ struct ResultView: View {
                     
                     
                  Spacer(minLength: 20)
-                    
+                
                 }
                 
                
@@ -76,7 +114,7 @@ struct ResultView: View {
              
                 
                 
-            Spacer(minLength: 600)
+            Spacer(minLength: 400)
                 
                 
                 
@@ -88,7 +126,7 @@ struct ResultView: View {
          }
         
         
-    }
+    
 }
 
 struct ResultView_Previews: PreviewProvider {

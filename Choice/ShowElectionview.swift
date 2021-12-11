@@ -24,6 +24,7 @@ struct ShowElectionview: View {
     
     @State private var wantCreatorVote = false
     
+    
     var body: some View {
         
         

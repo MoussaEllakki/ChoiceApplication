@@ -17,7 +17,7 @@ struct FillChoicesView: View {
     
     @State var countOfParticipant = ""
     
-    @State  private var message = ""
+    @State  private var messageToUser = ""
     
     @State  private var electionId = ""
     
@@ -61,7 +61,7 @@ struct FillChoicesView: View {
                                ButtonView(buttonText: "Create")
                                
                            }
-                           .alert(message, isPresented :$isShowingAlert ){
+                           .alert(messageToUser, isPresented :$isShowingAlert ){
                                
                                Button("Ok") {
                                    
@@ -114,13 +114,16 @@ struct FillChoicesView: View {
     func getChoices (){
         
         
+        
         for i in allChoices{
             
             
-            if (i == ""){
+            
+            if (i == "" || i == " " || i == "  " ){
                 
+                print("look  \(i)")
                 
-                message = "Fill all Choices first"
+                messageToUser = "Fill all Choices first"
                 
                 isShowingAlert = true
                 
@@ -155,7 +158,8 @@ struct FillChoicesView: View {
             guard error == nil else {
                 
            
-                
+                messageToUser = "No internet"
+                isShowingAlert = true
                 print(error!.localizedDescription)
                 
                 return;

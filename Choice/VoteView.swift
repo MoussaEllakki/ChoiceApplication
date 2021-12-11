@@ -17,15 +17,15 @@ struct VoteView: View {
     
     @State private var electionId = ""
     
-    @State var setAndGetData = SetAndGetData()
+    @ObservedObject var setAndGetData = SetAndGetData()
     
-   @State private var goToResultview = false
+   @State private var goToConfirmView = false
     
     @State var nameOfParticipant = ""
     
     @State var messageToUser = ""
     
-    @State private var isShowingAlertForSeeResult = false
+    @State private var isShowingAlert = false
     
     @State private var isShowingAlertForLogOut = false
     
@@ -44,7 +44,7 @@ struct VoteView: View {
                 
                 
                 Text("Election id is  \(electionId)").padding()
-                Text("Your name \(nameOfParticipant)").padding()
+               
                 
                 
                 
@@ -55,30 +55,21 @@ struct VoteView: View {
                     Button(action: {
                         
                         
-                        if (ispolled == true){
-                            
-                            
-                            
-                            
-                        }
-                        
-                        
-                        else {
+                   
                             
                             whichChoice = index
                             whichColor = Color.green
                             
                             
-                        }
+                        
                         
                         
                     }) {
                         
-                        Text("\(setAndGetData.allaChoices[index].name)  \(setAndGetData.allaChoices[index].votes)")
+                        Text("\(setAndGetData.allaChoices[index].name)")
                             .frame(width: 300, height: 30 )
-                            .cornerRadius(25)
                             .background(whichChoice == index ? .green : .red)
-                        
+                            .cornerRadius(10)
                     }
                     
                     
@@ -90,61 +81,31 @@ struct VoteView: View {
                 
                 
                 
-                
-                Button(action: {
-                    
-                    
-                    poll()
-             
-                    
-                }) {
-                    
-                    ButtonView(buttonText: "Poll")
-                    
-                }.padding(20)
-                
-                
-                
-                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView), isActive: $goToResultview){
-                    
-                   
+                NavigationLink(destination: ConfirmView(goBackToRootView: $goBackToRootView, nameOfParticipant: nameOfParticipant, electionId : electionId), isActive: $goToConfirmView){
                     
                     Button(action: {
                         
-           
-                        if (ispolled == true){
-                            
-                            
-                            goToResultview = true
-                            
-                        }
                         
-                        else {
-                            
-                            
-                           isShowingAlertForSeeResult = true
-                            
-                            
-                        }
-                       
-                   
+                    
+                        poll()
+                 
                         
-                    }){
                         
-                        ButtonView(buttonText: "See Result")
+                    }) {
                         
-                    }.alert("Poll first", isPresented :$isShowingAlertForSeeResult ){
+                        ButtonView(buttonText: "Poll")
+                        
+                    }.alert(messageToUser, isPresented :$isShowingAlert){
                         
                         Button("Ok") {
                             
                         }
                         
                     }
-                 
                     
-                }.padding(30)
-                
-                
+                    
+                }
+           
                 
                 
                 
@@ -216,23 +177,33 @@ struct VoteView: View {
     
     func poll (){
         
-        
-       ispolled = true
-       
-        
-        setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
-        
-        setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
-        
-        
-    }
     
-    
+        
+        if (whichChoice < 0){
+            
+            messageToUser = "Choose choice first"
+            isShowingAlert = true
+            
+        }
+        
+        else {
+            
+                       setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
+                     setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
+            
+                      goToConfirmView = true
+            
+                        
+            }
+      
+
     
     
     
 }
 
+    
+}
 struct VoteView_Previews: PreviewProvider {
     static var previews: some View {
         VoteView(goBackToRootView: .constant(false))

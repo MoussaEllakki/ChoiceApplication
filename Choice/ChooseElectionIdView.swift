@@ -124,7 +124,7 @@ struct ChooseElectionIdView: View {
                     
                     setAndGetData.getallChoicesFromFb(electionId: electionId){
                         
-                        print("rätt id ")
+              
                         goToVoteView = true
                         
                     }

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3337FEA2276506130036ED4B /* ConfirmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3337FEA1276506120036ED4B /* ConfirmView.swift */; };
 		3381552F275F4DC600A31B38 /* ResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3381552E275F4DC600A31B38 /* ResultView.swift */; };
 		33815535275F6C0600A31B38 /* SetAndGetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33815534275F6C0600A31B38 /* SetAndGetData.swift */; };
 		33A32A61276389BC00E86D6A /* AllParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A32A60276389BC00E86D6A /* AllParticipantView.swift */; };
@@ -26,6 +27,7 @@
 
 /* Begin PBXFileReference section */
 		088135D5B0D213ECC227F04E /* Pods-Choice.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Choice.release.xcconfig"; path = "Target Support Files/Pods-Choice/Pods-Choice.release.xcconfig"; sourceTree = "<group>"; };
+		3337FEA1276506120036ED4B /* ConfirmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmView.swift; sourceTree = "<group>"; };
 		3381552E275F4DC600A31B38 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		33815534275F6C0600A31B38 /* SetAndGetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAndGetData.swift; sourceTree = "<group>"; };
 		33A32A60276389BC00E86D6A /* AllParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllParticipantView.swift; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 				33815534275F6C0600A31B38 /* SetAndGetData.swift */,
 				33C64BAE276238100038990D /* ToshowResultView.swift */,
 				33A32A60276389BC00E86D6A /* AllParticipantView.swift */,
+				3337FEA1276506120036ED4B /* ConfirmView.swift */,
 			);
 			path = Choice;
 			sourceTree = "<group>";
@@ -241,6 +244,7 @@
 				3381552F275F4DC600A31B38 /* ResultView.swift in Sources */,
 				33C64BAF276238100038990D /* ToshowResultView.swift in Sources */,
 				33E1D8C2275BCC9300396BBE /* VoteView.swift in Sources */,
+				3337FEA2276506130036ED4B /* ConfirmView.swift in Sources */,
 				33E1D8C4275BD41600396BBE /* ChooseElectionIdView.swift in Sources */,
 				33A32A61276389BC00E86D6A /* AllParticipantView.swift in Sources */,
 				33E1D884275A0DF200396BBE /* ChoiceApp.swift in Sources */,
