@@ -34,7 +34,7 @@ struct ChooseElectionIdView: View {
                 
                 Spacer(minLength: 60)
                 
-                Text("Write election id").padding(20)
+                Text("Write election id and you name").padding(20)
                 
                 TextField("Write Election Id", text: $electionId)
                 .padding(.leading, 4.0)
@@ -60,7 +60,7 @@ struct ChooseElectionIdView: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "Vote").padding(20)
+                        ButtonView(buttonText: "Poll").padding(20)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         
@@ -177,6 +177,10 @@ struct ChooseElectionIdView: View {
         
     
     }
+    
+  
+    
+   
     
     
     

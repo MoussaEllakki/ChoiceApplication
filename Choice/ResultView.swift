@@ -13,7 +13,8 @@ struct ResultView: View {
     @State var setAndGetData = SetAndGetData()
     
     @State var electionId = ""
-    
+
+   @State private var isShowingAlertForLogOut = false
     
     var body: some View {
         
@@ -31,25 +32,6 @@ struct ResultView: View {
                 Text("result view")
                 
                 
-                HStack{
-                    
-                Spacer(minLength: 20)
-                    
-                Button(action: {
-                    
-                    
-                    goBackToRootView = false
-                    
-                    
-                    
-                }) {
-                    SmallButtonView(buttonText: "Home")
-                    
-                }
-                 
-                    Spacer(minLength: 250)
-                
-                }
                     
                 
                 ForEach(setAndGetData.allaChoices.indices){ index in
@@ -57,13 +39,19 @@ struct ResultView: View {
                     HStack{
                         
                     
-                    
-                       Text(setAndGetData.allaChoices[index].name)
-             
+                        Text("\(index + 1)").padding(2)
+                        
+                  
+                       Text("\(setAndGetData.allaChoices[index].name)  \(setAndGetData.allaChoices[index].votes)")
+                       .frame(width: 330.0, height: 30.0)
+                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        .background(Color.purple)
+                        .cornerRadius(3)
                     
                         
-                        Text("\(setAndGetData.allaChoices[index].votes)")
+                      
                  
+                        
                         
                         
                     }
@@ -84,7 +72,7 @@ struct ResultView: View {
                                 setAndGetData.getAllParticiPant(electionId: electionId){
                                     
                       
-                       
+                  
                                     goToAllParticipantView = true
                        
                               
@@ -98,15 +86,39 @@ struct ResultView: View {
 
                             
                         }) {
-                            SmallButtonView(buttonText: "All Participant")
+                        ButtonView(buttonText: "All Participant")
                         }
                         
                         
                     }.padding()
                     
                     
-                 Spacer(minLength: 20)
                 
+                
+                
+                
+                Button(action: {
+                    
+                
+                isShowingAlertForLogOut = true
+           
+                    
+                }) {
+                    
+                    ButtonView(buttonText: "Log Out")
+                    
+                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                    
+                    Button("Ok Log out", role: .destructive) {
+                
+                        goBackToRootView = false
+                        
+                        
+                    }
+                    
+                    
+                    
+                    
                 }
                 
                
@@ -124,7 +136,7 @@ struct ResultView: View {
             
             
          }
-        
+    }
         
     
 }

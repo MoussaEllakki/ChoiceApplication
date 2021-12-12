@@ -86,7 +86,7 @@ struct MainView: View {
                             
                             ButtonView(buttonText: "Create Election")
                             
-                        }.alert(messageToTheUser, isPresented :$isShowingAlert ){
+                        }.padding(.bottom, 20.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
                             
                             Button("Ok") {
                                 
@@ -115,11 +115,11 @@ struct MainView: View {
                             ButtonView(buttonText: "Poll")
                             
                         }
+                        .padding(.bottom, 20.0)
                         
                     }
                     
                     
-                    .padding(30)
                     
                     
                     
@@ -137,6 +137,7 @@ struct MainView: View {
                             ButtonView(buttonText: "See Result")
                             
                         }
+                        .padding(.bottom, 20.0)
                         
                     }
                     

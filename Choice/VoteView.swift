@@ -29,6 +29,8 @@ struct VoteView: View {
     
     @State private var isShowingAlertForLogOut = false
     
+    @State private var isAllPolled = false
+    
     var body: some View {
         
         
@@ -36,6 +38,40 @@ struct VoteView: View {
             
             BackgroundView()
             
+            
+         
+            
+            if (isAllPolled == true){
+                
+                VStack{
+                    
+                    Text("Ops")
+                    Text("Sorry you cant join this election because all participant have already polled")
+                        .lineLimit(3)
+                        .padding(.horizontal, 20.0)
+                 
+                    
+                    Button(action: {
+                        
+                        goBackToRootView = false
+                        
+                    }) {
+                        
+                      ButtonView(buttonText: "Log out")
+                    }.padding()
+                        
+                    
+
+                    
+                 .navigationBarBackButtonHidden(true)
+                    
+                }
+                
+            }
+            
+                else {
+                    
+                
             VStack{
                 
                 Spacer(minLength: 50)
@@ -43,8 +79,9 @@ struct VoteView: View {
                 
                 
                 
-                Text("Election id is  \(electionId)").padding()
+                Text("Election id  \(electionId)").padding(.bottom, 50.0)
                
+                Text("Choose one of these choices").padding()
                 
                 
                 
@@ -94,6 +131,7 @@ struct VoteView: View {
                     }) {
                         
                         ButtonView(buttonText: "Poll")
+                            .padding(.vertical, 20.0)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert){
                         
@@ -121,7 +159,7 @@ struct VoteView: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.padding(20).alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log out", role: .destructive) {
                 
@@ -133,19 +171,29 @@ struct VoteView: View {
                     
                     
                 }
-                
-                
-                
-                
-                
-                
+               
                 .navigationBarBackButtonHidden(true)
                 
                 Spacer(minLength: 300)
+            }
+                    
+                    
+                 
+                    
+                    
+            }
+                
+            
+                
+   
+                
+             
                 
                }.onAppear(perform: {
                 
                 
+              
+                   
                 if (creatorElectionId != ""){
                     
                     
@@ -161,6 +209,32 @@ struct VoteView: View {
                     
                     
                 }
+                   
+                   setAndGetData.getCountOfParticipant(electionId: electionId){
+                       
+                       
+                       setAndGetData.getCountOfPolled(electionId:electionId){
+                           
+                        
+                           if (setAndGetData.countOfparticipant == setAndGetData.countOfPolled){
+                               
+                               isAllPolled = true
+                               
+                           }
+                          
+                           else{
+                               
+                             ispolled =  false
+                           }
+                           
+                       }
+                       
+                       
+                   }
+                   
+                   
+                   
+                   
                 
             })
             
@@ -171,7 +245,7 @@ struct VoteView: View {
         
         
         
-    }
+    
     
     
     

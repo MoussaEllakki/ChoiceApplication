@@ -27,9 +27,13 @@ struct ConfirmView: View {
             
             
             VStack{
+               
                 
-            Text("Election Id is \(electionId)")
-             Text("Thank you \(nameOfParticipant)")
+                
+                Spacer(minLength: 100)
+                
+                Text("Election Id  \(electionId)").padding(.bottom, 20.0)
+                Text("Thank you \(nameOfParticipant)").padding(.bottom, 20.0)
                 
                 
                 
@@ -47,7 +51,7 @@ struct ConfirmView: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.bottom, 20.0).alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log Out", role: .destructive) {
                 
@@ -91,6 +95,10 @@ struct ConfirmView: View {
                     
                     
                 }
+              
+                
+                Spacer(minLength: 500)
+                
                 
             }
             

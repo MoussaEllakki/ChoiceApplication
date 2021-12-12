@@ -208,21 +208,13 @@ class SetAndGetData : ObservableObject{
             
             completionHandler()
             
-            
-            
-            
-            
-            
-            
+        
             
             
         });
         
         
-        
-        
-        
-        
+
         
         
     }
@@ -353,20 +345,18 @@ class SetAndGetData : ObservableObject{
                 
                 self.allParticipant.append(participantName!)
                 
-
+                if(self.allParticipant.count == self.countOfPolled ){
+                    print("4 -  4")
+                    
+                    completionHandler()
+                    
+                    print("4 -  3")
+                }
                 
                 
             });
             
-            
-            if(self.allParticipant.count == self.countOfPolled ){
-                print("4 -  4")
-                
-                completionHandler()
-                
-                print("4 -  3")
-            }
-            
+       
             
         }
         

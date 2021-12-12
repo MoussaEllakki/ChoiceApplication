@@ -33,31 +33,57 @@ struct ShowElectionview: View {
             BackgroundView()
             
             
-            
+   
+                            
+
             VStack{
                 
                 
+                Spacer(minLength: 50)
                 
-                Spacer(minLength: 120)
+                Text("Election ID: \(electionId)").padding()
+                
+         
+               
                 
                 
-                Text("Share Election ID \(electionId)")
                 
+                
+                
+                
+                
+                
+                ForEach(allChoices.indices){ index in
+                    
+                    HStack{
+                        
+                    Text("\(index + 1)").padding(2)
+                    
+                    Text(allChoices[index])
+                    .frame(width: 330.0, height: 30.0)
+                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                    .background(Color.purple)
+                    .cornerRadius(3)
+                        
+                    
+                    }
+                    
+                }
                 
                 
                 if (wantCreatorVote == true){
                     
-                    Text("Write a nickname").padding()
+                    Text("Tap your name if you want to poll")
+                    Text("then press poll,  otherwise tap X")
                     
                     HStack{
                         
-                        
-                        TextField("Write NickName", text: $nameOfPolledPerson)
-                            .padding(.leading, 6.0)
-                            .frame(width: 270, height: 35.0)
-                            .background(Color.yellow)
+                    
+                        TextField("Name", text: $nameOfPolledPerson)
+                            .padding(.leading, 4.0)
+                            .frame(width: 220, height: 30)
                             .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                        
+                    
                         
                         
                         Button(action: {
@@ -68,7 +94,8 @@ struct ShowElectionview: View {
                             
                             
                         }) {
-                            SmallButtonView(buttonText: "I wont")
+                            Text("X")
+                          
                             
                         }
                         
@@ -79,24 +106,7 @@ struct ShowElectionview: View {
                     
                 }
                 
-                
-                
-                
-                
-                
-                
-                ForEach(allChoices.indices){ index in
-                    
-                    
-                    
-                    Text(allChoices[index])
-                        .frame(width: 350.0, height: 35.0)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                    
-                    
-                    
-                }
-                
+
                 
                 NavigationLink(destination: VoteView( creatorElectionId: electionId, goBackToRootView: $goBackToRootView, userElectionId:"" , setAndGetData:setAndGetData,nameOfParticipant: nameOfPolledPerson), isActive: $goToVoteView){
                     
@@ -127,7 +137,8 @@ struct ShowElectionview: View {
                         ButtonView(buttonText: "Poll")
                         
                     }
-                    .padding()
+                    .padding(.vertical, 10.0)
+                    
                     
                     
                     
@@ -143,7 +154,7 @@ struct ShowElectionview: View {
                     
                     ButtonView(buttonText: "Create new")
                     
-                }.alert("Are you sure? you going to delete your already created current Election!", isPresented :$isShowingAlertForDeleteelectionId ){
+                }.padding(.bottom, 10.0).alert("Are you sure? you going to delete your already created current Election!", isPresented :$isShowingAlertForDeleteelectionId ){
                     
                     Button("Delete anyway" , role: .destructive) {
                         
@@ -169,9 +180,10 @@ struct ShowElectionview: View {
                     }) {
                         ButtonView(buttonText: "See Result")
                     }
+                    .padding(.bottom, 10.0)
                     
                     
-                }.padding()
+                }
                 
                 
                 
@@ -189,7 +201,9 @@ struct ShowElectionview: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }
+                .padding(.bottom, 10.0)
+                .alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log Out", role: .destructive) {
                 
@@ -200,11 +214,12 @@ struct ShowElectionview: View {
                     
                     }
                 
+                    Spacer(minLength: 100)
                 
                     .navigationBarBackButtonHidden(true)
                 
                 
-                Spacer(minLength: 100)
+           
                 
             }.onAppear(perform: {
                 

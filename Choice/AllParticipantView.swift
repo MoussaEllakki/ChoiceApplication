@@ -16,10 +16,15 @@ struct AllParticipantView: View {
             
             VStack{
                 
+                Spacer()
                 
-                Text("all participant")
+                Text("All participant")
                 
                 Text("is \(setAndGetData.countOfPolled)")
+                
+                ScrollView{
+                    
+                
                 
                 ForEach(setAndGetData.allParticipant.indices){ index in
                     
@@ -33,9 +38,9 @@ struct AllParticipantView: View {
                     
                 }
                 
+                }
             
-              
-                
+                Spacer(minLength: 300)
                 
             }
             

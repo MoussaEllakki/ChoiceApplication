@@ -33,7 +33,7 @@ struct FillChoicesView: View {
             
             BackgroundView()
             
-            
+                     Spacer(minLength: 150)
             VStack{
                 
                   ForEach(0..<allChoices.count , id: \.self) {
@@ -68,13 +68,13 @@ struct FillChoicesView: View {
                            }
                                
                                
-                           }.padding(25)
+                           }.padding(20)
                     
                 }
                 
         
                 
-                Spacer(minLength: 200)
+                Spacer(minLength: 150)
               
               
                 

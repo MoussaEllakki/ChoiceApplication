@@ -7,12 +7,14 @@ struct ToshowResultView: View {
     @State private var electionId = ""
     
    
-    
+    @State private var isShowingAlert = false
     
     @Binding var goToResultView  : Bool
     
     
     @State private var toResultView = false
+    
+    @ObservedObject var setAndGetData = SetAndGetData()
     
     
     var body: some View {
@@ -39,18 +41,37 @@ struct ToshowResultView: View {
                 
                 
                 
-                
-                NavigationLink(destination: ResultView(goBackToRootView: $goToResultView), isActive: $toResultView){
+                NavigationLink(destination: ResultView(goBackToRootView: $goToResultView, setAndGetData: setAndGetData, electionId : electionId), isActive: $toResultView){
                     
                    
                     
                     Button(action: {
                 
-                      toResultView = true
+                        if (electionId != ""){
+                            
+                            setAndGetData.getallChoicesFromFb(electionId:electionId){
+                                
+                               toResultView = true
+
+                            }
+                            
+                        }
+                     
+                        else{
+                            
+                            isShowingAlert = true
+                            
+                        }
                         
                     }){
                         
                         ButtonView(buttonText: "See Result")
+                        
+                    }.alert("Write election id first", isPresented :$isShowingAlert){
+                        
+                        Button("Ok") {
+                            
+                        }
                         
                     }
                  
@@ -60,7 +81,7 @@ struct ToshowResultView: View {
               
                 
                 
-                Spacer(minLength: 350)
+                Spacer(minLength: 250)
                
                 
                 
