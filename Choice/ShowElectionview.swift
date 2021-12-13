@@ -14,6 +14,8 @@ struct ShowElectionview: View {
     
     @State var   isShowingAlertForLogOut = false
     
+    @State var   isShowingAlert = false
+    
     @Binding  var goBackToRootView : Bool
     
     @State private var setAndGetData = SetAndGetData()
@@ -117,7 +119,9 @@ struct ShowElectionview: View {
                         
                         wantCreatorVote = true
                         
-                        if (nameOfPolledPerson != ""){
+                        let nameOfPolledPersonRemoveSpace = nameOfPolledPerson.trimmingCharacters(in: .whitespacesAndNewlines)
+                        
+                        if (nameOfPolledPersonRemoveSpace != ""){
                             
                             
                             
@@ -130,14 +134,24 @@ struct ShowElectionview: View {
                             }
                             
                         }
+                      
                         
                         
                     }) {
                         
                         ButtonView(buttonText: "Poll")
                         
-                    }
-                    .padding(.vertical, 10.0)
+                    } .padding(.vertical, 10.0).alert("Write your name first", isPresented :$isShowingAlert ){
+                        
+                        Button("Ok") {
+                    
+               
+                            
+                        }
+                        
+                        
+                        }
+                   
                     
                     
                     

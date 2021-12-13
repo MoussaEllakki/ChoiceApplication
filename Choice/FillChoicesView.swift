@@ -115,11 +115,11 @@ struct FillChoicesView: View {
         
         
         
-        for i in allChoices{
+        for ii in allChoices{
             
+            let i = ii.trimmingCharacters(in: .whitespacesAndNewlines)
             
-            
-            if (i == "" || i == " " || i == "  " ){
+            if (i == "" || i == "" || i == "" ){
                 
                 print("look  \(i)")
                 

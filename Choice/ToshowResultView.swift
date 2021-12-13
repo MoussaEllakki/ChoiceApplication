@@ -11,6 +11,7 @@ struct ToshowResultView: View {
     
     @Binding var goToResultView  : Bool
     
+    @State private var messageToUser = ""
     
     @State private var toResultView = false
     
@@ -46,28 +47,15 @@ struct ToshowResultView: View {
                    
                     
                     Button(action: {
-                
-                        if (electionId != ""){
-                            
-                            setAndGetData.getallChoicesFromFb(electionId:electionId){
-                                
-                               toResultView = true
-
-                            }
-                            
-                        }
-                     
-                        else{
-                            
-                            isShowingAlert = true
-                            
-                        }
                         
+                        
+                          controlInputandelectionId()
+               
                     }){
                         
                         ButtonView(buttonText: "See Result")
                         
-                    }.alert("Write election id first", isPresented :$isShowingAlert){
+                    }.alert(messageToUser, isPresented :$isShowingAlert){
                         
                         Button("Ok") {
                             
@@ -97,7 +85,62 @@ struct ToshowResultView: View {
             
             
             
-            }
+            
+    }
+    
+    
+    func controlInputandelectionId (){
+        
+        
+                
+                
+                if (electionId != ""){
+                    
+                    
+                    setAndGetData.controlElectionId(electionId: electionId){
+                        
+                        if (setAndGetData.isThereInternet == false){
+                            
+                            messageToUser = "No internet"
+                            isShowingAlert = true
+                            
+                            return
+                            
+                        }
+                        
+                        if (setAndGetData.existingElectionId == true){
+                            
+                            
+                            setAndGetData.getallChoicesFromFb(electionId:electionId){
+                                
+                               toResultView = true
+                        }
+                            
+                        }
+                            else {
+                                
+                              messageToUser = "Wrong election id"
+                              isShowingAlert = true
+                                
+                            }
+                        
+                        
+                    }
+                 
+                    
+                }
+             
+                else{
+                    
+                    messageToUser = "Write election id first"
+                    isShowingAlert = true
+                    
+                }
+        
+        
+    }
+    
+    
         
         
         }

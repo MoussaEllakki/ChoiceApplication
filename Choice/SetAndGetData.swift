@@ -87,13 +87,12 @@ class SetAndGetData : ObservableObject{
         
         ref.child("AllElections").getData(completion:  { [self] error, snapshot in
             
-            print("three")
+        
             
             guard error == nil else {
                 
                 
-                
-                print("ingen internet")
+           
                 
                 isThereInternet = false
                 

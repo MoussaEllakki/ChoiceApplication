@@ -90,7 +90,9 @@ struct ChooseElectionIdView: View {
     
     func controlInputAndElectionID (){
         
-        if (electionId != "" && nameOfPolledPerson != ""){
+        let nameOfPolledPersonRemoveSpace = nameOfPolledPerson.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        if (electionId != "" && nameOfPolledPersonRemoveSpace != ""){
             
          
       
