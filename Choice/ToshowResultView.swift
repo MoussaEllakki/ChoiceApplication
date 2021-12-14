@@ -116,6 +116,8 @@ struct ToshowResultView: View {
                                toResultView = true
                         }
                             
+                            
+                            
                         }
                             else {
                                 

@@ -5,30 +5,19 @@ import SwiftUI
 struct MainView: View {
     
     
-    
     @State var countOfParticipant = ""
-    
     @State var countOfChoices = ""
     
     @State var goBackToRootView : Bool =  false
-    
     @State var goToChooseElectionIdView : Bool =  false
-    
     @State var goToShowElectionView = false
-    
     @State var  goToshowResultView : Bool =  false
-    
     @State var  goToResultView : Bool =  false
     
-    
     @State var  isShowingAlert = false
-    
     @State  private var messageToTheUser = ""
     
     
-  
-    
-  
     
     
     var body: some View {
@@ -41,15 +30,11 @@ struct MainView: View {
                 
                 VStack{
                     
-         
-                    
-                    
                     Spacer(minLength: 30)
                     
                     Text("Choice")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
                     
                     HStack(spacing: 10){
                         
@@ -77,30 +62,21 @@ struct MainView: View {
                     
                     NavigationLink(destination: FillChoicesView(countOfChoices: countOfChoices, countOfParticipant: countOfParticipant, goBackToRootView: $goBackToRootView), isActive: $goBackToRootView ){
                         
-                        
                         Button(action: {
                             
                             ControlInput()
-                            
                         }){
-                            
                             ButtonView(buttonText: "Create Election")
-                            
                         }.padding(.bottom, 20.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
-                            
                             Button("Ok") {
                                 
                             }
-                            
                         }
-                        
-                        
                         
                     }
                     
                     
                     
-               
                     
                     NavigationLink(destination: ChooseElectionIdView(goBackToRootView: $goToChooseElectionIdView), isActive: $goToChooseElectionIdView){
                         
@@ -130,7 +106,7 @@ struct MainView: View {
                         
                         Button(action: {
                             
-                         goToResultView = true
+                            goToResultView = true
                             
                         }){
                             

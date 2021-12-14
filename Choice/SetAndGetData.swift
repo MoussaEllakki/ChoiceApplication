@@ -35,7 +35,6 @@ class SetAndGetData : ObservableObject{
     func creatElection ( electionId : String , countsOfParticipant: Int , allChoices : [String] ){
         
         ref.child("AllElections").child(electionId).setValue(electionId)
-        ref.child("Election").child(electionId).child("ElectionID").setValue(electionId)
         ref.child("Election").child(electionId).child("CountsOfParticipant").setValue(countsOfParticipant)
         ref.child("Election").child(electionId).child("CountsOfPolled").setValue(0)
         

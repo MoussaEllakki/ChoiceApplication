@@ -22,6 +22,8 @@ struct ChooseElectionIdView: View {
     
     @Binding var goBackToRootView : Bool
     
+    @State private var ispolled = false
+    
     var body: some View {
         
         
@@ -43,7 +45,7 @@ struct ChooseElectionIdView: View {
                 .keyboardType(.numberPad)
                
                 
-                TextField("Write nickname", text: $nameOfPolledPerson)
+                TextField("Write your name", text: $nameOfPolledPerson)
                 .padding(.leading, 4.0)
                 .frame(width: 300.0, height: 35.0)
                 .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
@@ -56,6 +58,7 @@ struct ChooseElectionIdView: View {
                     Button(action: {
                         
                   
+                        
                         controlInputAndElectionID()
                         
                     }) {
@@ -94,23 +97,18 @@ struct ChooseElectionIdView: View {
         
         if (electionId != "" && nameOfPolledPersonRemoveSpace != ""){
             
+            
+            ispolled = UserDefaults.standard.bool(forKey: electionId)
          
-      
-            //1
-       
-            print("one")
+            if (ispolled == false){
             
             setAndGetData.controlElectionId(electionId: electionId){
                 
-            print("seven o sist")
-            
-            //4
-            
-          // 6 sists med comprehanion
+        
             
             if (setAndGetData.isThereInternet == false){
                 
-                print("ingen  internet")
+            
                messageToUser = "No Internet"
                isShowingAlert = true
                 
@@ -151,8 +149,20 @@ struct ChooseElectionIdView: View {
             }
             
         
+        }
         
-        
+            else {
+                
+                messageToUser = "You have polled"
+                
+                isShowingAlert = true
+                
+                
+                
+            }
+            
+            
+            
         
         
         

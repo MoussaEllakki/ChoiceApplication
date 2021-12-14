@@ -222,10 +222,7 @@ struct VoteView: View {
                                
                            }
                           
-                           else{
-                               
-                             ispolled =  false
-                           }
+                      
                            
                        }
                        
@@ -262,10 +259,29 @@ struct VoteView: View {
         
         else {
             
-                       setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
+            if (ispolled == false){
+                
+                
+            
+            
+                     setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
                      setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
             
+                    ispolled = true
+                
+                     UserDefaults.standard.set(ispolled, forKey: electionId)
+                
+       
+                
                       goToConfirmView = true
+                
+                
+                
+            }
+            
+            
+            
+           
             
                         
             }

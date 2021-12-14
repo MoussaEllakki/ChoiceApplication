@@ -66,16 +66,16 @@ struct ConfirmView: View {
                 
                 
                 
-                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, setAndGetData: setAndGetData, electionId : electionId), isActive: $goToResultView){
+                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId : electionId), isActive: $goToResultView){
                     
                     Button(action: {
                         
                       
-                        setAndGetData.getallChoicesFromFb(electionId:electionId){
+                      
                             
                             goToResultView = true
 
-                        }
+                        
                         
                 
                  

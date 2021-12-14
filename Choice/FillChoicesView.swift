@@ -117,7 +117,11 @@ struct FillChoicesView: View {
         
         for ii in allChoices{
             
+            print(" before\(ii)")
+            
             let i = ii.trimmingCharacters(in: .whitespacesAndNewlines)
+            
+            print(" efter \(i)")
             
             if (i == "" || i == "" || i == "" ){
                 
@@ -159,6 +163,7 @@ struct FillChoicesView: View {
                 
            
                 messageToUser = "No internet"
+                
                 isShowingAlert = true
                 print(error!.localizedDescription)
                 

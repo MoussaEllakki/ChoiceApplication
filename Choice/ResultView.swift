@@ -10,11 +10,16 @@ struct ResultView: View {
     
     @State private var goToAllParticipantView = false
     
-    @State var setAndGetData = SetAndGetData()
+    @ObservedObject var setAndGetData = SetAndGetData()
     
     @State var electionId = ""
 
-   @State private var isShowingAlertForLogOut = false
+    @State private var isShowingAlertForLogOut = false
+    
+    @State private var isShowingAlert = false
+    
+    @State private var showResult = false
+    
     
     var body: some View {
         
@@ -29,10 +34,13 @@ struct ResultView: View {
                 Spacer(minLength: 60)
                 
                 
-                Text("result view")
+                Text("Election ID: \(electionId)").padding()
                 
                 
+                  
+                if (showResult == true){
                     
+                
                 
                 ForEach(setAndGetData.allaChoices.indices){ index in
                     
@@ -59,7 +67,7 @@ struct ResultView: View {
                     
                 }
                    
-                    
+                }
                     NavigationLink(destination:AllParticipantView(setAndGetData: setAndGetData), isActive: $goToAllParticipantView){
                         
                         Button(action: {
@@ -68,17 +76,39 @@ struct ResultView: View {
                       
                             setAndGetData.getCountOfPolled(electionId: electionId){
                                 
-                     
+                                
+                                print("1")
+                                print("")
+                                print("count of polled are  \(setAndGetData.countOfPolled)")
+                                print("")
+                                print("2")
+                                if(setAndGetData.countOfPolled == 0){
+                                    
+                                    print("")
+                                    print("")
+                                    print("count of polled are  \(setAndGetData.countOfPolled)")
+                                    print("")
+                                    print("")
+                                    
+                                   isShowingAlert = true
+                                    
+                                    
+                                }
+                                
+                                else {
+                                    
+                                    print("inneeeee")
+                                    
                                 setAndGetData.getAllParticiPant(electionId: electionId){
                                     
                       
-                  
+                                  showResult = false
                                     goToAllParticipantView = true
                        
                               
                                 }
                                 
-                               print("3")
+                                }
 
                             }
                   
@@ -90,10 +120,37 @@ struct ResultView: View {
                         }
                         
                         
-                    }.padding()
+                    }.padding().alert("no one polled yet", isPresented :$isShowingAlert ){
+                        
+                        Button("Ok") {
+                    
+                      
+                            
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }
                     
                     
                 
+                
+                Button(action: {
+                    
+                    showResult = false
+                    
+                    setAndGetData.getallChoicesFromFb(electionId:electionId){
+                      showResult = true
+  
+                    }
+                    
+                    
+                    
+                }) {
+                    ButtonView(buttonText: "Uppdate Result")
+                }
                 
                 
                 
@@ -132,7 +189,17 @@ struct ResultView: View {
                 
             .navigationBarBackButtonHidden(true)
                 
-            }
+            }.onAppear(perform: {
+                
+                setAndGetData.getallChoicesFromFb(electionId: electionId){
+                    
+                    showResult = true
+                    
+                    
+                }
+                
+                
+            })
             
             
          }

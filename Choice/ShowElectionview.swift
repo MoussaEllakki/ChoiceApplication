@@ -18,7 +18,7 @@ struct ShowElectionview: View {
     
     @Binding  var goBackToRootView : Bool
     
-    @State private var setAndGetData = SetAndGetData()
+    @ObservedObject var setAndGetData = SetAndGetData()
     
     @State private var goToResultView = false
     
@@ -184,12 +184,17 @@ struct ShowElectionview: View {
                 
                
                 
-                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView), isActive: $goToResultView){
+                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId: electionId), isActive: $goToResultView){
                     
                     Button(action: {
                         
                         
-                        goToResultView = true
+                      
+                            
+                            goToResultView = true
+
+                        
+                        
                         
                     }) {
                         ButtonView(buttonText: "See Result")
