@@ -36,14 +36,14 @@ struct ShowElectionview: View {
             
             
    
-                            
+         
 
             VStack{
                 
+                Spacer(minLength: 60)
+          
                 
-                Spacer(minLength: 50)
-                
-                Text("Election ID: \(electionId)").padding()
+                Text("Election ID: \(electionId)")
                 
          
                
@@ -59,9 +59,10 @@ struct ShowElectionview: View {
                     
                     HStack{
                         
-                    Text("\(index + 1)").padding(2)
+                    Text("\(index + 1)")
                     
                     Text(allChoices[index])
+              
                     .frame(width: 330.0, height: 30.0)
                     .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                     .background(Color.purple)
@@ -69,6 +70,7 @@ struct ShowElectionview: View {
                         
                     
                     }
+                   
                     
                 }
                 
@@ -76,15 +78,15 @@ struct ShowElectionview: View {
                 if (wantCreatorVote == true){
                     
                     Text("Tap your name if you want to poll")
-                    Text("then press poll,  otherwise tap X")
+                    Text("then press want poll! Otherwise tap X")
                     
                     HStack{
                         
                     
                         TextField("Name", text: $nameOfPolledPerson)
-                            .padding(.leading, 4.0)
-                            .frame(width: 220, height: 30)
-                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        .padding(.leading, 4.0)
+                        .frame(width: 220, height: 30)
+                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                     
                         
                         
@@ -108,7 +110,12 @@ struct ShowElectionview: View {
                     
                 }
                 
-
+             
+                VStack{
+                    
+                
+                    
+                
                 
                 NavigationLink(destination: VoteView( creatorElectionId: electionId, goBackToRootView: $goBackToRootView, userElectionId:"" , setAndGetData:setAndGetData,nameOfParticipant: nameOfPolledPerson), isActive: $goToVoteView){
                     
@@ -139,9 +146,11 @@ struct ShowElectionview: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "Poll")
+                        ButtonView(buttonText: "Want poll")
+                            .padding(.bottom)
+                           
                         
-                    } .padding(.vertical, 10.0).alert("Write your name first", isPresented :$isShowingAlert ){
+                    }.alert("Write your name first", isPresented :$isShowingAlert ){
                         
                         Button("Ok") {
                     
@@ -160,6 +169,8 @@ struct ShowElectionview: View {
                 
                 
                 
+                if (wantCreatorVote == false){
+                    
                 Button(action: {
                     
                     isShowingAlertForDeleteelectionId =  true
@@ -184,7 +195,7 @@ struct ShowElectionview: View {
                 
                
                 
-                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId: electionId), isActive: $goToResultView){
+                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId: electionId, hideBackButton: false), isActive: $goToResultView){
                     
                     Button(action: {
                         
@@ -233,13 +244,18 @@ struct ShowElectionview: View {
                     
                     }
                 
-                    Spacer(minLength: 100)
+           
+                }
+                    
+                }
+                .padding(.leading, 15)
+
+                Spacer(minLength: 145)
                 
                     .navigationBarBackButtonHidden(true)
                 
                 
-           
-                
+
             }.onAppear(perform: {
                 
                 nameOfPolledPerson = ""
@@ -247,7 +263,7 @@ struct ShowElectionview: View {
                 
             })
             
-            
+        
             
         }
         

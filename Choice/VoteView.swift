@@ -7,7 +7,7 @@ struct VoteView: View {
     
     @State private var whichChoice  = -10
     
-    @State private var whichColor = Color.red
+    @State private var whichColor = Color.purple
     
     @State  var creatorElectionId = ""
     
@@ -45,6 +45,7 @@ struct VoteView: View {
                 
                 VStack{
                     
+                    Spacer()
                     Text("Ops")
                     Text("Sorry you cant join this election because all participant have already polled")
                         .lineLimit(3)
@@ -61,7 +62,7 @@ struct VoteView: View {
                     }.padding()
                         
                     
-
+                 Spacer(minLength: 300)
                     
                  .navigationBarBackButtonHidden(true)
                     
@@ -79,16 +80,19 @@ struct VoteView: View {
                 
                 
                 
-                Text("Election id  \(electionId)").padding(.bottom, 50.0)
+                Text("Election id  \(electionId)").padding()
                
                 Text("Choose one of these choices").padding()
                 
                 
                 
-                ForEach(setAndGetData.allaChoices.indices) { index in
+                ForEach(setAndGetData.allChoices.indices) { index in
                     
                     
-                    
+                    HStack{
+                        
+                        Text("\(index + 1)")
+                        
                     Button(action: {
                         
                         
@@ -103,19 +107,21 @@ struct VoteView: View {
                         
                     }) {
                         
-                        Text("\(setAndGetData.allaChoices[index].name)")
-                            .frame(width: 300, height: 30 )
-                            .background(whichChoice == index ? .green : .red)
+                        Text("\(setAndGetData.allChoices[index].name)")
+                            .frame(width: 330, height: 30 )
+                            .background(whichChoice == index ? .green : .purple)
                             .cornerRadius(10)
                     }
                     
                     
-                    
+                    }
                     
                 }
                 
                 
                 
+                VStack{
+                    
                 
                 
                 NavigationLink(destination: ConfirmView(goBackToRootView: $goBackToRootView, nameOfParticipant: nameOfParticipant, electionId : electionId), isActive: $goToConfirmView){
@@ -173,6 +179,9 @@ struct VoteView: View {
                 }
                
                 .navigationBarBackButtonHidden(true)
+                
+                    
+                }.padding(.leading, 15)
                 
                 Spacer(minLength: 300)
             }

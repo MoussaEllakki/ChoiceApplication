@@ -5,20 +5,12 @@ import Firebase
 struct ChoiceApp: App {
     
     init(){
-        
         FirebaseApp.configure()
-        
     }
     
-    
     var body: some Scene {
-        
-        
-        
         WindowGroup {
             MainView()
-            
-            
         }
     }
 }

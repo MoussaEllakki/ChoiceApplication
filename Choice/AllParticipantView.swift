@@ -4,7 +4,15 @@ import SwiftUI
 
 struct AllParticipantView: View {
     
-    @State var setAndGetData = SetAndGetData()
+    @ObservedObject var setAndGetData = SetAndGetData()
+    
+    @State var electionId = ""
+    
+    @State private var showRAllParticipant = true
+    
+    @State private var countOfParticipant = 0
+    
+
     
     var body: some View {
         
@@ -16,31 +24,85 @@ struct AllParticipantView: View {
             
             VStack{
                 
-                Spacer()
+                Spacer(minLength: 50)
+                
+                
                 
                 Text("All participant")
                 
-                Text("is \(setAndGetData.countOfPolled)")
+                Text("\(setAndGetData.countOfPolled) Participant have polled of \(setAndGetData.countOfparticipant)")
+                    .padding(.vertical, 10.0)
                 
+                if (showRAllParticipant == true){
+                    
                 ScrollView{
                     
                 
                 
+                        
+                    
                 ForEach(setAndGetData.allParticipant.indices){ index in
                     
-                    
+              
+                    HStack{
+                        
+                    Text("\(index + 1)")
                     
                     Text(setAndGetData.allParticipant[index])
-                        .frame(width: 350.0, height: 35.0)
+                        .frame(width: 320.0, height: 35.0)
                         .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                    
+                        .background(Color.purple)
+                        .cornerRadius(3)
+                   
+                    }
                     
                     
                 }
+                    
+                    
+                    
                 
                 }
             
-                Spacer(minLength: 300)
+                }
+                
+                
+                VStack{
+                    
+                
+                
+                Button(action: {
+                    
+                    showRAllParticipant = false
+                    
+                 
+                        
+                        
+                        
+                    
+                    
+                    setAndGetData.getCountOfPolled(electionId: electionId){
+                        
+                    
+                    setAndGetData.getAllParticiPant(electionId: electionId){
+                        
+                        showRAllParticipant = true
+
+  
+                    }
+                    
+                    }
+                        
+                    
+                    
+                }) {
+                    ButtonView(buttonText: "Uppdate All Participant")
+                }
+                .padding(.top, 20.0)
+         
+                }.padding(.leading, 15)
+                
+                Spacer(minLength: 150)
                 
             }
             

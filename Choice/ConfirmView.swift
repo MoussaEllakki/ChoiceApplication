@@ -35,12 +35,39 @@ struct ConfirmView: View {
                 Text("Election Id  \(electionId)").padding(.bottom, 20.0)
                 Text("Thank you \(nameOfParticipant)").padding(.bottom, 20.0)
                 
+        
                 
                 
+                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId : electionId), isActive: $goToResultView){
+                    
+                    Button(action: {
+                        
+                      
+                      
+                            
+                            goToResultView = true
+
+                        
+                        
                 
-                
-                
-                
+                 
+                        
+                        
+                    }) {
+                        
+                        ButtonView(buttonText: "See result")
+                        
+                    }.padding(.vertical, 20.0).alert("text", isPresented :$isShowingAlert){
+                        
+                        Button("Ok") {
+                            
+                        }
+                        
+                    }
+                    
+                    
+                }
+              
                 Button(action: {
                     
                 
@@ -65,37 +92,6 @@ struct ConfirmView: View {
                 
                 
                 
-                
-                NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId : electionId), isActive: $goToResultView){
-                    
-                    Button(action: {
-                        
-                      
-                      
-                            
-                            goToResultView = true
-
-                        
-                        
-                
-                 
-                        
-                        
-                    }) {
-                        
-                        ButtonView(buttonText: "See result")
-                        
-                    }.alert("text", isPresented :$isShowingAlert){
-                        
-                        Button("Ok") {
-                            
-                        }
-                        
-                    }
-                    
-                    
-                }
-              
                 
                 Spacer(minLength: 500)
                 

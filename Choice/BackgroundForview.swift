@@ -37,7 +37,7 @@ struct ButtonView: View {
                 .font(.title2)
                 .fontWeight(.bold)
         .foregroundColor(Color.black)
-        }.frame(width: 200, height: 40)
+        }.frame(width: 300, height: 40)
         
     
         

@@ -20,8 +20,12 @@ struct ResultView: View {
     
     @State private var showResult = false
     
+   @State var isCreatorHereInThisView = false
+    
+   @State var  hideBackButton = true
     
     var body: some View {
+        
         
         
         ZStack{
@@ -31,7 +35,7 @@ struct ResultView: View {
             VStack{
                 
                 
-                Spacer(minLength: 60)
+                Spacer(minLength: 100)
                 
                 
                 Text("Election ID: \(electionId)").padding()
@@ -40,17 +44,23 @@ struct ResultView: View {
                   
                 if (showResult == true){
                     
-                
-                
-                ForEach(setAndGetData.allaChoices.indices){ index in
+            
+                    let allChoices =  setAndGetData.allChoices.sorted(by: { $0.votes > $1.votes })
                     
+                
+                
+                    ForEach(allChoices.indices){ index in
+                    
+                    
+                
                     HStack{
                         
-                    
-                        Text("\(index + 1)").padding(2)
+       
+                       Text("\(index + 1)").padding(2)
                         
                   
-                       Text("\(setAndGetData.allaChoices[index].name)  \(setAndGetData.allaChoices[index].votes)")
+                        Text("\(allChoices[index].name)  \(allChoices[index].votes)")
+                        
                        .frame(width: 330.0, height: 30.0)
                         .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                         .background(Color.purple)
@@ -68,7 +78,12 @@ struct ResultView: View {
                 }
                    
                 }
-                    NavigationLink(destination:AllParticipantView(setAndGetData: setAndGetData), isActive: $goToAllParticipantView){
+                
+                VStack{
+                    
+                
+                
+                NavigationLink(destination:AllParticipantView(setAndGetData: setAndGetData, electionId: electionId), isActive: $goToAllParticipantView){
                         
                         Button(action: {
                             
@@ -77,18 +92,10 @@ struct ResultView: View {
                             setAndGetData.getCountOfPolled(electionId: electionId){
                                 
                                 
-                                print("1")
-                                print("")
-                                print("count of polled are  \(setAndGetData.countOfPolled)")
-                                print("")
-                                print("2")
+                       
                                 if(setAndGetData.countOfPolled == 0){
                                     
-                                    print("")
-                                    print("")
-                                    print("count of polled are  \(setAndGetData.countOfPolled)")
-                                    print("")
-                                    print("")
+                          
                                     
                                    isShowingAlert = true
                                     
@@ -97,17 +104,21 @@ struct ResultView: View {
                                 
                                 else {
                                     
-                                    print("inneeeee")
+                                  
+                                setAndGetData.getCountOfParticipant(electionId : electionId){
+                                        
                                     
                                 setAndGetData.getAllParticiPant(electionId: electionId){
                                     
                       
                                   showResult = false
-                                    goToAllParticipantView = true
+                                  goToAllParticipantView = true
                        
                               
                                 }
                                 
+                                }
+                                    
                                 }
 
                             }
@@ -120,7 +131,7 @@ struct ResultView: View {
                         }
                         
                         
-                    }.padding().alert("no one polled yet", isPresented :$isShowingAlert ){
+                    }.padding().alert("No one polled yet too see all Participant", isPresented :$isShowingAlert ){
                         
                         Button("Ok") {
                     
@@ -164,7 +175,7 @@ struct ResultView: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.top).alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log out", role: .destructive) {
                 
@@ -179,19 +190,29 @@ struct ResultView: View {
                 }
                 
                
-                
+                }.padding(.leading, 15)
              
                 
                 
-            Spacer(minLength: 400)
+            Spacer(minLength: 300)
                 
                 
+     
+                    
+                    .navigationBarBackButtonHidden(hideBackButton)
+
                 
-            .navigationBarBackButtonHidden(true)
+              
+           
                 
             }.onAppear(perform: {
                 
                 setAndGetData.getallChoicesFromFb(electionId: electionId){
+                    
+              
+                    
+               
+           
                     
                     showResult = true
                     
@@ -203,8 +224,13 @@ struct ResultView: View {
             
             
          }
-    }
         
+        
+    }
+  
+  
+    
+    
     
 }
 

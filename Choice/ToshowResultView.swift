@@ -30,7 +30,7 @@ struct ToshowResultView: View {
                
             VStack{
                 
-                Spacer(minLength: 60)
+                Spacer(minLength: 100)
                 
                 Text("Write election id")
                 
@@ -69,7 +69,7 @@ struct ToshowResultView: View {
               
                 
                 
-                Spacer(minLength: 250)
+                Spacer(minLength: 300)
                
                 
                 

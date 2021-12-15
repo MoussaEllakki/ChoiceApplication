@@ -1,23 +1,17 @@
 
 import SwiftUI
 
-
 struct MainView: View {
-    
     
     @State var countOfParticipant = ""
     @State var countOfChoices = ""
-    
     @State var goBackToRootView : Bool =  false
     @State var goToChooseElectionIdView : Bool =  false
     @State var goToShowElectionView = false
     @State var  goToshowResultView : Bool =  false
     @State var  goToResultView : Bool =  false
-    
     @State var  isShowingAlert = false
     @State  private var messageToTheUser = ""
-    
-    
     
     
     var body: some View {
@@ -30,7 +24,7 @@ struct MainView: View {
                 
                 VStack{
                     
-                    Spacer(minLength: 30)
+                    Spacer()
                     
                     Text("Choice")
                         .font(.largeTitle)
@@ -76,86 +70,47 @@ struct MainView: View {
                     }
                     
                     
-                    
-                    
                     NavigationLink(destination: ChooseElectionIdView(goBackToRootView: $goToChooseElectionIdView), isActive: $goToChooseElectionIdView){
                         
-                        
                         Button(action: {
-                            
-                            
                             goToChooseElectionIdView = true
-                            
                         }){
-                            
                             ButtonView(buttonText: "Poll")
-                            
-                        }
-                        .padding(.bottom, 20.0)
-                        
+                        }.padding(.bottom, 20.0)
                     }
-                    
-                    
-                    
-                    
-                    
-                    
                     
                     NavigationLink(destination: ToshowResultView(goToResultView: $goToResultView), isActive: $goToResultView){
                         
-                        
                         Button(action: {
-                            
                             goToResultView = true
-                            
                         }){
-                            
                             ButtonView(buttonText: "See Result")
-                            
-                        }
-                        .padding(.bottom, 20.0)
-                        
+                        }   .padding(.bottom, 20.0)
                     }
                     
-                    
-                    Spacer(minLength:200)
-                    
+                    Spacer(minLength: 150)
                 }
-                
                 
             }.onAppear(perform: {
                 
                 goBackToRootView = false
-                
                 countOfChoices = ""
                 countOfParticipant = ""
-                
             })
             
-            
-            
         }.accentColor( .black)
-        
-        
     }
-    
     
     
     func ControlInput (){
         
         if (countOfParticipant != "" && countOfChoices != ""){
             
-            
             let countOfParticipantToInteger = Int (countOfParticipant)
-            
             let  countOfChoicesToInteger = Int (countOfChoices)
             
-            
-            
             if (countOfParticipantToInteger! < 2 ){
-                
                 messageToTheUser = "Minimum 2 Participant"
-                
                 isShowingAlert = true
             }
             
@@ -163,56 +118,28 @@ struct MainView: View {
                 
                 if ( countOfChoicesToInteger! < 2 ||  countOfChoicesToInteger! > 5){
                     
-                    
-                    
                     messageToTheUser = " Choices min 2 and max 5"
-                    
                     isShowingAlert = true
-                    
                 }
-                
-                
                 
                 else {
                     
-                    
-                    
                     goBackToRootView = true
                     
-                    
                 }
-                
             }
             
-            
-            
-            
         }
-        
-        
-        
-        
         
         else {
             
             messageToTheUser = "Fill information first"
-            
             isShowingAlert = true
             
         }
         
-        
-        
-        
-        
-        
-        
     }
-    
-    
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
