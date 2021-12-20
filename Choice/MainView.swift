@@ -13,7 +13,6 @@ struct MainView: View {
     @State var  isShowingAlert = false
     @State  private var messageToTheUser = ""
     
-    
     var body: some View {
         
         NavigationView{
@@ -22,51 +21,62 @@ struct MainView: View {
                 
                 BackgroundView()
                 
-                VStack{
+                ScrollView{
                     
-                    Spacer()
-                    
-                    Text("Choice")
+                    Text("𝑪𝒉𝒐𝒊𝒄𝒆")
                         .font(.largeTitle)
                         .fontWeight(.bold)
                     
-                    HStack(spacing: 10){
+                    Spacer(minLength: 50)
+                    
+                    HStack{
                         
-                        Spacer()
+                        Spacer(minLength: 10)
+                        Text("𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕")
+                        Spacer(minLength: 5)
+                        Text("𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
+                        Spacer(minLength: 40)
+                    }
+                    
+                    VStack{
                         
-                        TextField("Count of Participant", text: $countOfParticipant)
-                            .padding(.leading, 4.0)
-                            .frame(width: 160, height: 35)
-                            .border(Color.black, width: 1)
-                            .keyboardType(.numberPad)
-                            .cornerRadius(2)
-                        
-                        
-                        TextField("Count of choices", text: $countOfChoices)
-                            .padding(.leading, 4.0)
-                            .frame(width: 160, height: 35)
-                            .border(Color.black, width: 1)
-                            .keyboardType(.numberPad)
-                            .cornerRadius(2)
-                        Spacer()
+                        HStack(spacing: 10){
+                            
+                            Spacer()
+                            
+                            TextField("", text: $countOfParticipant)
+                                .padding(.leading, 7.0)
+                                .frame(width: 160, height: 35)
+                                .background(Color.white)
+                                .cornerRadius(6)
+                                .keyboardType(.numberPad)
+                            
+                            TextField("", text: $countOfChoices)
+                                .padding(.leading, 7.0)
+                                .frame(width: 160, height: 35)
+                                .background(Color.white)
+                                .cornerRadius(6)
+                                .keyboardType(.numberPad)
+                            
+                            Spacer()
+                        }
                         
                     }
                     
-                    .padding(30)
+                    Spacer(minLength: 40)
                     
                     NavigationLink(destination: FillChoicesView(countOfChoices: countOfChoices, countOfParticipant: countOfParticipant, goBackToRootView: $goBackToRootView), isActive: $goBackToRootView ){
-                        
                         Button(action: {
                             
                             ControlInput()
+                            
                         }){
-                            ButtonView(buttonText: "Create Election")
-                        }.padding(.bottom, 20.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
+                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕 𝑬𝒍𝒆𝒄𝒕𝒊𝒐𝒏")
+                        }.padding(.bottom, 40.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
                             Button("Ok") {
                                 
                             }
                         }
-                        
                     }
                     
                     
@@ -75,16 +85,19 @@ struct MainView: View {
                         Button(action: {
                             goToChooseElectionIdView = true
                         }){
-                            ButtonView(buttonText: "Poll")
-                        }.padding(.bottom, 20.0)
+                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏/𝑷𝒐𝒍𝒍")
+                        }.padding(.bottom, 40.0)
                     }
+                    
                     
                     NavigationLink(destination: ToshowResultView(goToResultView: $goToResultView), isActive: $goToResultView){
                         
                         Button(action: {
+                            
                             goToResultView = true
+                            
                         }){
-                            ButtonView(buttonText: "See Result")
+                            ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕")
                         }   .padding(.bottom, 20.0)
                     }
                     

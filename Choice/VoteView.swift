@@ -7,7 +7,7 @@ struct VoteView: View {
     
     @State private var whichChoice  = -10
     
-    @State private var whichColor = Color.purple
+    @State private var whichColor = Color.red
     
     @State  var creatorElectionId = ""
     
@@ -31,6 +31,8 @@ struct VoteView: View {
     
     @State private var isAllPolled = false
     
+    @State private var wantCreatorVote = true
+    
     var body: some View {
         
         
@@ -44,6 +46,8 @@ struct VoteView: View {
             if (isAllPolled == true){
                 
                 VStack{
+                    
+             
                     
                     Spacer()
                     Text("Ops")
@@ -79,19 +83,21 @@ struct VoteView: View {
 
                 
                 
-                
-                Text("Election id  \(electionId)").padding()
                
-                Text("Choose one of these choices").padding()
                 
                 
+                Text("𝑬𝒍𝒆𝒄𝒕𝒊𝒐𝒏 𝑰𝑫: \(electionId)").padding()
+               
+                Text("𝑪𝒉𝒐𝒐𝒔𝒆 𝒐𝒏𝒆 𝒐𝒇 𝒕𝒉𝒆𝒔𝒆 𝒄𝒉𝒐𝒊𝒄𝒆𝒔").padding()
+                
+                Text(creatorElectionId)
                 
                 ForEach(setAndGetData.allChoices.indices) { index in
                     
                     
                     HStack{
                         
-                        Text("\(index + 1)")
+                
                         
                     Button(action: {
                         
@@ -109,7 +115,7 @@ struct VoteView: View {
                         
                         Text("\(setAndGetData.allChoices[index].name)")
                             .frame(width: 330, height: 30 )
-                            .background(whichChoice == index ? .green : .purple)
+                            .background(whichChoice == index ? .green : .red)
                             .cornerRadius(10)
                     }
                     
@@ -165,11 +171,23 @@ struct VoteView: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.alert("OBS: you should remember your election ID \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log out", role: .destructive) {
                 
+                        if (creatorElectionId != ""){
+                            
+                            print("creator here")
+                            wantCreatorVote = true
+                            
+                            let controlIfCreatorWantTovote = "\(electionId)2"
+                            
+                            UserDefaults.standard.set(wantCreatorVote , forKey: controlIfCreatorWantTovote)
+                            
+                        }
                         goBackToRootView = false
+                       
+                        
                         
                     }
                     

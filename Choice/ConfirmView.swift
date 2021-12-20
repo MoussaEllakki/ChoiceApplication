@@ -78,7 +78,7 @@ struct ConfirmView: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.padding(.bottom, 20.0).alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.bottom, 20.0).alert("OBS: you should remember your election iD \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log Out", role: .destructive) {
                 

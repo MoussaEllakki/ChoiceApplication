@@ -24,8 +24,11 @@ struct ShowElectionview: View {
     
     @State private var nameOfPolledPerson = ""
     
-    @State private var wantCreatorVote = false
+    @State private var wantCreatorVote = true
     
+    @State private var isCreatorInThisView = false
+    
+    @State var  isShowingAlertIfCreatorWantJoin = false
     
     var body: some View {
         
@@ -43,12 +46,12 @@ struct ShowElectionview: View {
                 Spacer(minLength: 60)
           
                 
-                Text("Election ID: \(electionId)")
+                
                 
          
-               
+               Spacer()
                 
-                
+                Text("𝑨𝒍𝒍 𝑪𝒉𝒐𝒊𝒄𝒆𝒔 𝑭𝒐𝒓 𝑬𝒍𝒆𝒄𝒕𝒊𝒐𝒏 𝑰𝑫: \(electionId)")
                 
                 
                 
@@ -63,10 +66,10 @@ struct ShowElectionview: View {
                     
                     Text(allChoices[index])
               
-                    .frame(width: 330.0, height: 30.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                    .background(Color.purple)
-                    .cornerRadius(3)
+                    .frame(width: 310.0, height: 30.0)
+                  
+                    .background(Color.yellow)
+                    .cornerRadius(10)
                         
                     
                     }
@@ -77,8 +80,8 @@ struct ShowElectionview: View {
                 
                 if (wantCreatorVote == true){
                     
-                    Text("Tap your name if you want to poll")
-                    Text("then press want poll! Otherwise tap X")
+                    Text("𝑻𝒂𝒑 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒑𝒐𝒍𝒍")
+                    Text("𝒕𝒉𝒆𝒏 𝒑𝒓𝒆𝒔𝒔 𝒘𝒂𝒏𝒕 𝒑𝒐𝒍𝒍! 𝑶𝒕𝒉𝒆𝒓𝒘𝒊𝒔𝒆 𝒕𝒂𝒑 X")
                     
                     HStack{
                         
@@ -86,6 +89,7 @@ struct ShowElectionview: View {
                         TextField("Name", text: $nameOfPolledPerson)
                         .padding(.leading, 4.0)
                         .frame(width: 220, height: 30)
+                        .background(Color.white)
                         .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
                     
                         
@@ -134,6 +138,8 @@ struct ShowElectionview: View {
                             
                                setAndGetData.getallChoicesFromFb(electionId:electionId){
                                 
+                            
+                                   
                                 goToVoteView = true
                                 
                                 
@@ -141,7 +147,7 @@ struct ShowElectionview: View {
                             }
                             
                         }
-                      
+                        
                         
                         
                     }) {
@@ -202,7 +208,7 @@ struct ShowElectionview: View {
                         
                       
                             
-                            goToResultView = true
+                isShowingAlertIfCreatorWantJoin = true
 
                         
                         
@@ -210,7 +216,25 @@ struct ShowElectionview: View {
                     }) {
                         ButtonView(buttonText: "See Result")
                     }
-                    .padding(.bottom, 10.0)
+                    .padding(.bottom, 10.0).alert("You cant see result before you have polled! If you dont want to join/poll tap i will not join", isPresented :$isShowingAlertIfCreatorWantJoin  ){
+                        
+                        Button("I will not join" , role: .destructive) {
+                            
+                            wantCreatorVote = false
+                            
+                            let controlIfCreatorWantTovote = "\(electionId)2"
+                            
+                            UserDefaults.standard.set(wantCreatorVote , forKey: controlIfCreatorWantTovote)
+                            
+                            goToResultView = true
+
+                            
+                        }
+                        
+                        
+                        
+                        
+                    }
                     
                     
                 }
@@ -233,10 +257,15 @@ struct ShowElectionview: View {
                     
                 }
                 .padding(.bottom, 10.0)
-                .alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                .alert("OBS: you should remember your election iD \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log Out", role: .destructive) {
-                
+                        
+                        wantCreatorVote = true
+                        
+                        let controlIfCreatorWantTovote = "\(electionId)2"
+                        
+                        UserDefaults.standard.set(wantCreatorVote , forKey: controlIfCreatorWantTovote)
                         goBackToRootView = false
                         
                     }
@@ -258,8 +287,15 @@ struct ShowElectionview: View {
 
             }.onAppear(perform: {
                 
+                
+                isCreatorInThisView = true
+                let controlIfCreatorInThisView = "\(electionId)1"
+                
+                UserDefaults.standard.set(isCreatorInThisView, forKey: controlIfCreatorInThisView)
+                
                 nameOfPolledPerson = ""
                 wantCreatorVote = false
+                
                 
             })
             

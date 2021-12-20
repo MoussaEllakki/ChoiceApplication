@@ -61,10 +61,10 @@ struct ResultView: View {
                   
                         Text("\(allChoices[index].name)  \(allChoices[index].votes)")
                         
-                       .frame(width: 330.0, height: 30.0)
+                       .frame(width: 310.0, height: 30.0)
                         .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                        .background(Color.purple)
-                        .cornerRadius(3)
+                        .background(Color.yellow)
+                        .cornerRadius(10)
                     
                         
                       
@@ -104,20 +104,16 @@ struct ResultView: View {
                                 
                                 else {
                                     
-                                  
-                                setAndGetData.getCountOfParticipant(electionId : electionId){
-                                        
-                                    
-                                setAndGetData.getAllParticiPant(electionId: electionId){
+                          
                                     
                       
                                   showResult = false
                                   goToAllParticipantView = true
                        
                               
-                                }
                                 
-                                }
+                                
+                                
                                     
                                 }
 
@@ -147,22 +143,7 @@ struct ResultView: View {
                     
                     
                 
-                
-                Button(action: {
-                    
-                    showResult = false
-                    
-                    setAndGetData.getallChoicesFromFb(electionId:electionId){
-                      showResult = true
-  
-                    }
-                    
-                    
-                    
-                }) {
-                    ButtonView(buttonText: "Uppdate Result")
-                }
-                
+            
                 
                 
                 Button(action: {
@@ -175,10 +156,12 @@ struct ResultView: View {
                     
                     ButtonView(buttonText: "Log Out")
                     
-                }.padding(.top).alert("OBS: you should remember your election id if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.top).alert("OBS: you should remember your election ID \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("Ok Log out", role: .destructive) {
-                
+                        
+                      showResult = false
+                        
                         goBackToRootView = false
                         
                         
@@ -207,13 +190,12 @@ struct ResultView: View {
                 
             }.onAppear(perform: {
                 
-                setAndGetData.getallChoicesFromFb(electionId: electionId){
+                setAndGetData.uppdateAllChoices(electionId: electionId){
                     
               
                     
-               
-           
-                    
+            
+
                     showResult = true
                     
                     

@@ -29,82 +29,72 @@ struct AllParticipantView: View {
                 
                 
                 Text("All participant")
+                    .font(.largeTitle)
                 
-                Text("\(setAndGetData.countOfPolled) Participant have polled of \(setAndGetData.countOfparticipant)")
-                    .padding(.vertical, 10.0)
+             
                 
-                if (showRAllParticipant == true){
-                    
-                ScrollView{
-                    
-                
-                
-                        
-                    
-                ForEach(setAndGetData.allParticipant.indices){ index in
-                    
+                     if (showRAllParticipant == true){
+                         
+                       
+                         ScrollView{
+                       
+                         
+                         
+                             Text("\(setAndGetData.allParticipant.count) Participant have polled of \(setAndGetData.countOfparticipant)")
+                             .padding(.vertical, 10.0)
+                     
+                      
+                             
+                         
+                             
+                         
+                             
+                             ForEach(setAndGetData.allParticipant, id : \.self) { participant in
+                             
+                             
+                                 Text(participant)
+                                     .frame(width: 300, height: 30)
               
-                    HStack{
-                        
-                    Text("\(index + 1)")
-                    
-                    Text(setAndGetData.allParticipant[index])
-                        .frame(width: 320.0, height: 35.0)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                        .background(Color.purple)
-                        .cornerRadius(3)
+                                     .background(Color.white)
+                                     .cornerRadius(10)
+                                 
+                             }
+                         
                    
-                    }
-                    
-                    
-                }
-                    
-                    
-                    
-                
-                }
-            
-                }
-                
-                
-                VStack{
-                    
-                
-                
-                Button(action: {
-                    
-                    showRAllParticipant = false
-                    
+                      
+                         
+                         
+                     
+                         
+                         
+                         
+                     
+                         }
                  
-                        
-                        
-                        
-                    
-                    
-                    setAndGetData.getCountOfPolled(electionId: electionId){
-                        
-                    
-                    setAndGetData.getAllParticiPant(electionId: electionId){
-                        
-                        showRAllParticipant = true
-
-  
-                    }
-                    
-                    }
-                        
-                    
-                    
-                }) {
-                    ButtonView(buttonText: "Uppdate All Participant")
-                }
-                .padding(.top, 20.0)
-         
-                }.padding(.leading, 15)
+                     
+                     }
+                
+            
                 
                 Spacer(minLength: 150)
                 
-            }
+            }.onAppear(perform: {
+                
+                showRAllParticipant = false
+                
+                setAndGetData.getCountOfParticipant(electionId: electionId){
+                  
+                    setAndGetData.getAllParticiPant(electionId: electionId){
+                        
+                        showRAllParticipant = true
+                        
+                    }
+                    
+                }
+           
+                
+                
+            })
             
             
             

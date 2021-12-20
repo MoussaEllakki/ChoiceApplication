@@ -8,14 +8,16 @@ class SetAndGetData : ObservableObject{
     
     @Published var existingElectionId = false
     @Published var allParticipant : [String] = []
-    @Published var  isThereInternet = true
+    @Published var isThereInternet = true
     @Published var allChoices: [Choice] = []
-    @Published var  countOfPolled = 0
+    @Published var countOfPolled = 0
     @Published var countOfparticipant = 5
+    
     
     init (){
         ref = Database.database().reference()
     }
+    
     
     func creatElection ( electionId : String , countsOfParticipant: Int , allChoices : [String] ){
         
@@ -25,7 +27,7 @@ class SetAndGetData : ObservableObject{
         
         var number = 1
         
-        for  choice in allChoices {
+        for choice in allChoices {
             
             let choiceNumber = String("Choice\(number)")
             
@@ -33,11 +35,12 @@ class SetAndGetData : ObservableObject{
             ref.child("Election").child(electionId).child("AllChoices").child(choiceNumber).child("Value").setValue(0)
             ref
             
-            number =  number + 1
-            
+            number = number + 1
         }
         
     }
+    
+    
     
     func deleteElectionId (electionId : String ){
         
@@ -45,6 +48,8 @@ class SetAndGetData : ObservableObject{
         ref.child("Election").child(electionId).removeValue()
         
     }
+    
+    
     
     func controlElectionId  (electionId : String ,  completionHandler: @escaping () -> ()){
         
@@ -58,8 +63,8 @@ class SetAndGetData : ObservableObject{
                 print(error!.localizedDescription)
                 completionHandler()
                 return;
-                
             }
+            
             
             for allElections in snapshot.children {
                 
@@ -74,7 +79,6 @@ class SetAndGetData : ObservableObject{
                     completionHandler()
                     
                     return
-                    
                 }
                 
             }
@@ -86,6 +90,7 @@ class SetAndGetData : ObservableObject{
         });
         
     }
+    
     
     
     func getallChoicesFromFb (electionId : String , completionHandler: @escaping () -> ()){
@@ -109,7 +114,6 @@ class SetAndGetData : ObservableObject{
                 choiceAsObject.name = choice["Name"] as! String
                 choiceAsObject.votes = choice["Value"] as! Int
                 self.allChoices.append(choiceAsObject)
-                
             }
             
             completionHandler()
@@ -118,9 +122,11 @@ class SetAndGetData : ObservableObject{
         
     }
     
+    
+    
     func AddVoteAndNameOfParticipant(electionId : String, NameOfParticipant : String){
         
-        var  CountOfPolled = 0
+        var CountOfPolled = 0
         
         ref.child("Election").child(electionId).child("CountsOfPolled").getData(completion:  { [self] error, snapshot in
             
@@ -146,9 +152,7 @@ class SetAndGetData : ObservableObject{
         ref.child("Election").child(electionId).child("CountsOfPolled").getData(completion:  { [self] error, snapshot in
             
             guard error == nil else {
-                
                 print(error!.localizedDescription)
-                
                 return;
             }
             
@@ -158,6 +162,8 @@ class SetAndGetData : ObservableObject{
             
         });
     }
+    
+    
     
     func getCountOfParticipant (electionId : String , completionHandler: @escaping () -> ()){
         
@@ -177,39 +183,68 @@ class SetAndGetData : ObservableObject{
         });
     }
     
-    func getAllParticiPant (electionId : String ,  completionHandler: @escaping () -> ()){
+    
+    
+    
+    func uppdateAllChoices (electionId : String , completionHandler: @escaping () -> ()){
         
-        self.allParticipant.removeAll()
         
-        for number in 1...self.countOfPolled {
+        ref.child("Election").child(electionId).child("AllChoices").observe(DataEventType.value, with: { snapshot in
             
-            ref.child("Election").child(electionId).child("AllParticipant").child("ParticipantNumber\(number)").getData(completion:  { [self] error, snapshot in
+            self.allChoices.removeAll()
+            
+            for   allaChoices in snapshot.children {
                 
-                guard error == nil else {
-                    
-                    print(error!.localizedDescription)
-                    return;
-                }
+                let  choiceAsDataSnapshot =  allaChoices as! DataSnapshot
+                let  choice = choiceAsDataSnapshot.value as! [String : Any]
+                let choiceAsObject = Choice()
                 
+                choiceAsObject.name = choice["Name"] as! String
+                choiceAsObject.votes = choice["Value"] as! Int
                 
-                let participantName =  snapshot.value as? String
-                self.allParticipant.append(participantName!)
-                
-                if(self.allParticipant.count == self.countOfPolled ){
-                    
-                    completionHandler()
-                    
-                }
-                
-            });
-        }
+                self.allChoices.append(choiceAsObject)
+            }
+            
+            completionHandler()
+            
+        });
+        
     }
     
+    
+    
+    
+    
+    func getAllParticiPant(electionId : String ,  completionHandler: @escaping () -> ()){
+        
+        
+        ref.child("Election").child(electionId).child("AllParticipant").observe(DataEventType.value, with: { snapshot in
+            
+            self.allParticipant.removeAll()
+            
+            for   allParticipantAsCildren in snapshot.children {
+                
+                let  participantAsSnapShot =  allParticipantAsCildren as! DataSnapshot
+                let  participant = participantAsSnapShot.value as! String
+                
+                self.allParticipant.append(participant)
+            }
+            
+            completionHandler()
+            
+            
+        });
+        
+    }
+    
+    
     func poll (electionId : String , whichChoice : Int ){
+        
         
         var  ValueInFirebase = 0
         
         ref.child("Election").child(electionId).child("AllChoices").child("Choice\(whichChoice + 1)").child("Value").getData(completion:  { [self] error, snapshot in
+            
             
             guard error == nil else {
                 
@@ -217,19 +252,19 @@ class SetAndGetData : ObservableObject{
                 return;
             }
             
+            
             ValueInFirebase = (snapshot.value as? Int)!
+            
             
             ref.child("Election").child(electionId).child("AllChoices").child("Choice\(whichChoice + 1)").child("Value").setValue( ValueInFirebase + 1)
             
         });
-        
     }
     
 }
 
 
 class Choice {
-    
     var name = ""
     var votes = 0
     

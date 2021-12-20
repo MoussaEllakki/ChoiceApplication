@@ -9,6 +9,7 @@ struct ToshowResultView: View {
    
     @State private var isShowingAlert = false
     
+    
     @Binding var goToResultView  : Bool
     
     @State private var messageToUser = ""
@@ -17,6 +18,11 @@ struct ToshowResultView: View {
     
     @ObservedObject var setAndGetData = SetAndGetData()
     
+    @State private var ispolled = false
+    
+    @State var creatorInThisView = false
+    
+    @State private var wantCreatorVote = true
     
     var body: some View {
         
@@ -59,10 +65,30 @@ struct ToshowResultView: View {
                         
                         Button("Ok") {
                             
+                            
+                            
                         }
                         
+                        if (creatorInThisView == true && ispolled == false){
+                            
+                        
+                        Button("I will not poll") {
+                            
+                            
+                            wantCreatorVote = false
+                            
+                            let controlIfCreatorWantTovote = "\(electionId)2"
+                            
+                            UserDefaults.standard.set(wantCreatorVote , forKey: controlIfCreatorWantTovote)
+                            
+                           toResultView = true
+                            
+                        }
+                     
+                        }
                     }
                  
+                        
                     
                 }.padding(30)
                 
@@ -111,12 +137,87 @@ struct ToshowResultView: View {
                         if (setAndGetData.existingElectionId == true){
                             
                             
-                            setAndGetData.getallChoicesFromFb(electionId:electionId){
+                      
+                              
+                        let controlIfCreatorInThisView = "\(electionId)1"
+                          
+                        let controlIfCreatorWantTovote = "\(electionId)2"
+
                                 
-                               toResultView = true
+                             print("\(controlIfCreatorInThisView) look  \(electionId) ")
+                            
+                            creatorInThisView = UserDefaults.standard.bool(forKey: controlIfCreatorInThisView)
+                                
+                         
+                                
+                                ispolled = UserDefaults.standard.bool(forKey: electionId)
+                                
+                                
+                                if (creatorInThisView == true ){
+                                    
+                        
+                                    
+                                    wantCreatorVote = UserDefaults.standard.bool(forKey: controlIfCreatorWantTovote)
+                                
+                                    
+                                     if (wantCreatorVote == true && ispolled == false){
+                                       
+                                       messageToUser = "You Cant see the result before you have polled, if you tap i will not poll then you cant poll this election, otherwise poll first to see the result"
+                                        
+                                        print("Creator want to join but he didnt polled yet")
+                                        isShowingAlert = true
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                    
+                                    else if (ispolled == true){  //1
+                                        
+                                        
+                                        print(" want to join \(wantCreatorVote)")
+                                        print("Creator want to join and he polled")
+                                        setAndGetData.getallChoicesFromFb(electionId:electionId){
+                                        toResultView = true
+                                        
+                                        }
+                                    }
+                               
+                                    else if (wantCreatorVote == false){
+                                        
+                                        print(" want to join \(wantCreatorVote)")
+                                    print("creator will not join and dosent polled")
+                                        setAndGetData.getallChoicesFromFb(electionId:electionId){
+                                        toResultView = true
+                                        
+                                        }
+                                    
+                                }
+                         
+                        
+                                
+                                
+                                
                         }
                             
                             
+                            else if (creatorInThisView == false && ispolled == true){
+                                setAndGetData.getallChoicesFromFb(electionId:electionId){
+                                    
+                                toResultView = true
+                                
+                                }
+                                
+                                
+                            }
+                            
+                            
+                            else {
+                                
+                               messageToUser = "You cant see result before you have vote"
+                                isShowingAlert = true
+                                
+                            }
                             
                         }
                             else {
