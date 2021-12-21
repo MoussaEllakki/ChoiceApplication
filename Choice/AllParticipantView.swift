@@ -28,8 +28,8 @@ struct AllParticipantView: View {
                 
                 
                 
-                Text("All participant")
-                    .font(.largeTitle)
+                Text("𝑨𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕")
+                    .font(.title2)
                 
              
                 
@@ -40,7 +40,7 @@ struct AllParticipantView: View {
                        
                          
                          
-                             Text("\(setAndGetData.allParticipant.count) Participant have polled of \(setAndGetData.countOfparticipant)")
+                             Text("\(setAndGetData.allParticipant.count) 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅 𝒐𝒇 \(setAndGetData.countOfparticipant)")
                              .padding(.vertical, 10.0)
                      
                       

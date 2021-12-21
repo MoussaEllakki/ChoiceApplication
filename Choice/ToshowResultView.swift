@@ -38,13 +38,14 @@ struct ToshowResultView: View {
                 
                 Spacer(minLength: 100)
                 
-                Text("Write election id")
-                
-                TextField("Write Election Id", text: $electionId)
-                .padding(.leading, 4.0)
-                .frame(width: 300.0, height: 35.0)
-                .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                .keyboardType(.numberPad)
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
+                TextField("", text: $electionId)
+                    .padding(.leading, 4.0)
+                    .frame(width: 300.0, height: 35.0)
+               
+                    .keyboardType(.numberPad)
+                    .background(Color.white)
+                    .cornerRadius(10)
                 
                 
                 
@@ -59,11 +60,11 @@ struct ToshowResultView: View {
                
                     }){
                         
-                        ButtonView(buttonText: "See Result")
+                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕")
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert){
                         
-                        Button("Ok") {
+                        Button("𝑶𝑲") {
                             
                             
                             
@@ -72,7 +73,7 @@ struct ToshowResultView: View {
                         if (creatorInThisView == true && ispolled == false){
                             
                         
-                        Button("I will not poll") {
+                        Button("𝑰 𝒘𝒊𝒍𝒍 𝒏𝒐𝒕 𝒑𝒐𝒍𝒍") {
                             
                             
                             wantCreatorVote = false
@@ -127,7 +128,7 @@ struct ToshowResultView: View {
                         
                         if (setAndGetData.isThereInternet == false){
                             
-                            messageToUser = "No internet"
+                            messageToUser = "𝑵𝒐 𝒊𝒏𝒕𝒆𝒓𝒏𝒆𝒕"
                             isShowingAlert = true
                             
                             return
@@ -144,7 +145,7 @@ struct ToshowResultView: View {
                         let controlIfCreatorWantTovote = "\(electionId)2"
 
                                 
-                             print("\(controlIfCreatorInThisView) look  \(electionId) ")
+                        
                             
                             creatorInThisView = UserDefaults.standard.bool(forKey: controlIfCreatorInThisView)
                                 
@@ -162,9 +163,8 @@ struct ToshowResultView: View {
                                     
                                      if (wantCreatorVote == true && ispolled == false){
                                        
-                                       messageToUser = "You Cant see the result before you have polled, if you tap i will not poll then you cant poll this election, otherwise poll first to see the result"
-                                        
-                                        print("Creator want to join but he didnt polled yet")
+                                       messageToUser = "𝒀𝒐𝒖 𝑪𝒂𝒏𝒕 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕 𝒃𝒆𝒇𝒐𝒓𝒆 𝒚𝒐𝒖 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅,𝒊𝒇 𝒚𝒐𝒖 𝒕𝒂𝒑 𝒊 𝒘𝒊𝒍𝒍 𝒏𝒐𝒕 𝒑𝒐𝒍𝒍, 𝒕𝒉𝒆𝒏 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒑𝒐𝒍𝒍, 𝒐𝒕𝒉𝒆𝒓𝒘𝒊𝒔𝒆 poll first 𝒕𝒐 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕"
+                             
                                         isShowingAlert = true
                                         
                                     }
@@ -174,9 +174,7 @@ struct ToshowResultView: View {
                                     
                                     else if (ispolled == true){  //1
                                         
-                                        
-                                        print(" want to join \(wantCreatorVote)")
-                                        print("Creator want to join and he polled")
+                                 
                                         setAndGetData.getallChoicesFromFb(electionId:electionId){
                                         toResultView = true
                                         
@@ -185,8 +183,7 @@ struct ToshowResultView: View {
                                
                                     else if (wantCreatorVote == false){
                                         
-                                        print(" want to join \(wantCreatorVote)")
-                                    print("creator will not join and dosent polled")
+                          
                                         setAndGetData.getallChoicesFromFb(electionId:electionId){
                                         toResultView = true
                                         
@@ -214,7 +211,7 @@ struct ToshowResultView: View {
                             
                             else {
                                 
-                               messageToUser = "You cant see result before you have vote"
+                               messageToUser = "𝒀𝒐𝒖 𝒄𝒂𝒏𝒕 𝒔𝒆𝒆 𝒓𝒆𝒔𝒖𝒍𝒕 𝒃𝒆𝒇𝒐𝒓𝒆 𝒚𝒐𝒖 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅"
                                 isShowingAlert = true
                                 
                             }
@@ -222,7 +219,7 @@ struct ToshowResultView: View {
                         }
                             else {
                                 
-                              messageToUser = "Wrong election id"
+                              messageToUser = "𝑾𝒓𝒐𝒏𝒈 𝒑𝒐𝒍𝒍 𝑰𝑫"
                               isShowingAlert = true
                                 
                             }
@@ -235,7 +232,7 @@ struct ToshowResultView: View {
              
                 else{
                     
-                    messageToUser = "Write election id first"
+                    messageToUser = "𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒇𝒊𝒓𝒔𝒕"
                     isShowingAlert = true
                     
                 }

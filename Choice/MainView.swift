@@ -23,19 +23,32 @@ struct MainView: View {
                 
                 ScrollView{
                     
-                    Text("𝑪𝒉𝒐𝒊𝒄𝒆")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
                     
-                    Spacer(minLength: 50)
+                ZStack(alignment: .top){
+
+
+
+                Text("𝑪𝒉𝒐𝒊𝒄𝒆")
+                .font(.largeTitle)
+                .fontWeight(.bold)
+
+
+                    
+       
+                              
+                    LottieView(animationName: "jump", loopMode: .loop)  .frame(width:370, height: 150 )
+
+
+                }
+                   
                     
                     HStack{
                         
-                        Spacer(minLength: 10)
-                        Text("𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕")
+                        Spacer(minLength: 8)
+                        Text("𝑪𝒐𝒖𝒏𝒕 𝑶𝒇 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔")
                         Spacer(minLength: 5)
                         Text("𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
-                        Spacer(minLength: 40)
+                        Spacer(minLength: 50)
                     }
                     
                     VStack{
@@ -63,7 +76,7 @@ struct MainView: View {
                         
                     }
                     
-                    Spacer(minLength: 40)
+                    Spacer(minLength: 30)
                     
                     NavigationLink(destination: FillChoicesView(countOfChoices: countOfChoices, countOfParticipant: countOfParticipant, goBackToRootView: $goBackToRootView), isActive: $goBackToRootView ){
                         Button(action: {
@@ -71,8 +84,8 @@ struct MainView: View {
                             ControlInput()
                             
                         }){
-                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕 𝑬𝒍𝒆𝒄𝒕𝒊𝒐𝒏")
-                        }.padding(.bottom, 40.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
+                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕 𝑷𝒐𝒍𝒍")
+                        }.padding(.bottom, 30.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
                             Button("Ok") {
                                 
                             }
@@ -85,8 +98,8 @@ struct MainView: View {
                         Button(action: {
                             goToChooseElectionIdView = true
                         }){
-                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏/𝑷𝒐𝒍𝒍")
-                        }.padding(.bottom, 40.0)
+                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏 / 𝑷𝒐𝒍𝒍")
+                        }.padding(.bottom, 30.0)
                     }
                     
                     
@@ -101,8 +114,10 @@ struct MainView: View {
                         }   .padding(.bottom, 20.0)
                     }
                     
-                    Spacer(minLength: 150)
+               
                 }
+                
+                Spacer(minLength: 300)
                 
             }.onAppear(perform: {
                 
@@ -112,6 +127,7 @@ struct MainView: View {
             })
             
         }.accentColor( .black)
+            .navigationViewStyle(StackNavigationViewStyle())
     }
     
     

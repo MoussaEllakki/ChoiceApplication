@@ -35,11 +35,16 @@ struct ResultView: View {
             VStack{
                 
                 
-                Spacer(minLength: 100)
+                Spacer(minLength: 50)
                 
                 
-                Text("Election ID: \(electionId)").padding()
-                
+                HStack{
+                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                    Text("\(electionId)")
+                        .frame(width: 100, height: 20)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                }.padding()
                 
                   
                 if (showResult == true){
@@ -58,14 +63,26 @@ struct ResultView: View {
        
                        Text("\(index + 1)").padding(2)
                         
-                  
-                        Text("\(allChoices[index].name)  \(allChoices[index].votes)")
-                        
-                       .frame(width: 310.0, height: 30.0)
-                        .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+                        if (allChoices[index].votes == 1){
+                            
+                        Text("\(allChoices[index].name)  \(allChoices[index].votes)  Vote")
+                        .frame(width: 310.0, height: 30.0)
                         .background(Color.yellow)
-                        .cornerRadius(10)
-                    
+                        .cornerRadius(15)
+                            
+                            
+                        }
+                        
+                        else{
+                            
+                            Text("\(allChoices[index].name)  \(allChoices[index].votes)  Votes")
+                            .frame(width: 310.0, height: 30.0)
+                            .background(Color.yellow)
+                            .cornerRadius(15)
+                        }
+                       
+                        
+                  
                         
                       
                  
@@ -123,13 +140,13 @@ struct ResultView: View {
 
                             
                         }) {
-                        ButtonView(buttonText: "All Participant")
+                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑨𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕")
                         }
                         
                         
-                    }.padding().alert("No one polled yet too see all Participant", isPresented :$isShowingAlert ){
+                    }.padding().alert("𝑵𝒐 𝒐𝒏𝒆 𝒑𝒐𝒍𝒍𝒆𝒅 𝒚𝒆𝒕 𝒕𝒐𝒐 𝒔𝒆𝒆 𝒂𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕", isPresented :$isShowingAlert ){
                         
-                        Button("Ok") {
+                        Button("𝑶𝑲") {
                     
                       
                             
@@ -154,11 +171,11 @@ struct ResultView: View {
                     
                 }) {
                     
-                    ButtonView(buttonText: "Log Out")
+                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
                     
-                }.padding(.top).alert("OBS: you should remember your election ID \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.top).alert("𝑶𝑩𝑺: 𝒚𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒆𝒍𝒆𝒄𝒕𝒊𝒐𝒏 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     
-                    Button("Ok Log out", role: .destructive) {
+                    Button("𝑶𝒌 𝒍𝒐𝒈 𝒐𝒖𝒕", role: .destructive) {
                         
                       showResult = false
                         

@@ -23,16 +23,20 @@ struct FillChoicesView: View {
             
             BackgroundView()
             
-            VStack{
+         
                 
                 Spacer(minLength: 100)
+            
+            VStack{
+                
+               
                 
                 Text("𝑭𝒊𝒍𝒍 𝑨𝒍𝒍 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
                     .font(.title2)
                 
                 ForEach(0..<allChoices.count , id: \.self) {
                     
-                    TextField("Choice \($0 + 1 )", text: $allChoices[$0])
+                    TextField("𝐶ℎ𝑜𝑖𝑐𝑒 \($0 + 1 )", text: $allChoices[$0])
                     
                 }.padding(.leading, 4.0)
                     .frame(width: 300.0, height: 35.0)
@@ -48,7 +52,7 @@ struct FillChoicesView: View {
                         getChoices()
                         
                     }) {
-                        ButtonView(buttonText: "Create")
+                        ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕")
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         
                         Button("Ok") {
@@ -59,9 +63,13 @@ struct FillChoicesView: View {
                     
                 }
                 
-                Spacer(minLength: 200)
-                
+                Spacer(minLength: 100)
+
             }
+           
+      
+               
+
             
         }.onAppear(perform: {
             

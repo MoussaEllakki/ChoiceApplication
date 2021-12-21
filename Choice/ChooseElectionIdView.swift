@@ -26,19 +26,23 @@ struct ChooseElectionIdView: View {
                 
                 Spacer(minLength: 60)
                 
-                Text("Write election id and you name").padding(20)
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆").padding(20)
                 
-                TextField("Write Election Id", text: $electionId)
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
+                TextField("", text: $electionId)
                     .padding(.leading, 4.0)
                     .frame(width: 300.0, height: 35.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
+               
                     .keyboardType(.numberPad)
-                
-                TextField("Write your name", text: $nameOfPolledPerson)
+                    .background(Color.white)
+                    .cornerRadius(10)
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆")
+                TextField("", text: $nameOfPolledPerson)
                     .padding(.leading, 4.0)
                     .frame(width: 300.0, height: 35.0)
-                    .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                
+                  
+                    .background(Color.white)
+                    .cornerRadius(10)
                 NavigationLink(destination: VoteView(creatorElectionId: "", goBackToRootView: $goBackToRootView, userElectionId: electionId , setAndGetData: setAndGetData, nameOfParticipant:nameOfPolledPerson) , isActive: $goToVoteView){
                     
                     
@@ -47,18 +51,18 @@ struct ChooseElectionIdView: View {
                         controlInputAndElectionID()
                         
                     }) {
-                        ButtonView(buttonText: "Poll").padding(20)
+                        ButtonView(buttonText: "𝑷𝒐𝒍𝒍").padding(20)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         
-                        Button("Ok") {
+                        Button("𝑶𝑲") {
                         }
                         
                     }
                     
                 }
                 
-                Spacer(minLength: 300)
+                Spacer(minLength: 200)
                 
             }.padding()
         }
@@ -79,7 +83,7 @@ struct ChooseElectionIdView: View {
                     
                     if (setAndGetData.isThereInternet == false){
                         
-                        messageToUser = "No Internet"
+                        messageToUser = "𝑵𝒐 𝑰𝒏𝒕𝒆𝒓𝒏𝒆𝒕"
                         isShowingAlert = true
                         
                         return
@@ -106,7 +110,7 @@ struct ChooseElectionIdView: View {
                             
                             else {
                                 
-                                messageToUser = "You are the creator and you choosed to not join"
+                                messageToUser = "𝒀𝒐𝒖 𝑪𝒉𝒐𝒐𝒔𝒆𝒅 𝒕𝒐 𝒏𝒐𝒕 𝑱𝒐𝒊𝒏"
                                 isShowingAlert = true
                                 
                                 return
@@ -128,8 +132,8 @@ struct ChooseElectionIdView: View {
                             
                             else if (setAndGetData.existingElectionId == false) {
                                 
-                                print("fel id")
-                                messageToUser = "Wrong election ID"
+                  
+                                messageToUser = "𝑾𝒓𝒐𝒏𝒈 𝒑𝒐𝒍𝒍 𝑰𝑫"
                                 isShowingAlert = true
                             }
                             
@@ -145,7 +149,7 @@ struct ChooseElectionIdView: View {
             
             else {
                 
-                messageToUser = "You have polled"
+                messageToUser = "𝒀𝒐𝒖 𝒉𝒂𝒗𝒆 𝒂𝒍𝒓𝒆𝒂𝒅𝒚 𝒑𝒐𝒍𝒍𝒆𝒅"
                 isShowingAlert = true
                 
             }
@@ -155,7 +159,7 @@ struct ChooseElectionIdView: View {
         
         else {
             
-            messageToUser = "Write Election ID and you name firs!"
+            messageToUser = "𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖 𝒏𝒂𝒎𝒆 𝒇𝒊𝒓𝒔!"
             isShowingAlert = true
             
         }

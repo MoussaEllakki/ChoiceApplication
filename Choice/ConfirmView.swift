@@ -30,12 +30,31 @@ struct ConfirmView: View {
                
                 
                 
-                Spacer(minLength: 100)
+                Spacer(minLength: 30)
                 
-                Text("Election Id  \(electionId)").padding(.bottom, 20.0)
-                Text("Thank you \(nameOfParticipant)").padding(.bottom, 20.0)
+                HStack{
+                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                    Text("\(electionId)")
+                        .frame(width: 100, height: 20)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                }.padding()
+             
+                ZStack(alignment: .bottom){
+
+
+
+
+                    Text(nameOfParticipant).font(.title2).padding().foregroundColor(Color.purple)
+       
+                              
+                    LottieView(animationName: "thanks", loopMode: .loop)  .frame(width:200, height: 200 )
+
+
+                }.frame(width: 200 , height: 200).background(Color.white).cornerRadius(150)
                 
-        
+         
+                Spacer(minLength: 30)
                 
                 
                 NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId : electionId), isActive: $goToResultView){
@@ -55,19 +74,16 @@ struct ConfirmView: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "See result")
-                        
-                    }.padding(.vertical, 20.0).alert("text", isPresented :$isShowingAlert){
-                        
-                        Button("Ok") {
-                            
-                        }
+                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕")
                         
                     }
                     
                     
                 }
               
+                
+                Spacer(minLength: 30)
+                
                 Button(action: {
                     
                 
@@ -93,7 +109,7 @@ struct ConfirmView: View {
                 
                 
                 
-                Spacer(minLength: 500)
+                Spacer(minLength: 180)
                 
                 
             }

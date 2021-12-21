@@ -50,8 +50,8 @@ struct VoteView: View {
              
                     
                     Spacer()
-                    Text("Ops")
-                    Text("Sorry you cant join this election because all participant have already polled")
+                    Text("𝑶𝑷𝑺!")
+                    Text("𝑺𝒐𝒓𝒓𝒚 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒋𝒐𝒊𝒏! 𝑩𝒆𝒄𝒂𝒖𝒔𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅")
                         .lineLimit(3)
                         .padding(.horizontal, 20.0)
                  
@@ -62,7 +62,7 @@ struct VoteView: View {
                         
                     }) {
                         
-                      ButtonView(buttonText: "Log out")
+                      ButtonView(buttonText: "𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕")
                     }.padding()
                         
                     
@@ -86,11 +86,18 @@ struct VoteView: View {
                
                 
                 
-                Text("𝑬𝒍𝒆𝒄𝒕𝒊𝒐𝒏 𝑰𝑫: \(electionId)").padding()
+                HStack{
+                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                    Text("\(electionId)")
+                        .frame(width: 100, height: 20)
+                        .background(Color.white)
+                        .cornerRadius(10)
+                  }
+
                
                 Text("𝑪𝒉𝒐𝒐𝒔𝒆 𝒐𝒏𝒆 𝒐𝒇 𝒕𝒉𝒆𝒔𝒆 𝒄𝒉𝒐𝒊𝒄𝒆𝒔").padding()
                 
-                Text(creatorElectionId)
+               
                 
                 ForEach(setAndGetData.allChoices.indices) { index in
                     
@@ -142,12 +149,12 @@ struct VoteView: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "Poll")
+                        ButtonView(buttonText: "𝑷𝒐𝒍𝒍")
                             .padding(.vertical, 20.0)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert){
                         
-                        Button("Ok") {
+                        Button("𝑶𝑲") {
                             
                         }
                         
@@ -169,15 +176,15 @@ struct VoteView: View {
                     
                 }) {
                     
-                    ButtonView(buttonText: "Log Out")
+                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
                     
-                }.alert("OBS: you should remember your election ID \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.alert("𝑶𝑩𝑺: 𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     
-                    Button("Ok Log out", role: .destructive) {
+                    Button("𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕", role: .destructive) {
                 
                         if (creatorElectionId != ""){
                             
-                            print("creator here")
+                        
                             wantCreatorVote = true
                             
                             let controlIfCreatorWantTovote = "\(electionId)2"
@@ -279,7 +286,7 @@ struct VoteView: View {
         
         if (whichChoice < 0){
             
-            messageToUser = "Choose choice first"
+            messageToUser = "𝑪𝒉𝒐𝒐𝒔𝒆 𝒄𝒉𝒐𝒊𝒄𝒆 𝒇𝒊𝒓𝒔𝒕"
             isShowingAlert = true
             
         }
