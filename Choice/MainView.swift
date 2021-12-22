@@ -13,6 +13,8 @@ struct MainView: View {
     @State var  isShowingAlert = false
     @State  private var messageToTheUser = ""
     
+    @State private var visa = false
+    
     var body: some View {
         
         NavigationView{
@@ -20,6 +22,7 @@ struct MainView: View {
             ZStack{
                 
                 BackgroundView()
+                
                 
                 ScrollView{
                     
@@ -34,9 +37,14 @@ struct MainView: View {
 
 
                     
-       
+                    if (visa == true){
+                        
+                        
+                        LottieView(animationName: "jump", loopMode: .loop)  .frame(width:370, height: 150 )
+
+                    }
                               
-                    LottieView(animationName: "jump", loopMode: .loop)  .frame(width:370, height: 150 )
+                  
 
 
                 }
@@ -44,12 +52,13 @@ struct MainView: View {
                     
                     HStack{
                         
-                        Spacer(minLength: 8)
-                        Text("𝑪𝒐𝒖𝒏𝒕 𝑶𝒇 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔")
                         Spacer(minLength: 5)
-                        Text("𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
-                        Spacer(minLength: 50)
+                        Text("𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 count")
+                        Spacer(minLength: 5)
+                        Text("𝑪𝒉𝒐𝒊𝒄𝒆 count")
+                        Spacer(minLength: 70)
                     }
+                    
                     
                     VStack{
                         
@@ -84,7 +93,7 @@ struct MainView: View {
                             ControlInput()
                             
                         }){
-                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕 𝑷𝒐𝒍𝒍")
+                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e 𝑷𝒐𝒍𝒍")
                         }.padding(.bottom, 30.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
                             Button("Ok") {
                                 
@@ -98,7 +107,7 @@ struct MainView: View {
                         Button(action: {
                             goToChooseElectionIdView = true
                         }){
-                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏 / 𝑷𝒐𝒍𝒍")
+                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏 p𝒐𝒍𝒍")
                         }.padding(.bottom, 30.0)
                     }
                     
@@ -110,7 +119,7 @@ struct MainView: View {
                             goToResultView = true
                             
                         }){
-                            ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕")
+                            ButtonView(buttonText: "𝑺𝒆𝒆 r𝒆𝒔𝒖𝒍𝒕")
                         }   .padding(.bottom, 20.0)
                     }
                     
@@ -121,9 +130,14 @@ struct MainView: View {
                 
             }.onAppear(perform: {
                 
+             visa = true
+                
                 goBackToRootView = false
                 countOfChoices = ""
                 countOfParticipant = ""
+            }).onDisappear(perform: {
+                visa = false
+                
             })
             
         }.accentColor( .black)
@@ -139,7 +153,7 @@ struct MainView: View {
             let  countOfChoicesToInteger = Int (countOfChoices)
             
             if (countOfParticipantToInteger! < 2 ){
-                messageToTheUser = "Minimum 2 Participant"
+                messageToTheUser = "Minimum 2 Participants"
                 isShowingAlert = true
             }
             
@@ -147,7 +161,7 @@ struct MainView: View {
                 
                 if ( countOfChoicesToInteger! < 2 ||  countOfChoicesToInteger! > 5){
                     
-                    messageToTheUser = " Choices min 2 and max 5"
+                    messageToTheUser = " Choices minimum 2 and maximum 5"
                     isShowingAlert = true
                 }
                 
@@ -162,7 +176,7 @@ struct MainView: View {
         
         else {
             
-            messageToTheUser = "Fill information first"
+            messageToTheUser = "Fill in participant count and choice count in order to continue"
             isShowingAlert = true
             
         }

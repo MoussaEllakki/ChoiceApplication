@@ -40,7 +40,7 @@ struct AllParticipantView: View {
                        
                          
                          
-                             Text("\(setAndGetData.allParticipant.count) 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅 𝒐𝒇 \(setAndGetData.countOfparticipant)")
+                             Text("\(setAndGetData.allParticipant.count) of  \(setAndGetData.countOfparticipant) 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕s 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅.")
                              .padding(.vertical, 10.0)
                      
                       

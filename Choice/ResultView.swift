@@ -24,6 +24,10 @@ struct ResultView: View {
     
    @State var  hideBackButton = true
     
+    
+    
+    @State private var whichColor = [Color.green, Color.yellow, Color.yellow, Color.yellow, Color.yellow]
+    
     var body: some View {
         
         
@@ -40,58 +44,96 @@ struct ResultView: View {
                 
                 HStack{
                     Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                    
                     Text("\(electionId)")
                         .frame(width: 100, height: 20)
                         .background(Color.white)
                         .cornerRadius(10)
                 }.padding()
                 
+                
+          
                   
                 if (showResult == true){
                     
-            
+                
+                    
                     let allChoices =  setAndGetData.allChoices.sorted(by: { $0.votes > $1.votes })
                     
-                
-                
+                 
+                    
+                    HStack{
+                        
+                        Spacer(minLength: 30)
+                        Text(setAndGetData.pollName)
+                        
+                       Spacer(minLength: 30)
+                        
+      
+                        
+                        Spacer()
+                        
+                      Text("Votes")
+                        
+                    }.padding(.trailing, 40.0)
+                    
+                    
+                    
                     ForEach(allChoices.indices){ index in
                     
                     
                 
+                        
                     HStack{
                         
        
-                       Text("\(index + 1)").padding(2)
                         
-                        if (allChoices[index].votes == 1){
+                        HStack{
                             
-                        Text("\(allChoices[index].name)  \(allChoices[index].votes)  Vote")
-                        .frame(width: 310.0, height: 30.0)
-                        .background(Color.yellow)
-                        .cornerRadius(15)
+                            Text("\(index + 1)").padding(2)
+
+
+                            ScrollView (.horizontal){
+                                
+                                
+                                Text(allChoices[index].name)
+                               
+
                             
                             
+                        
+                            }
+                            .padding(.leading, 10.0)
+                            .frame(width: 250.0, height: 30.0)
+                            .background(whichColor[index])
+                            .cornerRadius(5)
+                
+
                         }
                         
-                        else{
+                    
+                        
+          
+                    
                             
-                            Text("\(allChoices[index].name)  \(allChoices[index].votes)  Votes")
-                            .frame(width: 310.0, height: 30.0)
-                            .background(Color.yellow)
-                            .cornerRadius(15)
-                        }
+                            
+                        
+                        
+                  
+                            
+                        Text("\(allChoices[index].votes)")
+                            .frame(width: 75.0, height: 30.0)
+                            .background(whichColor[index])
+                            .cornerRadius(5)
+                        
                        
                         
                   
                         
-                      
-                 
-                        
-                        
-                        
                     }
+                    .padding(.horizontal, 5.0)
                         
-                    
+                      
                 }
                    
                 }
@@ -210,10 +252,13 @@ struct ResultView: View {
                 setAndGetData.uppdateAllChoices(electionId: electionId){
                     
               
-                    
+                    setAndGetData.getPollName(electionId: electionId){
+                        
+                        showResult = true
+                    }
             
 
-                    showResult = true
+                
                     
                     
                 }
@@ -227,7 +272,8 @@ struct ResultView: View {
         
     }
   
-  
+    
+ 
     
     
     

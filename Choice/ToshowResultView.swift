@@ -163,7 +163,7 @@ struct ToshowResultView: View {
                                     
                                      if (wantCreatorVote == true && ispolled == false){
                                        
-                                       messageToUser = "𝒀𝒐𝒖 𝑪𝒂𝒏𝒕 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕 𝒃𝒆𝒇𝒐𝒓𝒆 𝒚𝒐𝒖 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅,𝒊𝒇 𝒚𝒐𝒖 𝒕𝒂𝒑 𝒊 𝒘𝒊𝒍𝒍 𝒏𝒐𝒕 𝒑𝒐𝒍𝒍, 𝒕𝒉𝒆𝒏 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒑𝒐𝒍𝒍, 𝒐𝒕𝒉𝒆𝒓𝒘𝒊𝒔𝒆 poll first 𝒕𝒐 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕"
+                                       messageToUser = "𝒀𝒐𝒖 𝑪𝒂𝒏𝒕 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕 𝒃𝒆𝒇𝒐𝒓𝒆 𝒚𝒐𝒖 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅,𝒊𝒇 𝒚𝒐𝒖 𝒕𝒂𝒑 𝒊 𝒘𝒊𝒍𝒍 𝒏𝒐𝒕 𝒑𝒐𝒍𝒍, 𝒕𝒉𝒆𝒏 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒑𝒐𝒍𝒍, 𝒐𝒕𝒉𝒆𝒓𝒘𝒊𝒔𝒆 𝒑𝒐𝒍𝒍 𝒇𝒊𝒓𝒔𝒕 𝒕𝒐 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕"
                              
                                         isShowingAlert = true
                                         

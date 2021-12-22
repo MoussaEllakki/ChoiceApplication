@@ -51,7 +51,7 @@ struct VoteView: View {
                     
                     Spacer()
                     Text("𝑶𝑷𝑺!")
-                    Text("𝑺𝒐𝒓𝒓𝒚 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒋𝒐𝒊𝒏! 𝑩𝒆𝒄𝒂𝒖𝒔𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅")
+                    Text("𝑺𝒐𝒓𝒓𝒚 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒋𝒐𝒊𝒏! 𝑩𝒆𝒄𝒂𝒖𝒔𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅")
                         .lineLimit(3)
                         .padding(.horizontal, 20.0)
                  
@@ -95,7 +95,9 @@ struct VoteView: View {
                   }
 
                
-                Text("𝑪𝒉𝒐𝒐𝒔𝒆 𝒐𝒏𝒆 𝒐𝒇 𝒕𝒉𝒆𝒔𝒆 𝒄𝒉𝒐𝒊𝒄𝒆𝒔").padding()
+                Text(setAndGetData.pollName)
+                
+            
                 
                
                 
@@ -105,7 +107,7 @@ struct VoteView: View {
                     HStack{
                         
                 
-                        
+                        /*
                     Button(action: {
                         
                         
@@ -125,8 +127,27 @@ struct VoteView: View {
                             .background(whichChoice == index ? .green : .red)
                             .cornerRadius(10)
                     }
+                    */
                     
+                        
+                        ScrollView (.horizontal){
+                            
+                        
+                        
+                       
+                        
+                        Text("\(setAndGetData.allChoices[index].name)")
                     
+                        }
+                        .padding(.leading, 10)
+                        .frame(width: 300.0, height: 30.0)
+                        .background(whichChoice == index ? .green : .red)
+                        .cornerRadius(10)
+                        .onTapGesture {
+                            whichChoice = index
+                            whichColor = Color.green
+                            
+                        }
                     }
                     
                 }
@@ -263,7 +284,10 @@ struct VoteView: View {
                        
                    }
                    
-                   
+                   setAndGetData.getPollName(electionId: electionId){
+                       
+                       
+                   }
                    
                    
                 

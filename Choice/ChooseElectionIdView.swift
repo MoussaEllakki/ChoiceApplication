@@ -159,7 +159,7 @@ struct ChooseElectionIdView: View {
         
         else {
             
-            messageToUser = "𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖 𝒏𝒂𝒎𝒆 𝒇𝒊𝒓𝒔!"
+            messageToUser = "𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖 𝒏𝒂𝒎𝒆 𝒇𝒊𝒓𝒔t!"
             isShowingAlert = true
             
         }

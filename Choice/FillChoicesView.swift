@@ -14,6 +14,8 @@ struct FillChoicesView: View {
     @State  private var messageToUser = ""
     @State  private var electionId = ""
     @State private var setAndGetData = SetAndGetData()
+    @State private var pollName = ""
+    
     @Binding var goBackToRootView : Bool
     
     
@@ -23,36 +25,43 @@ struct FillChoicesView: View {
             
             BackgroundView()
             
-         
-                
-                Spacer(minLength: 100)
+               Spacer(minLength: 100)
+            
             
             VStack{
                 
-               
                 
-                Text("𝑭𝒊𝒍𝒍 𝑨𝒍𝒍 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
-                    .font(.title2)
+                
+                Text("Poll name")
+                
+                    TextField("", text: $pollName)
+                    .padding(.leading, 4.0)
+                    .frame(width: 300.0, height: 30)
+                    .background(Color.white)
+                    .cornerRadius(7)
+                
+                     Text("Create 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
+              
                 
                 ForEach(0..<allChoices.count , id: \.self) {
                     
                     TextField("𝐶ℎ𝑜𝑖𝑐𝑒 \($0 + 1 )", text: $allChoices[$0])
                     
                 }.padding(.leading, 4.0)
-                    .frame(width: 300.0, height: 35.0)
-                    .background(Color.white)
-                    .cornerRadius(7)
+                .frame(width: 300.0, height: 30)
+                .background(Color.white)
+                .cornerRadius(7)
                 
-                
+            
+
                 NavigationLink(destination: ShowElectionview(allChoices: allChoices, electionId : electionId, goBackToRootView: $goBackToRootView ), isActive: $goToShowElectionView ){
-                    
                     
                     Button(action: {
                         
                         getChoices()
                         
                     }) {
-                        ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕")
+                       ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e")
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         
                         Button("Ok") {
@@ -63,7 +72,7 @@ struct FillChoicesView: View {
                     
                 }
                 
-                Spacer(minLength: 100)
+                Spacer(minLength: 60)
 
             }
            
@@ -100,13 +109,29 @@ struct FillChoicesView: View {
             
             if (choiceAfterTrim == "" ){
                 
-                messageToUser = "Fill all Choices first"
+                messageToUser = "Fill in all Choices first"
                 isShowingAlert = true
                 return
             }
         }
         
-        controlDublicateElectionId()
+        
+        let pollNameAfterTrim = pollName.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        
+        if(pollNameAfterTrim == ""){
+            
+            messageToUser = "Fill in Poll Name first"
+            isShowingAlert = true
+            
+        }
+        
+        else {
+            
+            controlDublicateElectionId()
+
+        }
+     
         
     }
     
@@ -122,7 +147,7 @@ struct FillChoicesView: View {
             
             guard error == nil else {
                 
-                messageToUser = "No internet"
+                messageToUser = "No internet connection"
                 isShowingAlert = true
                 print(error!.localizedDescription)
                 return;
@@ -148,7 +173,7 @@ struct FillChoicesView: View {
             
             let countOfParticipantToInteger = Int (countOfParticipant)
             
-            setAndGetData.creatElection(electionId: electionId, countsOfParticipant: countOfParticipantToInteger!, allChoices: allChoices)
+            setAndGetData.creatElection(electionId: electionId, countsOfParticipant: countOfParticipantToInteger!, allChoices: allChoices, pollName: pollName)
             
             goToShowElectionView =  true
             

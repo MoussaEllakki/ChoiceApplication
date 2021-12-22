@@ -45,13 +45,13 @@ struct ConfirmView: View {
 
 
 
-                    Text(nameOfParticipant).font(.title2).padding().foregroundColor(Color.purple)
+                    Text(nameOfParticipant).font(.title3).padding().foregroundColor(Color.purple)
        
                               
                     LottieView(animationName: "thanks", loopMode: .loop)  .frame(width:200, height: 200 )
 
 
-                }.frame(width: 200 , height: 200).background(Color.white).cornerRadius(150)
+                }.frame(width: 250 , height: 250).background(Color.white).cornerRadius(125)
                 
          
                 Spacer(minLength: 30)

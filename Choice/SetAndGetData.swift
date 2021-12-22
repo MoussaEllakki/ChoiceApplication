@@ -12,19 +12,19 @@ class SetAndGetData : ObservableObject{
     @Published var allChoices: [Choice] = []
     @Published var countOfPolled = 0
     @Published var countOfparticipant = 5
-    
+    @Published var pollName = ""
     
     init (){
         ref = Database.database().reference()
     }
     
     
-    func creatElection ( electionId : String , countsOfParticipant: Int , allChoices : [String] ){
+    func creatElection ( electionId : String , countsOfParticipant: Int , allChoices : [String], pollName : String ){
         
         ref.child("AllElections").child(electionId).setValue(electionId)
         ref.child("Election").child(electionId).child("CountsOfParticipant").setValue(countsOfParticipant)
         ref.child("Election").child(electionId).child("CountsOfPolled").setValue(0)
-        
+        ref.child("Election").child(electionId).child("PollName").setValue(pollName)
         var number = 1
         
         for choice in allChoices {
@@ -212,6 +212,23 @@ class SetAndGetData : ObservableObject{
     }
     
     
+    
+    func getPollName (electionId : String , completionHandler: @escaping () -> ()){
+        
+        
+        ref.child("Election").child(electionId).child("PollName").getData(completion:  { [self] error, snapshot in
+            
+            guard error == nil else {
+                print(error!.localizedDescription)
+                return;
+            }
+            
+            self.pollName = (snapshot.value as? String)!
+            
+            completionHandler()
+            
+        });
+    }
     
     
     
