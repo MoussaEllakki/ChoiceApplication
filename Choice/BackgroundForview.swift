@@ -22,7 +22,7 @@ struct ButtonView: View {
         
         ZStack{
             
-            LinearGradient(gradient: Gradient(colors: [.white]), startPoint: .topTrailing, endPoint: .topLeading)
+            LinearGradient(gradient: Gradient(colors: [.yellow]), startPoint: .topTrailing, endPoint: .topLeading)
                 .cornerRadius(20)
             Text(buttonText)
                 .font(.title2)
@@ -34,25 +34,6 @@ struct ButtonView: View {
     
 }
 
-struct SmallButtonView: View {
-    
-    @State var buttonText = ""
-    
-    var body: some View {
-        
-        ZStack{
-            
-            LinearGradient(gradient: Gradient(colors: [.red  ,.purple]), startPoint: .topTrailing, endPoint: .topLeading)
-                .cornerRadius(20)
-            Text(buttonText)
-                .font(.title3)
-                .fontWeight(.bold)
-                .foregroundColor(Color.black)
-        }.frame(width: 80, height: 30)
-        
-    }
-    
-}
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {

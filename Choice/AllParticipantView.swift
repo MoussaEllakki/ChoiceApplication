@@ -52,7 +52,7 @@ struct AllParticipantView: View {
                              ForEach(setAndGetData.allParticipant, id : \.self) { participant in
                              
                              
-                                 Text(participant)
+                                     Text(participant)
                                      .frame(width: 300, height: 30)
               
                                      .background(Color.white)

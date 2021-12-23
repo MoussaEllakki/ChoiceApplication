@@ -26,7 +26,8 @@ struct MainView: View {
                 
                 ScrollView{
                     
-                    
+                   Spacer()
+                        
                 ZStack(alignment: .top){
 
 
@@ -40,7 +41,7 @@ struct MainView: View {
                     if (visa == true){
                         
                         
-                        LottieView(animationName: "jump", loopMode: .loop)  .frame(width:370, height: 150 )
+                        LottieView(animationName: "jump", loopMode: .loop)  .frame(width:370, height: 140 )
 
                     }
                               
@@ -50,13 +51,22 @@ struct MainView: View {
                 }
                    
                     
+                    
+                    
                     HStack{
                         
-                        Spacer(minLength: 5)
-                        Text("𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 count")
-                        Spacer(minLength: 5)
-                        Text("𝑪𝒉𝒐𝒊𝒄𝒆 count")
-                        Spacer(minLength: 70)
+                        Spacer()
+             
+                        Text("𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕")
+                        
+           
+                        Spacer()
+                        
+              
+                        Text("𝑪𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕")
+                            .padding(.trailing, 24.0)
+                         
+                     Spacer()
                     }
                     
                     
@@ -68,14 +78,14 @@ struct MainView: View {
                             
                             TextField("", text: $countOfParticipant)
                                 .padding(.leading, 7.0)
-                                .frame(width: 160, height: 35)
+                                .frame(width: 160, height: 30)
                                 .background(Color.white)
                                 .cornerRadius(6)
                                 .keyboardType(.numberPad)
                             
                             TextField("", text: $countOfChoices)
                                 .padding(.leading, 7.0)
-                                .frame(width: 160, height: 35)
+                                .frame(width: 160, height: 30)
                                 .background(Color.white)
                                 .cornerRadius(6)
                                 .keyboardType(.numberPad)
@@ -85,7 +95,11 @@ struct MainView: View {
                         
                     }
                     
-                    Spacer(minLength: 30)
+                    Spacer(minLength: 20)
+                    
+                    VStack{
+                        
+                    
                     
                     NavigationLink(destination: FillChoicesView(countOfChoices: countOfChoices, countOfParticipant: countOfParticipant, goBackToRootView: $goBackToRootView), isActive: $goBackToRootView ){
                         Button(action: {
@@ -94,8 +108,8 @@ struct MainView: View {
                             
                         }){
                             ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e 𝑷𝒐𝒍𝒍")
-                        }.padding(.bottom, 30.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
-                            Button("Ok") {
+                        }.padding(.bottom, 20.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
+                            Button("𝑶𝒌") {
                                 
                             }
                         }
@@ -107,8 +121,8 @@ struct MainView: View {
                         Button(action: {
                             goToChooseElectionIdView = true
                         }){
-                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏 p𝒐𝒍𝒍")
-                        }.padding(.bottom, 30.0)
+                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝑷𝒐𝒍𝒍")
+                        }.padding(.bottom, 20.0)
                     }
                     
                     
@@ -123,10 +137,17 @@ struct MainView: View {
                         }   .padding(.bottom, 20.0)
                     }
                     
-               
+                    
+                    
+                        
+
+                    }
+                
+                    Spacer()
+                    
                 }
                 
-                Spacer(minLength: 300)
+               
                 
             }.onAppear(perform: {
                 
@@ -153,7 +174,7 @@ struct MainView: View {
             let  countOfChoicesToInteger = Int (countOfChoices)
             
             if (countOfParticipantToInteger! < 2 ){
-                messageToTheUser = "Minimum 2 Participants"
+                messageToTheUser = "𝑴𝒊𝒏𝒊𝒎𝒖𝒎 2 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔"
                 isShowingAlert = true
             }
             
@@ -161,7 +182,7 @@ struct MainView: View {
                 
                 if ( countOfChoicesToInteger! < 2 ||  countOfChoicesToInteger! > 5){
                     
-                    messageToTheUser = " Choices minimum 2 and maximum 5"
+                    messageToTheUser = "𝑴𝒊𝒏𝒊𝒎𝒖𝒎 2 𝒂𝒏𝒅 𝒎𝒂𝒙𝒊𝒎𝒖𝒎 5 𝑪𝒉𝒐𝒊𝒄𝒆𝒔 "
                     isShowingAlert = true
                 }
                 
@@ -176,7 +197,7 @@ struct MainView: View {
         
         else {
             
-            messageToTheUser = "Fill in participant count and choice count in order to continue"
+            messageToTheUser = "𝑭𝒊𝒍𝒍 𝒊𝒏 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕 𝒂𝒏𝒅 𝒄𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕 𝒊𝒏 𝒐𝒓𝒅𝒆𝒓 𝒕𝒐 𝒄𝒐𝒏𝒕𝒊𝒏𝒖𝒆"
             isShowingAlert = true
             
         }

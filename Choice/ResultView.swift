@@ -22,11 +22,10 @@ struct ResultView: View {
     
    @State var isCreatorHereInThisView = false
     
-   @State var  hideBackButton = true
+  // @State var  hideBackButton = true
     
     
-    
-    @State private var whichColor = [Color.green, Color.yellow, Color.yellow, Color.yellow, Color.yellow]
+  
     
     var body: some View {
         
@@ -64,18 +63,28 @@ struct ResultView: View {
                     
                     HStack{
                         
-                        Spacer(minLength: 30)
-                        Text(setAndGetData.pollName)
+                
+                        ScrollView(.horizontal){
+                            
+                            Text(setAndGetData.pollName).padding()
+                            
+                        }
+                      
                         
-                       Spacer(minLength: 30)
+                     
                         
       
                         
-                        Spacer()
+                        Spacer(minLength: 20)
                         
                       Text("Votes")
                         
-                    }.padding(.trailing, 40.0)
+                        
+                        
+                    }
+                    .padding(.horizontal, 30.0)
+                
+               
                     
                     
                     
@@ -104,8 +113,8 @@ struct ResultView: View {
                         
                             }
                             .padding(.leading, 10.0)
-                            .frame(width: 250.0, height: 30.0)
-                            .background(whichColor[index])
+                            .frame(width: 240.0, height: 30.0)
+                            .background(Color.white)
                             .cornerRadius(5)
                 
 
@@ -113,25 +122,25 @@ struct ResultView: View {
                         
                     
                         
-          
+                        
+                        Text("\(allChoices[index].votes)")
+                        .frame(width: 75.0, height: 30.0)
+                        .background(Color.white)
+                        .cornerRadius(5)
+                                        
                     
                             
                             
                         
                         
                   
-                            
-                        Text("\(allChoices[index].votes)")
-                            .frame(width: 75.0, height: 30.0)
-                            .background(whichColor[index])
-                            .cornerRadius(5)
-                        
+                    
                        
                         
                   
                         
-                    }
-                    .padding(.horizontal, 5.0)
+                    }   .padding(.horizontal, 5.0)
+                 
                         
                       
                 }
@@ -186,7 +195,7 @@ struct ResultView: View {
                         }
                         
                         
-                    }.padding().alert("𝑵𝒐 𝒐𝒏𝒆 𝒑𝒐𝒍𝒍𝒆𝒅 𝒚𝒆𝒕 𝒕𝒐𝒐 𝒔𝒆𝒆 𝒂𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕", isPresented :$isShowingAlert ){
+                    }.padding().alert("𝑵𝒐 𝒐𝒏𝒆 𝒑𝒐𝒍𝒍𝒆𝒅 𝒚𝒆𝒕", isPresented :$isShowingAlert ){
                         
                         Button("𝑶𝑲") {
                     
@@ -215,7 +224,7 @@ struct ResultView: View {
                     
                     ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
                     
-                }.padding(.top).alert("𝑶𝑩𝑺: 𝒚𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒆𝒍𝒆𝒄𝒕𝒊𝒐𝒏 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.top).alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("𝑶𝒌 𝒍𝒐𝒈 𝒐𝒖𝒕", role: .destructive) {
                         
@@ -235,16 +244,16 @@ struct ResultView: View {
                 }.padding(.leading, 15)
              
                 
-                
-            Spacer(minLength: 300)
+                 
+
+            Spacer(minLength: 200)
                 
                 
      
                     
-                    .navigationBarBackButtonHidden(hideBackButton)
-
+                  
                 
-              
+                .navigationBarBackButtonHidden(true)
            
                 
             }.onAppear(perform: {
@@ -255,6 +264,7 @@ struct ResultView: View {
                     setAndGetData.getPollName(electionId: electionId){
                         
                         showResult = true
+                        
                     }
             
 

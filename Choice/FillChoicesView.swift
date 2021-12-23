@@ -25,14 +25,21 @@ struct FillChoicesView: View {
             
             BackgroundView()
             
-               Spacer(minLength: 100)
+             
+            
+          
+                
+                
+              
+            ScrollView{
+                
             
             
             VStack{
                 
+                Spacer(minLength: 50)
                 
-                
-                Text("Poll name")
+                Text("𝑻𝒊𝒕𝒍𝒆 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒐𝒍𝒍")
                 
                     TextField("", text: $pollName)
                     .padding(.leading, 4.0)
@@ -40,13 +47,13 @@ struct FillChoicesView: View {
                     .background(Color.white)
                     .cornerRadius(7)
                 
-                     Text("Create 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
+                     Text("𝑪𝒓𝒆𝒂𝒕𝒆 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
               
+                
                 
                 ForEach(0..<allChoices.count , id: \.self) {
                     
-                    TextField("𝐶ℎ𝑜𝑖𝑐𝑒 \($0 + 1 )", text: $allChoices[$0])
-                    
+                TextField("𝐶ℎ𝑜𝑖𝑐𝑒 \($0 + 1 )", text: $allChoices[$0])
                 }.padding(.leading, 4.0)
                 .frame(width: 300.0, height: 30)
                 .background(Color.white)
@@ -64,7 +71,7 @@ struct FillChoicesView: View {
                        ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e")
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         
-                        Button("Ok") {
+                        Button("𝑶𝒌") {
                             
                         }
                         
@@ -72,12 +79,12 @@ struct FillChoicesView: View {
                     
                 }
                 
-                Spacer(minLength: 60)
+                Spacer()
 
             }
            
-      
-               
+            
+            }
 
             
         }.onAppear(perform: {
@@ -109,7 +116,7 @@ struct FillChoicesView: View {
             
             if (choiceAfterTrim == "" ){
                 
-                messageToUser = "Fill in all Choices first"
+                messageToUser = "𝑭𝒊𝒍𝒍 𝒊𝒏 𝒂𝒍𝒍 𝑪𝒉𝒐𝒊𝒄𝒆𝒔 𝒇𝒊𝒓𝒔𝒕"
                 isShowingAlert = true
                 return
             }
@@ -121,7 +128,7 @@ struct FillChoicesView: View {
         
         if(pollNameAfterTrim == ""){
             
-            messageToUser = "Fill in Poll Name first"
+            messageToUser = "𝑭𝒊𝒍𝒍 𝒊𝒏 𝒕𝒊𝒕𝒍𝒆 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒐𝒍𝒍 𝒇𝒊𝒓𝒔𝒕"
             isShowingAlert = true
             
         }
@@ -147,7 +154,7 @@ struct FillChoicesView: View {
             
             guard error == nil else {
                 
-                messageToUser = "No internet connection"
+                messageToUser = "𝑵𝒐 𝒊𝒏𝒕𝒆𝒓𝒏𝒆𝒕 𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒊𝒐𝒏"
                 isShowingAlert = true
                 print(error!.localizedDescription)
                 return;

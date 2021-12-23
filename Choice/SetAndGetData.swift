@@ -14,6 +14,8 @@ class SetAndGetData : ObservableObject{
     @Published var countOfparticipant = 5
     @Published var pollName = ""
     
+    @Published var finns = "kanske"
+    
     init (){
         ref = Database.database().reference()
     }
@@ -25,6 +27,9 @@ class SetAndGetData : ObservableObject{
         ref.child("Election").child(electionId).child("CountsOfParticipant").setValue(countsOfParticipant)
         ref.child("Election").child(electionId).child("CountsOfPolled").setValue(0)
         ref.child("Election").child(electionId).child("PollName").setValue(pollName)
+        
+        
+        ref.child("Election").child(electionId).child("IsthereInternet").setValue("Yes")
         var number = 1
         
         for choice in allChoices {
@@ -58,7 +63,7 @@ class SetAndGetData : ObservableObject{
         ref.child("AllElections").getData(completion:  { [self] error, snapshot in
             
             guard error == nil else {
-                
+             
                 isThereInternet = false
                 print(error!.localizedDescription)
                 completionHandler()
@@ -101,7 +106,12 @@ class SetAndGetData : ObservableObject{
             
             guard error == nil else {
                 
+            
+                self.isThereInternet = false
+                
                 print(error!.localizedDescription)
+                
+                completionHandler()
                 return;
             }
             
@@ -114,8 +124,14 @@ class SetAndGetData : ObservableObject{
                 choiceAsObject.name = choice["Name"] as! String
                 choiceAsObject.votes = choice["Value"] as! Int
                 self.allChoices.append(choiceAsObject)
+                
+                self.isThereInternet = true
+                
             }
             
+            
+          
+            self.isThereInternet = true
             completionHandler()
             
         });

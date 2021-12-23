@@ -92,11 +92,11 @@ struct ConfirmView: View {
                     
                 }) {
                     
-                    ButtonView(buttonText: "Log Out")
+                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
                     
-                }.padding(.bottom, 20.0).alert("OBS: you should remember your election iD \(electionId) if you want to log out", isPresented :$isShowingAlertForLogOut ){
+                }.padding(.bottom, 20.0).alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     
-                    Button("Ok Log Out", role: .destructive) {
+                    Button("𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕", role: .destructive) {
                 
                         goBackToRootView = false
                         
@@ -109,7 +109,7 @@ struct ConfirmView: View {
                 
                 
                 
-                Spacer(minLength: 180)
+                Spacer(minLength: 160)
                 
                 
             }

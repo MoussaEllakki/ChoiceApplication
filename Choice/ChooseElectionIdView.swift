@@ -31,7 +31,7 @@ struct ChooseElectionIdView: View {
                 Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
                 TextField("", text: $electionId)
                     .padding(.leading, 4.0)
-                    .frame(width: 300.0, height: 35.0)
+                    .frame(width: 300.0, height: 30.0)
                
                     .keyboardType(.numberPad)
                     .background(Color.white)
@@ -39,7 +39,7 @@ struct ChooseElectionIdView: View {
                 Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆")
                 TextField("", text: $nameOfPolledPerson)
                     .padding(.leading, 4.0)
-                    .frame(width: 300.0, height: 35.0)
+                    .frame(width: 300.0, height: 30.0)
                   
                     .background(Color.white)
                     .cornerRadius(10)

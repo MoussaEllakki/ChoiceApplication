@@ -95,8 +95,15 @@ struct VoteView: View {
                   }
 
                
-                Text(setAndGetData.pollName)
                 
+                        ScrollView(.horizontal){
+                        Text(setAndGetData.pollName).padding()
+                     
+                            
+                            
+                        }
+                        .padding(.horizontal, 30.0)
+                      
             
                 
                
@@ -107,28 +114,7 @@ struct VoteView: View {
                     HStack{
                         
                 
-                        /*
-                    Button(action: {
-                        
-                        
-                   
-                            
-                            whichChoice = index
-                            whichColor = Color.green
-                            
-                            
-                        
-                        
-                        
-                    }) {
-                        
-                        Text("\(setAndGetData.allChoices[index].name)")
-                            .frame(width: 330, height: 30 )
-                            .background(whichChoice == index ? .green : .red)
-                            .cornerRadius(10)
-                    }
-                    */
-                    
+                    Text("\(index + 1)")
                         
                         ScrollView (.horizontal){
                             
@@ -199,7 +185,7 @@ struct VoteView: View {
                     
                     ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
                     
-                }.alert("𝑶𝑩𝑺: 𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
+                }.alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕", role: .destructive) {
                 
@@ -229,7 +215,7 @@ struct VoteView: View {
                     
                 }.padding(.leading, 15)
                 
-                Spacer(minLength: 300)
+                Spacer(minLength: 200)
             }
                     
                     
@@ -323,9 +309,11 @@ struct VoteView: View {
             
             
                      setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
+                
+                
                      setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
             
-                    ispolled = true
+                      ispolled = true
                 
                      UserDefaults.standard.set(ispolled, forKey: electionId)
                 

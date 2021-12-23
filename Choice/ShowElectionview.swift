@@ -30,6 +30,11 @@ struct ShowElectionview: View {
     
     @State var  isShowingAlertIfCreatorWantJoin = false
     
+    
+    
+
+    
+    
     var body: some View {
         
         
@@ -44,29 +49,35 @@ struct ShowElectionview: View {
                 
 
                 
-                HStack{
-                    
-                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
-                    Text("\(electionId)")
-                        .frame(width: 100, height: 20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                }
+                Text(setAndGetData.finns)
                 
-                
-                
-                Spacer(minLength: 40)
+      
                 
                 
                 if(wantCreatorVote == false){
                     
                     
-                    Text("𝑺𝒉𝒂𝒓𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒘𝒊𝒕𝒉 𝒂𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔").padding(20)
+                
+                    
+                    HStack{
+                        
+                        Text("𝑺𝒉𝒂𝒓𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
+                        Text("\(electionId)")
+                            .frame(width: 100, height: 20)
+                            .background(Color.white)
+                            .cornerRadius(10)
+                     }
                     
                     
-                    Text(setAndGetData.pollName).padding()
                     
-                  
+                            ScrollView(.horizontal){
+                                
+                                Text(setAndGetData.pollName).padding()
+                            
+                                
+                            }
+                            .padding(.horizontal, 30.0)
+                          
                     
                
                         
@@ -112,12 +123,14 @@ struct ShowElectionview: View {
                 if (wantCreatorVote == true){
                     
                     
-                    Text("Type you name to join poll")
+                    Spacer(minLength: 70)
+                    
+                    Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖 𝒏𝒂𝒎𝒆 𝒕𝒐 𝒋𝒐𝒊𝒏 𝒑𝒐𝒍𝒍")
                     
                     HStack{
                         
                         
-                        TextField("𝑵𝒂𝒎𝒆", text: $nameOfPolledPerson)
+                             TextField("𝑵𝒂𝒎𝒆", text: $nameOfPolledPerson)
                             .padding(.leading, 4.0)
                             .frame(width: 220, height: 30)
                             .background(Color.white)
@@ -126,7 +139,7 @@ struct ShowElectionview: View {
                         
                         
                         
-                    }
+                       }
                     
                     
                     
@@ -155,10 +168,33 @@ struct ShowElectionview: View {
                                 
                                 
                                 
+                                
                                 setAndGetData.getallChoicesFromFb(electionId:electionId){
                                     
                                     
-                                    goToVoteView = true
+                                    if(setAndGetData.isThereInternet == true){
+                                        
+                                        
+                                    
+                                        
+                                        goToVoteView = true
+                                        
+                                    }
+                                    
+                                    
+                                    
+                                    else  if (setAndGetData.isThereInternet == false){
+                                        
+                                        
+                                        
+                                        isShowingAlert = true
+                                        
+                                    }
+                             
+                               
+                                    
+                                    
+                                    
                                     
                                 }
                                 
@@ -169,12 +205,23 @@ struct ShowElectionview: View {
                             
                             ButtonView(buttonText: "𝑷𝒐𝒍𝒍")
                             
-                        }  .padding(.vertical)
+                        }.padding(.vertical).alert("𝑵𝒐 𝒊𝒏𝒕𝒆𝒓𝒏𝒆𝒕 𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒊𝒐𝒏", isPresented :$isShowingAlert ){
+                            
+                            Button("𝑶𝒌 " ) {
+                                
+                        
+                                
+                            }
+                      
+                        
+                        
+                        
+                        
                         
                         
                     }
                     
-                    
+                    }
                     
                        if  (wantCreatorVote == true){
                         
@@ -224,7 +271,7 @@ struct ShowElectionview: View {
                         
                         
                         
-                        NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId: electionId, hideBackButton: false), isActive: $goToResultView){
+                        NavigationLink(destination: ResultView(goBackToRootView: $goBackToRootView, electionId: electionId), isActive: $goToResultView){
                             
                             Button(action: {
                                 
@@ -237,7 +284,7 @@ struct ShowElectionview: View {
                                 
                                 
                             }) {
-                                ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕")
+                                ButtonView(buttonText: "𝑺𝒆𝒆 𝒓𝒆𝒔𝒖𝒍𝒕 ")
                             }
                             .padding(.bottom, 10.0).alert("𝒀𝒐𝒖 𝒄𝒂𝒏𝒕 𝒔𝒆𝒆 𝒕𝒉𝒆 𝒓𝒆𝒔𝒖𝒍𝒕 𝒃𝒆𝒇𝒐𝒓𝒆 𝒚𝒐𝒖 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅! 𝑰𝒇 𝒚𝒐𝒖 𝒅𝒐𝒏𝒕 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒑𝒐𝒍𝒍 𝒕𝒂𝒑 𝒊 𝒘𝒊𝒍𝒍 𝒏𝒐𝒕 𝒋𝒐𝒊𝒏. 𝑰𝒇 𝒚𝒐𝒖 𝒕𝒂𝒑 𝑰 𝒘𝒊𝒍𝒍 𝒏𝒐𝒕 𝒋𝒐𝒊𝒏, 𝒚𝒐𝒖 𝒄𝒂𝒏'𝒕 𝒑𝒐𝒍𝒍 𝒍𝒂𝒕𝒆𝒓", isPresented :$isShowingAlertIfCreatorWantJoin  ){
                                 
