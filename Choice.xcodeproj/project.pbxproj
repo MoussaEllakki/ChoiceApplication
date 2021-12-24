@@ -36,6 +36,7 @@
 		3381552E275F4DC600A31B38 /* ResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultView.swift; sourceTree = "<group>"; };
 		33815534275F6C0600A31B38 /* SetAndGetData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetAndGetData.swift; sourceTree = "<group>"; };
 		33A32A60276389BC00E86D6A /* AllParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllParticipantView.swift; sourceTree = "<group>"; };
+		33AFA89627753ECE00860F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		33BC37BF2771FEEF00B6FD6B /* thanks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = thanks.json; sourceTree = "<group>"; };
 		33C3CF462774FAC500878CFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33C64BAE276238100038990D /* ToshowResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToshowResultView.swift; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		33E1D882275A0DF200396BBE /* Choice */ = {
 			isa = PBXGroup;
 			children = (
+				33AFA89627753ECE00860F66 /* Info.plist */,
 				335FEAA027735CE0006786A0 /* Assets.xcassets */,
 				33C3CF462774FAC500878CFE /* GoogleService-Info.plist */,
 				33E1D883275A0DF200396BBE /* ChoiceApp.swift */,
@@ -405,11 +407,16 @@
 				DEVELOPMENT_TEAM = YRLN92P4H3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Choice/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -420,7 +427,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -436,11 +443,16 @@
 				DEVELOPMENT_TEAM = YRLN92P4H3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Choice/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIStatusBarHidden = NO;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -451,7 +463,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -6,7 +6,7 @@ struct ShowElectionview: View {
     
     @State  var allChoices : [String] = [""]
     
-    @State var electionId = ""
+     @State var electionId = ""
     
     @State var goToVoteView = false
     
@@ -49,7 +49,7 @@ struct ShowElectionview: View {
                 
 
                 
-                Text(setAndGetData.finns)
+              
                 
       
                 
@@ -69,16 +69,21 @@ struct ShowElectionview: View {
                      }
                     
                     
+                    HStack{
+                        
                     
-                            ScrollView(.horizontal){
-                                
-                                Text(setAndGetData.pollName).padding()
+                Spacer()
+                        
+                        ScrollView(.horizontal){
                             
-                                
-                            }
-                            .padding(.horizontal, 30.0)
-                          
+                            Text(setAndGetData.pollName).padding()
+                        
+                            
+                        }.frame(width: 300.0, height: 30.0)
                     
+                    Spacer()
+                          
+                    }
                
                         
                     

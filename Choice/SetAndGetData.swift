@@ -14,7 +14,7 @@ class SetAndGetData : ObservableObject{
     @Published var countOfparticipant = 5
     @Published var pollName = ""
     
-    @Published var finns = "kanske"
+    
     
     init (){
         ref = Database.database().reference()

@@ -15,9 +15,7 @@ struct ResultView: View {
     @State var electionId = ""
 
     @State private var isShowingAlertForLogOut = false
-    
     @State private var isShowingAlert = false
-    
     @State private var showResult = false
     
    @State var isCreatorHereInThisView = false
@@ -63,26 +61,31 @@ struct ResultView: View {
                     
                     HStack{
                         
-                
+                   Spacer()
+                        
+                        
                         ScrollView(.horizontal){
                             
                             Text(setAndGetData.pollName).padding()
                             
                         }
+                        .frame(width: 250.0, height: 30.0)
                       
                         
                      
-                        
       
                         
-                        Spacer(minLength: 20)
+              
                         
-                      Text("Votes")
+                        Text("Votes")
+                        .frame(width: 65.0, height: 25.0)
+                        .background(Color.yellow).cornerRadius(5)
                         
                         
+                     Spacer()
                         
                     }
-                    .padding(.horizontal, 30.0)
+               
                 
                
                     

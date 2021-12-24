@@ -15,7 +15,6 @@ struct FillChoicesView: View {
     @State  private var electionId = ""
     @State private var setAndGetData = SetAndGetData()
     @State private var pollName = ""
-    
     @Binding var goBackToRootView : Bool
     
     
@@ -30,8 +29,7 @@ struct FillChoicesView: View {
           
                 
                 
-              
-            ScrollView{
+              ScrollView{
                 
             
             

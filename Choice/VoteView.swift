@@ -4,13 +4,10 @@ import SwiftUI
 struct VoteView: View {
     
     @State private var ispolled = false
-    
     @State private var whichChoice  = -10
-    
     @State private var whichColor = Color.red
     
     @State  var creatorElectionId = ""
-    
     @Binding  var goBackToRootView : Bool
     
     @State  var userElectionId = ""
@@ -94,19 +91,24 @@ struct VoteView: View {
                         .cornerRadius(10)
                   }
 
+                
+                
                
+                HStack{
+                    
+                Spacer()
                 
                         ScrollView(.horizontal){
                         Text(setAndGetData.pollName).padding()
                      
                             
                             
-                        }
-                        .padding(.horizontal, 30.0)
-                      
-            
+                        }   .frame(width: 300.0, height: 30.0)
                 
-               
+                Spacer()
+                    
+                }
+                    
                 
                 ForEach(setAndGetData.allChoices.indices) { index in
                     
