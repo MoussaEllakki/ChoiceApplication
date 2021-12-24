@@ -12,69 +12,48 @@ struct AllParticipantView: View {
     
     @State private var countOfParticipant = 0
     
-
     
     var body: some View {
         
         
         ZStack{
             
-            
-           BackgroundView()
+            BackgroundView()
             
             VStack{
                 
                 Spacer(minLength: 50)
                 
                 
-                
                 Text("𝑨𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕")
                     .font(.title2)
                 
-             
                 
-                     if (showRAllParticipant == true){
-                         
-                       
-                         ScrollView{
-                       
-                         
-                         
-                             Text("\(setAndGetData.allParticipant.count) of  \(setAndGetData.countOfparticipant) 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕s 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅.")
-                             .padding(.vertical, 10.0)
-                     
-                      
-                             
-                         
-                             
-                         
-                             
-                             ForEach(setAndGetData.allParticipant, id : \.self) { participant in
-                             
-                             
-                                     Text(participant)
-                                     .frame(width: 300, height: 30)
-              
-                                     .background(Color.white)
-                                     .cornerRadius(10)
-                                 
-                             }
-                         
-                   
-                      
-                         
-                         
-                     
-                         
-                         
-                         
-                     
-                         }
-                 
-                     
-                     }
+                if (showRAllParticipant == true){
+                    
+                    
+                    ScrollView{
+                        
+                        
+                        Text("\(setAndGetData.allParticipant.count) of  \(setAndGetData.countOfparticipant) 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕s 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅.")
+                            .padding(.vertical, 10.0)
+                        
+                        
+                        ForEach(setAndGetData.allParticipant, id : \.self) { participant in
+                            
+                            
+                            Text(participant)
+                                .frame(width: 300, height: 30)
+                            
+                                .background(Color.white)
+                                .cornerRadius(10)
+                            
+                        }
+                    }
+                    
+                    
+                }
                 
-            
                 
                 Spacer(minLength: 150)
                 
@@ -83,7 +62,7 @@ struct AllParticipantView: View {
                 showRAllParticipant = false
                 
                 setAndGetData.getCountOfParticipant(electionId: electionId){
-                  
+                    
                     setAndGetData.getAllParticiPant(electionId: electionId){
                         
                         showRAllParticipant = true
@@ -91,20 +70,15 @@ struct AllParticipantView: View {
                     }
                     
                 }
-           
+                
                 
                 
             })
             
-            
-            
         }
         
-      
-        
-        
-        
     }
+    
 }
 
 struct AllParticipantView_Previews: PreviewProvider {

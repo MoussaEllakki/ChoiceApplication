@@ -16,7 +16,7 @@ struct VoteView: View {
     
     @ObservedObject var setAndGetData = SetAndGetData()
     
-   @State private var goToConfirmView = false
+    @State private var goToConfirmView = false
     
     @State var nameOfParticipant = ""
     
@@ -38,20 +38,20 @@ struct VoteView: View {
             BackgroundView()
             
             
-         
+            
             
             if (isAllPolled == true){
                 
                 VStack{
                     
-             
+                    
                     
                     Spacer()
                     Text("𝑶𝑷𝑺!")
                     Text("𝑺𝒐𝒓𝒓𝒚 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒋𝒐𝒊𝒏! 𝑩𝒆𝒄𝒂𝒖𝒔𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅")
                         .lineLimit(3)
                         .padding(.horizontal, 20.0)
-                 
+                    
                     
                     Button(action: {
                         
@@ -59,242 +59,235 @@ struct VoteView: View {
                         
                     }) {
                         
-                      ButtonView(buttonText: "𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕")
+                        ButtonView(buttonText: "𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕")
                     }.padding()
-                        
                     
-                 Spacer(minLength: 300)
                     
-                 .navigationBarBackButtonHidden(true)
+                    Spacer(minLength: 300)
+                    
+                        .navigationBarBackButtonHidden(true)
                     
                 }
                 
             }
             
-                else {
-                    
-                
-            VStack{
-                
-                Spacer(minLength: 50)
-
-                
-                
-               
-                
-                
-                HStack{
-                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
-                    Text("\(electionId)")
-                        .frame(width: 100, height: 20)
-                        .background(Color.white)
-                        .cornerRadius(10)
-                  }
-
-                
-                
-               
-                HStack{
-                    
-                Spacer()
-                
-                        ScrollView(.horizontal){
-                        Text(setAndGetData.pollName).padding()
-                     
-                            
-                            
-                        }   .frame(width: 300.0, height: 30.0)
-                
-                Spacer()
-                    
-                }
-                    
-                
-                ForEach(setAndGetData.allChoices.indices) { index in
-                    
-                    
-                    HStack{
-                        
-                
-                    Text("\(index + 1)")
-                        
-                        ScrollView (.horizontal){
-                            
-                        
-                        
-                       
-                        
-                        Text("\(setAndGetData.allChoices[index].name)")
-                    
-                        }
-                        .padding(.leading, 10)
-                        .frame(width: 300.0, height: 30.0)
-                        .background(whichChoice == index ? .green : .red)
-                        .cornerRadius(10)
-                        .onTapGesture {
-                            whichChoice = index
-                            whichColor = Color.green
-                            
-                        }
-                    }
-                    
-                }
-                
+            else {
                 
                 
                 VStack{
                     
-                
-                
-                NavigationLink(destination: ConfirmView(goBackToRootView: $goBackToRootView, nameOfParticipant: nameOfParticipant, electionId : electionId), isActive: $goToConfirmView){
-                    
-                    Button(action: {
-                        
-                        
-                    
-                        poll()
-                 
-                        
-                        
-                    }) {
-                        
-                        ButtonView(buttonText: "𝑷𝒐𝒍𝒍")
-                            .padding(.vertical, 20.0)
-                        
-                    }.alert(messageToUser, isPresented :$isShowingAlert){
-                        
-                        Button("𝑶𝑲") {
-                            
-                        }
-                        
-                    }
+                    Spacer(minLength: 50)
                     
                     
-                }
-           
-                
-                
-                
-                
-                
-                Button(action: {
                     
-                
-                   isShowingAlertForLogOut = true
-           
                     
-                }) {
                     
-                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
                     
-                }.alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
-                    
-                    Button("𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕", role: .destructive) {
-                
-                        if (creatorElectionId != ""){
-                            
-                        
-                            wantCreatorVote = true
-                            
-                            let controlIfCreatorWantTovote = "\(electionId)2"
-                            
-                            UserDefaults.standard.set(wantCreatorVote , forKey: controlIfCreatorWantTovote)
-                            
-                        }
-                        goBackToRootView = false
-                       
-                        
-                        
+                    HStack{
+                        Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                        Text("\(electionId)")
+                            .frame(width: 100, height: 20)
+                            .background(Color.white)
+                            .cornerRadius(10)
                     }
                     
                     
                     
                     
-                }
-               
-                .navigationBarBackButtonHidden(true)
-                
-                    
-                }.padding(.leading, 15)
-                
-                Spacer(minLength: 200)
-            }
-                    
-                    
-                 
-                    
-                    
-            }
-                
-            
-                
-   
-                
-             
-                
-               }.onAppear(perform: {
-                
-                
-              
-                   
-                if (creatorElectionId != ""){
-                    
-                    
-                    electionId = creatorElectionId
-                    
-                    
-                }
-                
-                
-                else {
-                    
-                    electionId = userElectionId
-                    
-                    
-                }
-                   
-                   setAndGetData.getCountOfParticipant(electionId: electionId){
-                       
-                       
-                       setAndGetData.getCountOfPolled(electionId:electionId){
-                           
+                    HStack{
                         
-                           if (setAndGetData.countOfparticipant == setAndGetData.countOfPolled){
-                               
-                               isAllPolled = true
-                               
-                           }
-                          
-                      
-                           
-                       }
-                       
-                       
-                   }
-                   
-                   setAndGetData.getPollName(electionId: electionId){
-                       
-                       
-                   }
-                   
-                   
+                        Spacer()
+                        
+                        ScrollView(.horizontal){
+                            Text(setAndGetData.pollName).padding()
+                            
+                            
+                            
+                        }   .frame(width: 300.0, height: 30.0)
+                        
+                        Spacer()
+                        
+                    }
+                    
+                    
+                    ForEach(setAndGetData.allChoices.indices) { index in
+                        
+                        
+                        HStack{
+                            
+                            
+                            Text("\(index + 1)")
+                            
+                            ScrollView (.horizontal){
+                                
+                                
+                                
+                                
+                                
+                                Text("\(setAndGetData.allChoices[index].name)")
+                                
+                            }
+                            .padding(.leading, 10)
+                            .frame(width: 300.0, height: 30.0)
+                            .background(whichChoice == index ? .green : .red)
+                            .cornerRadius(10)
+                            .onTapGesture {
+                                whichChoice = index
+                                whichColor = Color.green
+                                
+                            }
+                        }
+                        
+                    }
+                    
+                    
+                    
+                    VStack{
+                        
+                        
+                        
+                        NavigationLink(destination: ConfirmView(goBackToRootView: $goBackToRootView, nameOfParticipant: nameOfParticipant, electionId : electionId), isActive: $goToConfirmView){
+                            
+                            Button(action: {
+                                
+                                
+                                
+                                poll()
+                                
+                                
+                                
+                            }) {
+                                
+                                ButtonView(buttonText: "𝑷𝒐𝒍𝒍").shadow(radius: 15)
+                                    .padding(.vertical, 20.0)
+                                
+                            }.alert(messageToUser, isPresented :$isShowingAlert){
+                                
+                                Button("𝑶𝑲") {
+                                    
+                                }
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        
+                        
+                        
+                        
+                        Button(action: {
+                            
+                            
+                            isShowingAlertForLogOut = true
+                            
+                            
+                        }) {
+                            
+                            ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕").shadow(radius: 15)
+                            
+                        }.alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
+                            
+                            Button("𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕", role: .destructive) {
+                                
+                                if (creatorElectionId != ""){
+                                    
+                                    
+                                    wantCreatorVote = true
+                                    
+                                    let controlIfCreatorWantTovote = "\(electionId)2"
+                                    
+                                    UserDefaults.standard.set(wantCreatorVote , forKey: controlIfCreatorWantTovote)
+                                    
+                                }
+                                goBackToRootView = false
+                                
+                                
+                                
+                            }
+                            
+                            
+                            
+                            
+                        }
+                        
+                        .navigationBarBackButtonHidden(true)
+                        
+                        
+                    }.padding(.leading, 15)
+                    
+                    Spacer(minLength: 200)
+                }
                 
-            })
+                
+                
+                
+                
+            }
+            
+            
+        }.onAppear(perform: {
+            
+            
+            if (creatorElectionId != ""){
+                
+                
+                electionId = creatorElectionId
+                
+                
+            }
+            
+            
+            else {
+                
+                electionId = userElectionId
+                
+                
+            }
+            
+            setAndGetData.getCountOfParticipant(electionId: electionId){
+                
+                
+                setAndGetData.getCountOfPolled(electionId:electionId){
+                    
+                    
+                    if (setAndGetData.countOfparticipant == setAndGetData.countOfPolled){
+                        
+                        isAllPolled = true
+                        
+                    }
+                    
+                    
+                    
+                }
+                
+                
+            }
+            
+            setAndGetData.getPollName(electionId: electionId){
+                
+                
+            }
             
             
             
-            
-        }
+        })
         
         
         
+        
+    }
+    
+    
+    
     
     
     
     
     func poll (){
         
-    
+        
         
         if (whichChoice < 0){
             
@@ -308,38 +301,24 @@ struct VoteView: View {
             if (ispolled == false){
                 
                 
-            
-            
-                     setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
+                setAndGetData.poll(electionId: electionId, whichChoice: whichChoice)
+                
+                setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
+                
+                ispolled = true
+                
+                UserDefaults.standard.set(ispolled, forKey: electionId)
                 
                 
-                     setAndGetData.AddVoteAndNameOfParticipant(electionId: electionId, NameOfParticipant: nameOfParticipant)
-            
-                      ispolled = true
                 
-                     UserDefaults.standard.set(ispolled, forKey: electionId)
-                
-       
-                
-                      goToConfirmView = true
-                
-                
+                goToConfirmView = true
                 
             }
             
-            
-            
-           
-            
-                        
-            }
-      
-
+        }
+        
+    }
     
-    
-    
-}
-
     
 }
 struct VoteView_Previews: PreviewProvider {

@@ -21,6 +21,7 @@ class SetAndGetData : ObservableObject{
     }
     
     
+    
     func creatElection ( electionId : String , countsOfParticipant: Int , allChoices : [String], pollName : String ){
         
         ref.child("AllElections").child(electionId).setValue(electionId)

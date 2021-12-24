@@ -8,10 +8,11 @@ struct MainView: View {
     @State var goBackToRootView : Bool =  false
     @State var goToChooseElectionIdView : Bool =  false
     @State var goToShowElectionView = false
-    @State var  goToshowResultView : Bool =  false
-    @State var  goToResultView : Bool =  false
-    @State var  isShowingAlert = false
-    @State  private var messageToTheUser = ""
+    @State var goToshowResultView : Bool =  false
+    @State var goToResultView : Bool =  false
+    @State var isShowingAlert = false
+    
+    @State private var messageToTheUser = ""
     @State private var visa = false
     
     var body: some View {
@@ -22,35 +23,23 @@ struct MainView: View {
                 
                 BackgroundView()
                 
-                
                 ScrollView{
                     
                     Spacer()
                     
                     ZStack(alignment: .top){
                         
-                        
-                        
                         Text("𝑪𝒉𝒐𝒊𝒄𝒆")
                             .font(.largeTitle)
                             .fontWeight(.bold)
                         
-                        
-                        
                         if (visa == true){
-                            
                             
                             LottieView(animationName: "jump", loopMode: .loop)  .frame(width:370, height: 140 )
                             
                         }
                         
-                        
-                        
-                        
                     }
-                    
-                    
-                    
                     
                     HStack{
                         
@@ -59,16 +48,11 @@ struct MainView: View {
                         Text("𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕")
                             .padding(.trailing)
                         
-                        
-                        
-                        
-                        
                         Text("𝑪𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕")
                             .padding(.horizontal, 24.0)
                         
                         Spacer()
                     }
-                    
                     
                     
                     VStack{
@@ -101,14 +85,13 @@ struct MainView: View {
                     VStack{
                         
                         
-                        
                         NavigationLink(destination: FillChoicesView(countOfChoices: countOfChoices, countOfParticipant: countOfParticipant, goBackToRootView: $goBackToRootView), isActive: $goBackToRootView ){
                             Button(action: {
                                 
                                 ControlInput()
                                 
                             }){
-                                ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e 𝑷𝒐𝒍𝒍")
+                                ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e 𝑷𝒐𝒍𝒍").shadow(radius: 15)
                             }.padding(.bottom, 20.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
                                 Button("𝑶𝒌") {
                                     
@@ -122,7 +105,7 @@ struct MainView: View {
                             Button(action: {
                                 goToChooseElectionIdView = true
                             }){
-                                ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝑷𝒐𝒍𝒍")
+                                ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝑷𝒐𝒍𝒍").shadow(radius: 15)
                             }.padding(.bottom, 20.0)
                         }
                         
@@ -134,21 +117,15 @@ struct MainView: View {
                                 goToResultView = true
                                 
                             }){
-                                ButtonView(buttonText: "𝑺𝒆𝒆 r𝒆𝒔𝒖𝒍𝒕")
+                                ButtonView(buttonText: "𝑺𝒆𝒆 𝒓𝒆𝒔𝒖𝒍𝒕").shadow(radius: 15)
                             }   .padding(.bottom, 20.0)
                         }
-                        
-                        
-                        
-                        
                         
                     }
                     
                     Spacer()
                     
                 }
-                
-                
                 
             }.onAppear(perform: {
                 
@@ -168,28 +145,17 @@ struct MainView: View {
     
     
     
-    
     func ControlInput (){
         
         if (countOfParticipant != "" && countOfChoices != ""){
             
             if let countOfParticipantToInteger = Int (countOfParticipant){
                 
-                
-                
-                
                 if  let  countOfChoicesToInteger = Int (countOfChoices){
                     
                     
-                    
-                    
-                    
-                    
-                    
-                    
-                    
                     if (countOfParticipantToInteger < 2 ){
-                        messageToTheUser = "𝑴𝒊𝒏𝒊𝒎𝒖𝒎 2 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔"
+                        messageToTheUser = "𝑪𝒉𝒐𝒐𝒔𝒆 𝑴𝒊𝒏𝒊𝒎𝒖𝒎 2 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔"
                         isShowingAlert = true
                     }
                     
@@ -197,7 +163,7 @@ struct MainView: View {
                         
                         if ( countOfChoicesToInteger < 2 ||  countOfChoicesToInteger > 5){
                             
-                            messageToTheUser = "𝑴𝒊𝒏𝒊𝒎𝒖𝒎 2 𝒂𝒏𝒅 𝒎𝒂𝒙𝒊𝒎𝒖𝒎 5 𝑪𝒉𝒐𝒊𝒄𝒆𝒔 "
+                            messageToTheUser = "𝑪𝒉𝒐𝒐𝒔𝒆 𝑴𝒊𝒏𝒊𝒎𝒖𝒎 2 𝒂𝒏𝒅 𝒎𝒂𝒙𝒊𝒎𝒖𝒎 5 𝑪𝒉𝒐𝒊𝒄𝒆𝒔 "
                             isShowingAlert = true
                         }
                         
@@ -206,55 +172,26 @@ struct MainView: View {
                             goBackToRootView = true
                             
                         }
-                        
                     }
                     
-                    
                 }
-                
-                
-                
                 
                 else {
                     
-                    messageToTheUser = "only numbers "
+                    messageToTheUser = "𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕 𝒂𝒏𝒅 𝒄𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕 𝒔𝒉𝒐𝒖𝒍𝒅 𝒃𝒆 𝒂 𝒏𝒖𝒎𝒃𝒆𝒓"
                     isShowingAlert = true
                     
-                    
-                    
                 }
-                
                 
             }
             
             else {
                 
-                messageToTheUser = "only numbers "
+                messageToTheUser = "𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕 𝒂𝒏𝒅 𝒄𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕 𝒔𝒉𝒐𝒖𝒍𝒅 𝒃𝒆 𝒂 𝒏𝒖𝒎𝒃𝒆𝒓"
                 isShowingAlert = true
                 
-                
-                
             }
-            
-            
-            
-            
-            
-            
-            
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
         
         
         else {
@@ -264,16 +201,8 @@ struct MainView: View {
             
         }
         
-        
-        
-        
-        
-        
-        
-        
-        
-        
     }
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

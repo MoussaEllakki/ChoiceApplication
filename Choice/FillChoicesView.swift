@@ -6,13 +6,13 @@ import Firebase
 struct FillChoicesView: View {
     
     @State private var ref : DatabaseReference!
-    @State  private var allChoices : [String] = []
+    @State private var allChoices : [String] = []
     @State private var goToShowElectionView = false
-    @State  private var isShowingAlert = false
+    @State private var isShowingAlert = false
     @State var countOfChoices = ""
     @State var countOfParticipant = ""
-    @State  private var messageToUser = ""
-    @State  private var electionId = ""
+    @State private var messageToUser = ""
+    @State private var electionId = ""
     @State private var setAndGetData = SetAndGetData()
     @State private var pollName = ""
     @Binding var goBackToRootView : Bool
@@ -24,66 +24,59 @@ struct FillChoicesView: View {
             
             BackgroundView()
             
-             
-            
-          
+            ScrollView{
                 
-                
-              ScrollView{
-                
-            
-            
-            VStack{
-                
-                Spacer(minLength: 50)
-                
-                Text("𝑻𝒊𝒕𝒍𝒆 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒐𝒍𝒍")
-                
+                VStack{
+                    
+                    Spacer(minLength: 50)
+                    
+                    Text("𝑻𝒊𝒕𝒍𝒆 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒐𝒍𝒍")
+                    
                     TextField("", text: $pollName)
-                    .padding(.leading, 4.0)
-                    .frame(width: 300.0, height: 30)
-                    .background(Color.white)
-                    .cornerRadius(7)
-                
-                     Text("𝑪𝒓𝒆𝒂𝒕𝒆 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
-              
-                
-                
-                ForEach(0..<allChoices.count , id: \.self) {
+                        .padding(.leading, 4.0)
+                        .frame(width: 300.0, height: 30)
+                        .background(Color.white)
+                        .cornerRadius(7)
                     
-                TextField("𝐶ℎ𝑜𝑖𝑐𝑒 \($0 + 1 )", text: $allChoices[$0])
-                }.padding(.leading, 4.0)
-                .frame(width: 300.0, height: 30)
-                .background(Color.white)
-                .cornerRadius(7)
-                
-            
-
-                NavigationLink(destination: ShowElectionview(allChoices: allChoices, electionId : electionId, goBackToRootView: $goBackToRootView ), isActive: $goToShowElectionView ){
+                    Text("𝑪𝒓𝒆𝒂𝒕𝒆 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
                     
-                    Button(action: {
+                    
+                    
+                    ForEach(0..<allChoices.count , id: \.self) {
                         
-                        getChoices()
+                        TextField("𝐶ℎ𝑜𝑖𝑐𝑒 \($0 + 1 )", text: $allChoices[$0])
+                    }.padding(.leading, 4.0)
+                        .frame(width: 300.0, height: 30)
+                        .background(Color.white)
+                        .cornerRadius(7)
+                    
+                    
+                    
+                    NavigationLink(destination: ShowElectionview(allChoices: allChoices, electionId : electionId, goBackToRootView: $goBackToRootView ), isActive: $goToShowElectionView ){
                         
-                    }) {
-                       ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e")
-                    }.alert(messageToUser, isPresented :$isShowingAlert ){
-                        
-                        Button("𝑶𝒌") {
+                        Button(action: {
                             
-                        }
+                            getChoices()
+                            
+                        }) {
+                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e").shadow(radius: 15)
+                        }.alert(messageToUser, isPresented :$isShowingAlert ){
+                            
+                            Button("𝑶𝒌") {
+                                
+                            }
+                            
+                        }.padding(15)
                         
-                    }.padding(15)
+                    }
+                    
+                    Spacer()
                     
                 }
                 
-                Spacer()
-
+                
             }
-           
             
-            }
-
             
         }.onAppear(perform: {
             
@@ -134,9 +127,9 @@ struct FillChoicesView: View {
         else {
             
             controlDublicateElectionId()
-
+            
         }
-     
+        
         
     }
     

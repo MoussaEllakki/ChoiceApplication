@@ -5,15 +5,12 @@ import SwiftUI
 struct ConfirmView: View {
     
     
-    @Binding  var goBackToRootView : Bool
+    @Binding var goBackToRootView : Bool
     
     @State var nameOfParticipant = ""
-    
     @State var  isShowingAlertForLogOut  = false
-    
     @State var  isShowingAlert = false
-    
-    @State  var electionId = ""
+    @State var electionId = ""
     
     @ObservedObject var setAndGetData = SetAndGetData()
     
@@ -25,10 +22,7 @@ struct ConfirmView: View {
             
             BackgroundView()
             
-            
             VStack{
-               
-                
                 
                 Spacer(minLength: 30)
                 
@@ -39,21 +33,20 @@ struct ConfirmView: View {
                         .background(Color.white)
                         .cornerRadius(10)
                 }.padding()
-             
+                
                 ZStack(alignment: .bottom){
-
-
-
-
+                    
+                    
+                    
                     Text(nameOfParticipant).font(.title3).padding().foregroundColor(Color.purple)
-       
-                              
+                    
+                    
                     LottieView(animationName: "thanks", loopMode: .loop)  .frame(width:200, height: 200 )
-
-
+                    
+                    
                 }.frame(width: 250 , height: 250).background(Color.white).cornerRadius(125)
                 
-         
+                
                 Spacer(minLength: 30)
                 
                 
@@ -61,49 +54,49 @@ struct ConfirmView: View {
                     
                     Button(action: {
                         
-                      
-                      
-                            
-                            goToResultView = true
-
                         
                         
-                
-                 
+                        
+                        goToResultView = true
+                        
+                        
+                        
+                        
+                        
                         
                         
                     }) {
                         
-                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕")
+                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕").shadow(radius: 15)
                         
                     }
                     
                     
                 }
-              
+                
                 
                 Spacer(minLength: 30)
                 
                 Button(action: {
                     
-                
-                   isShowingAlertForLogOut = true
-           
+                    
+                    isShowingAlertForLogOut = true
+                    
                     
                 }) {
                     
-                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
+                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕").shadow(radius: 15)
                     
                 }.padding(.bottom, 20.0).alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     
                     Button("𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕", role: .destructive) {
-                
+                        
                         goBackToRootView = false
                         
                     }
                     
                     
-                    }
+                }
                 
                 
                 
@@ -119,7 +112,7 @@ struct ConfirmView: View {
             .navigationBarBackButtonHidden(true)
         }
         
-   
+        
     }
 }
 

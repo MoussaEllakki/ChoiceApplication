@@ -23,7 +23,7 @@ struct ButtonView: View {
         ZStack{
             
             LinearGradient(gradient: Gradient(colors: [.yellow]), startPoint: .topTrailing, endPoint: .topLeading)
-                .cornerRadius(20)
+                .cornerRadius(10)
             Text(buttonText)
                 .font(.title2)
                 .fontWeight(.bold)

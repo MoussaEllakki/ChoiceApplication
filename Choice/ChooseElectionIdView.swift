@@ -51,7 +51,7 @@ struct ChooseElectionIdView: View {
                         controlInputAndElectionID()
                         
                     }) {
-                        ButtonView(buttonText: "𝑷𝒐𝒍𝒍").padding(20)
+                        ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝑷𝒐𝒍𝒍").padding(20).shadow(radius: 15)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         
