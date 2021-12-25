@@ -42,11 +42,11 @@ struct ShowElectionview: View {
                     
                     HStack{
                         
-                        Text("𝑺𝒉𝒂𝒓𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
+                        Text("𝑺𝒉𝒂𝒓𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫").font(.title3)
                         Text("\(electionId)")
-                            .frame(width: 100, height: 20)
-                            .background(Color.white)
-                            .cornerRadius(10)
+                            .frame(width: 100, height: 25)
+                            .background(Color.green)
+                            .cornerRadius(5)
                     }
                     
                     
@@ -111,19 +111,22 @@ struct ShowElectionview: View {
                     
                     Spacer(minLength: 70)
                     
-                    Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖 𝒏𝒂𝒎𝒆 𝒕𝒐 𝒋𝒐𝒊𝒏 𝒑𝒐𝒍𝒍")
+                    Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆 𝒕𝒐 𝒋𝒐𝒊𝒏 𝒑𝒐𝒍𝒍").font(.title3)
                     
-                    HStack{
+               
                         
+                    VStack{
                         
+                    
                         TextField("𝑵𝒂𝒎𝒆", text: $nameOfPolledPerson)
                             .padding(.leading, 4.0)
-                            .frame(width: 220, height: 30)
+                            .frame(width: 300, height: 30)
                             .background(Color.white)
-                            .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/1/*@END_MENU_TOKEN@*/)
-                        
+                            .cornerRadius(6)
                         
                     }
+                    .padding(.leading, 15.0)
+                    
                     
                 }
                 
@@ -175,7 +178,7 @@ struct ShowElectionview: View {
                             
                         }) {
                             
-                            ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝒑𝒐𝒍𝒍").shadow(radius: 15)
+                            ButtonViewGreen(buttonText: "𝑱𝒐𝒊𝒏 𝒑𝒐𝒍𝒍").shadow(radius: 15)
                             
                         }.padding(.vertical).alert("𝑵𝒐 𝒊𝒏𝒕𝒆𝒓𝒏𝒆𝒕 𝒄𝒐𝒏𝒏𝒆𝒄𝒕𝒊𝒐𝒏", isPresented :$isShowingAlert ){
                             
@@ -204,7 +207,7 @@ struct ShowElectionview: View {
                                 .frame(width: 300, height: 35)
                                 .background(Color.red)
                                 .foregroundColor(Color.white)
-                                .cornerRadius(20)
+                                .cornerRadius(10)
                         }.padding()
                         
                     }
@@ -220,7 +223,7 @@ struct ShowElectionview: View {
                             
                         }) {
                             
-                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕𝒆 𝑵𝒆𝒘 𝒑𝒐𝒍𝒍").shadow(radius: 15)
+                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕𝒆 𝒏𝒆𝒘 𝒑𝒐𝒍𝒍").shadow(radius: 15)
                             
                         }.padding(.bottom, 10.0).alert("𝑨𝒓𝒆 𝒚𝒐𝒖 𝒔𝒖𝒓𝒆? 𝒀𝒐𝒖 are 𝒈𝒐𝒊𝒏𝒈 𝒕𝒐 𝒅𝒆𝒍𝒆𝒕𝒆 𝒚𝒐𝒖𝒓 𝒂𝒍𝒓𝒆𝒂𝒅𝒚 𝒄𝒓𝒆𝒂𝒕𝒆𝒅 𝒑𝒐𝒍𝒍", isPresented :$isShowingAlertForDeleteelectionId ){
                             
@@ -285,7 +288,7 @@ struct ShowElectionview: View {
                             
                         }) {
                             
-                            ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕").shadow(radius: 15)
+                            ButtonView(buttonText: "𝑳𝒐𝒈 o𝒖𝒕").shadow(radius: 15)
                             
                         }
                         .padding(.bottom, 10.0)

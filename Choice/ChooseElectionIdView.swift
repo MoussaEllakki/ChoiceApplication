@@ -26,18 +26,19 @@ struct ChooseElectionIdView: View {
                 
                 Spacer(minLength: 60)
                 
-                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆").padding(20)
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆").font(.title3).padding(20)
                 
-                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
-                TextField("", text: $electionId)
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫").font(.title3)
+                TextField("𝑷𝒐𝒍𝒍 𝑰𝑫", text: $electionId)
                     .padding(.leading, 4.0)
                     .frame(width: 300.0, height: 30.0)
-               
                     .keyboardType(.numberPad)
                     .background(Color.white)
                     .cornerRadius(10)
-                Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆")
-                TextField("", text: $nameOfPolledPerson)
+                
+                
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆").font(.title3)
+                TextField("𝑵𝒂𝒎𝒆", text: $nameOfPolledPerson)
                     .padding(.leading, 4.0)
                     .frame(width: 300.0, height: 30.0)
                   
@@ -51,7 +52,7 @@ struct ChooseElectionIdView: View {
                         controlInputAndElectionID()
                         
                     }) {
-                        ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝑷𝒐𝒍𝒍").padding(20).shadow(radius: 15)
+                        ButtonViewGreen(buttonText: "𝑱𝒐𝒊𝒏 𝒑𝒐𝒍𝒍").padding(20).shadow(radius: 15)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert ){
                         

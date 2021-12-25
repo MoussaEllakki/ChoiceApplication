@@ -25,8 +25,8 @@ struct AllParticipantView: View {
                 Spacer(minLength: 50)
                 
                 
-                Text("𝑨𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕")
-                    .font(.title2)
+                Text("𝑨𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔").foregroundColor(Color.orange)
+                    .font(.largeTitle)
                 
                 
                 if (showRAllParticipant == true){

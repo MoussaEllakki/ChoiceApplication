@@ -48,7 +48,7 @@ struct VoteView: View {
                     
                     Spacer()
                     Text("𝑶𝑷𝑺!")
-                    Text("𝑺𝒐𝒓𝒓𝒚 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒋𝒐𝒊𝒏! 𝑩𝒆𝒄𝒂𝒖𝒔𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅")
+                    Text("𝑺𝒐𝒓𝒓𝒚 𝒚𝒐𝒖 𝒄𝒂𝒏𝒕 𝒋𝒐𝒊𝒏! 𝑩𝒆𝒄𝒂𝒖𝒔𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔 𝒉𝒂𝒗𝒆 𝒑𝒐𝒍𝒍𝒆𝒅").font(.title3)
                         .lineLimit(3)
                         .padding(.horizontal, 20.0)
                     
@@ -59,7 +59,7 @@ struct VoteView: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "𝑶𝒌 𝑳𝒐𝒈 𝑶𝒖𝒕")
+                        ButtonView(buttonText: "𝑶𝒌 𝒍𝒐𝒈 𝒐𝒖𝒕")
                     }.padding()
                     
                     
@@ -84,11 +84,11 @@ struct VoteView: View {
                     
                     
                     HStack{
-                        Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                        Text("𝑷𝒐𝒍𝒍 𝑰𝑫:").font(.title3)
                         Text("\(electionId)")
-                            .frame(width: 100, height: 20)
-                            .background(Color.white)
-                            .cornerRadius(10)
+                            .frame(width: 100, height: 25)
+                            .background(Color.green)
+                            .cornerRadius(5)
                     }
                     
                     
@@ -130,10 +130,11 @@ struct VoteView: View {
                             .padding(.leading, 10)
                             .frame(width: 300.0, height: 30.0)
                             .background(whichChoice == index ? .green : .red)
-                            .cornerRadius(10)
+                            .cornerRadius(7)
                             .onTapGesture {
-                                whichChoice = index
-                                whichColor = Color.green
+                                
+                            whichChoice = index
+                            whichColor = Color.green
                                 
                             }
                         }
@@ -185,7 +186,7 @@ struct VoteView: View {
                             
                         }) {
                             
-                            ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕").shadow(radius: 15)
+                            ButtonView(buttonText: "𝑳𝒐𝒈 o𝒖𝒕").shadow(radius: 15)
                             
                         }.alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                             
@@ -217,7 +218,7 @@ struct VoteView: View {
                         
                     }.padding(.leading, 15)
                     
-                    Spacer(minLength: 200)
+                    Spacer(minLength: 250)
                 }
                 
                 

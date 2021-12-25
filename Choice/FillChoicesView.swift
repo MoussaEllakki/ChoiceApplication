@@ -30,15 +30,15 @@ struct FillChoicesView: View {
                     
                     Spacer(minLength: 50)
                     
-                    Text("𝑻𝒊𝒕𝒍𝒆 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒐𝒍𝒍")
+                    Text("𝑻𝒊𝒕𝒍𝒆 𝒐𝒇 𝒕𝒉𝒆 𝒑𝒐𝒍𝒍").font(.title3)
                     
-                    TextField("", text: $pollName)
+                    TextField("𝑻𝒊𝒕𝒍𝒆", text: $pollName)
                         .padding(.leading, 4.0)
                         .frame(width: 300.0, height: 30)
                         .background(Color.white)
                         .cornerRadius(7)
                     
-                    Text("𝑪𝒓𝒆𝒂𝒕𝒆 𝑪𝒉𝒐𝒊𝒄𝒆𝒔")
+                    Text("𝑪𝒓𝒆𝒂𝒕𝒆 𝑪𝒉𝒐𝒊𝒄𝒆𝒔") .font(.title3)
                     
                     
                     
@@ -59,7 +59,7 @@ struct FillChoicesView: View {
                             getChoices()
                             
                         }) {
-                            ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e").shadow(radius: 15)
+                            ButtonViewGreen(buttonText: "𝑪𝒓𝒆𝒂𝒕𝒆").shadow(radius: 15)
                         }.alert(messageToUser, isPresented :$isShowingAlert ){
                             
                             Button("𝑶𝒌") {

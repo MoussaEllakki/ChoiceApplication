@@ -32,12 +32,12 @@ struct ResultView: View {
                 
                 
                 HStack{
-                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:").font(.title3)
                     
                     Text("\(electionId)")
-                        .frame(width: 100, height: 20)
-                        .background(Color.white)
-                        .cornerRadius(10)
+                        .frame(width: 100, height: 25)
+                        .background(Color.green)
+                        .cornerRadius(5)
                 }.padding()
                 
                 if (showResult == true){
@@ -58,7 +58,7 @@ struct ResultView: View {
                         
                         Text("𝑽𝒐𝒕𝒆𝒔")
                             .frame(width: 65.0, height: 25.0)
-                            .background(Color.yellow).cornerRadius(5)
+                            .background(Color.orange).cornerRadius(5)
                         
                         
                         Spacer()
@@ -123,7 +123,7 @@ struct ResultView: View {
                             }
                             
                         }) {
-                            ButtonView(buttonText: "𝑺𝒆𝒆 𝑨𝒍𝒍 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕").shadow(radius: 15)
+                            ButtonView(buttonText: "𝑺𝒆𝒆 𝒂𝒍𝒍 𝒑𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕𝒔").shadow(radius: 15)
                         }
                         
                         
@@ -142,7 +142,7 @@ struct ResultView: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕")
+                        ButtonView(buttonText: "𝑳𝒐𝒈 o𝒖𝒕")
                         
                     }.padding(.top).alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                         
@@ -157,7 +157,7 @@ struct ResultView: View {
                     
                 }.padding(.leading, 15)
                 
-                Spacer(minLength: 200)
+                Spacer(minLength: 330)
                 
                     .navigationBarBackButtonHidden(true)
                 

@@ -30,7 +30,7 @@ struct ToshowResultView: View {
                 
                 Spacer(minLength: 100)
                 
-                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫")
+                Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫").font(.title3)
                 TextField("", text: $electionId)
                     .padding(.leading, 4.0)
                     .frame(width: 300.0, height: 30.0)
@@ -52,7 +52,7 @@ struct ToshowResultView: View {
                         
                     }){
                         
-                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕").shadow(radius: 15)
+                        ButtonView(buttonText: "𝑺𝒆𝒆 𝒓𝒆𝒔𝒖𝒍𝒕").shadow(radius: 15)
                         
                     }.alert(messageToUser, isPresented :$isShowingAlert){
                         

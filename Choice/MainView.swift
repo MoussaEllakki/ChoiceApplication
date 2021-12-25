@@ -46,10 +46,14 @@ struct MainView: View {
                         Spacer()
                         
                         Text("𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕")
+                            .font(.title3)
                             .padding(.trailing)
+                  
                         
                         Text("𝑪𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕")
-                            .padding(.horizontal, 24.0)
+                            .font(.title3)
+                            .padding(.trailing, 25.0)
+                     
                         
                         Spacer()
                     }
@@ -91,7 +95,7 @@ struct MainView: View {
                                 ControlInput()
                                 
                             }){
-                                ButtonView(buttonText: "𝑪𝒓𝒆𝒂𝒕e 𝑷𝒐𝒍𝒍").shadow(radius: 15)
+                                ButtonViewGreen(buttonText: "𝑪𝒓𝒆𝒂𝒕𝒆 𝒑𝒐𝒍𝒍").shadow(radius: 15)
                             }.padding(.bottom, 20.0).alert(messageToTheUser, isPresented :$isShowingAlert ){
                                 Button("𝑶𝒌") {
                                     
@@ -105,7 +109,7 @@ struct MainView: View {
                             Button(action: {
                                 goToChooseElectionIdView = true
                             }){
-                                ButtonView(buttonText: "𝑱𝒐𝒊𝒏 𝑷𝒐𝒍𝒍").shadow(radius: 15)
+                                ButtonViewGreen(buttonText: "𝑱𝒐𝒊𝒏 𝒑𝒐𝒍𝒍").shadow(radius: 15)
                             }.padding(.bottom, 20.0)
                         }
                         
@@ -178,7 +182,7 @@ struct MainView: View {
                 
                 else {
                     
-                    messageToTheUser = "𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕 𝒂𝒏𝒅 𝒄𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕 𝒔𝒉𝒐𝒖𝒍𝒅 𝒃𝒆 𝒂 𝒏𝒖𝒎𝒃𝒆𝒓"
+                    messageToTheUser = "𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝒄𝒉𝒐𝒊𝒄𝒆 𝒎𝒖𝒔𝒕 𝒃𝒆 𝒂 𝒏𝒖𝒎𝒃𝒆𝒓"
                     isShowingAlert = true
                     
                 }
@@ -187,7 +191,7 @@ struct MainView: View {
             
             else {
                 
-                messageToTheUser = "𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒄𝒐𝒖𝒏𝒕 𝒂𝒏𝒅 𝒄𝒉𝒐𝒊𝒄𝒆 𝒄𝒐𝒖𝒏𝒕 𝒔𝒉𝒐𝒖𝒍𝒅 𝒃𝒆 𝒂 𝒏𝒖𝒎𝒃𝒆𝒓"
+                messageToTheUser = "𝑪𝒐𝒖𝒏𝒕 𝒐𝒇 𝑷𝒂𝒓𝒕𝒊𝒄𝒊𝒑𝒂𝒏𝒕 𝒎𝒖𝒔𝒕 𝒃𝒆 𝒂 𝒏𝒖𝒎𝒃𝒆𝒓"
                 isShowingAlert = true
                 
             }

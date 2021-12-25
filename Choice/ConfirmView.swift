@@ -27,11 +27,11 @@ struct ConfirmView: View {
                 Spacer(minLength: 30)
                 
                 HStack{
-                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:")
+                    Text("𝑷𝒐𝒍𝒍 𝑰𝑫:").font(.title3)
                     Text("\(electionId)")
-                        .frame(width: 100, height: 20)
-                        .background(Color.white)
-                        .cornerRadius(10)
+                        .frame(width: 100, height: 25)
+                        .background(Color.green)
+                        .cornerRadius(5)
                 }.padding()
                 
                 ZStack(alignment: .bottom){
@@ -67,7 +67,7 @@ struct ConfirmView: View {
                         
                     }) {
                         
-                        ButtonView(buttonText: "𝑺𝒆𝒆 𝑹𝒆𝒔𝒖𝒍𝒕").shadow(radius: 15)
+                        ButtonView(buttonText: "𝑺𝒆𝒆 𝒓𝒆𝒔𝒖𝒍𝒕").shadow(radius: 15)
                         
                     }
                     
@@ -85,7 +85,7 @@ struct ConfirmView: View {
                     
                 }) {
                     
-                    ButtonView(buttonText: "𝑳𝒐𝒈 𝑶𝒖𝒕").shadow(radius: 15)
+                    ButtonView(buttonText: "𝑳𝒐𝒈 o𝒖𝒕").shadow(radius: 15)
                     
                 }.padding(.bottom, 20.0).alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                     

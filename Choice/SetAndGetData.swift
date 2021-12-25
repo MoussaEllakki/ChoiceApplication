@@ -44,6 +44,8 @@ class SetAndGetData : ObservableObject{
             number = number + 1
         }
         
+    
+        
     }
     
     
@@ -52,6 +54,8 @@ class SetAndGetData : ObservableObject{
         
         ref.child("AllElections").child(electionId).removeValue()
         ref.child("Election").child(electionId).removeValue()
+        
+       
         
     }
     
@@ -271,7 +275,7 @@ class SetAndGetData : ObservableObject{
         
     }
     
-    
+ 
     func poll (electionId : String , whichChoice : Int ){
         
         
@@ -294,8 +298,12 @@ class SetAndGetData : ObservableObject{
             
         });
     }
+  
+    
+    
     
 }
+
 
 
 class Choice {
