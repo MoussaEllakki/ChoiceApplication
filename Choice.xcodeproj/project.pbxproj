@@ -13,7 +13,6 @@
 		33815535275F6C0600A31B38 /* SetAndGetData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33815534275F6C0600A31B38 /* SetAndGetData.swift */; };
 		33A32A61276389BC00E86D6A /* AllParticipantView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33A32A60276389BC00E86D6A /* AllParticipantView.swift */; };
 		33BC37C02771FEEF00B6FD6B /* thanks.json in Resources */ = {isa = PBXBuildFile; fileRef = 33BC37BF2771FEEF00B6FD6B /* thanks.json */; };
-		33C3CF472774FAC500878CFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 33C3CF462774FAC500878CFE /* GoogleService-Info.plist */; };
 		33C64BAF276238100038990D /* ToshowResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33C64BAE276238100038990D /* ToshowResultView.swift */; };
 		33D4B80D2771BCAF00854374 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 33D4B80C2771BCAF00854374 /* Lottie */; };
 		33D4B80F2771BCF800854374 /* LottieAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33D4B80E2771BCF800854374 /* LottieAnimationView.swift */; };
@@ -27,6 +26,7 @@
 		33E1D8C4275BD41600396BBE /* ChooseElectionIdView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33E1D8C3275BD41600396BBE /* ChooseElectionIdView.swift */; };
 		33FFBE022771D68E008FA87C /* jump.json in Resources */ = {isa = PBXBuildFile; fileRef = 33FFBE012771D68E008FA87C /* jump.json */; };
 		845B90CC787D41AA930F725D /* Pods_Choice.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B575029EF7032C694C5656DE /* Pods_Choice.framework */; };
+		B546A7E527825E69002812F3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B546A7E427825E69002812F3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,7 +38,6 @@
 		33A32A60276389BC00E86D6A /* AllParticipantView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllParticipantView.swift; sourceTree = "<group>"; };
 		33AFA89627753ECE00860F66 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		33BC37BF2771FEEF00B6FD6B /* thanks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = thanks.json; sourceTree = "<group>"; };
-		33C3CF462774FAC500878CFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		33C64BAE276238100038990D /* ToshowResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToshowResultView.swift; sourceTree = "<group>"; };
 		33D4B80E2771BCF800854374 /* LottieAnimationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LottieAnimationView.swift; sourceTree = "<group>"; };
 		33E1D880275A0DF200396BBE /* Choice.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Choice.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +51,7 @@
 		33E1D8C3275BD41600396BBE /* ChooseElectionIdView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseElectionIdView.swift; sourceTree = "<group>"; };
 		33FFBE012771D68E008FA87C /* jump.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = jump.json; sourceTree = "<group>"; };
 		8EEDBEC5CB69714A8495E8CA /* Pods-Choice.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Choice.debug.xcconfig"; path = "Target Support Files/Pods-Choice/Pods-Choice.debug.xcconfig"; sourceTree = "<group>"; };
+		B546A7E427825E69002812F3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B575029EF7032C694C5656DE /* Pods_Choice.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Choice.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -98,9 +98,9 @@
 		33E1D882275A0DF200396BBE /* Choice */ = {
 			isa = PBXGroup;
 			children = (
+				B546A7E427825E69002812F3 /* GoogleService-Info.plist */,
 				33AFA89627753ECE00860F66 /* Info.plist */,
 				335FEAA027735CE0006786A0 /* Assets.xcassets */,
-				33C3CF462774FAC500878CFE /* GoogleService-Info.plist */,
 				33E1D883275A0DF200396BBE /* ChoiceApp.swift */,
 				33E1D885275A0DF200396BBE /* MainView.swift */,
 				33E1D889275A0DF400396BBE /* Preview Content */,
@@ -205,7 +205,7 @@
 			files = (
 				33E1D88B275A0DF400396BBE /* Preview Assets.xcassets in Resources */,
 				33BC37C02771FEEF00B6FD6B /* thanks.json in Resources */,
-				33C3CF472774FAC500878CFE /* GoogleService-Info.plist in Resources */,
+				B546A7E527825E69002812F3 /* GoogleService-Info.plist in Resources */,
 				33FFBE022771D68E008FA87C /* jump.json in Resources */,
 				335FEAA127735CE0006786A0 /* Assets.xcassets in Resources */,
 			);
@@ -423,7 +423,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Moussa.Ellakki-hotmail.com.Choice";
+				PRODUCT_BUNDLE_IDENTIFIER = "Moussa.Ellakki-hotmail.com.Choice2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -459,7 +459,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "Moussa.Ellakki-hotmail.com.Choice";
+				PRODUCT_BUNDLE_IDENTIFIER = "Moussa.Ellakki-hotmail.com.Choice2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

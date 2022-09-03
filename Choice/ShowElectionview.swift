@@ -135,7 +135,7 @@ struct ShowElectionview: View {
                     
                     
                     
-                    NavigationLink(destination: VoteView( creatorElectionId: electionId, goBackToRootView: $goBackToRootView, userElectionId:"" , setAndGetData:setAndGetData,nameOfParticipant: nameOfPolledPerson), isActive: $goToVoteView){
+                    NavigationLink(destination: VoteView( creatorElectionId: electionId, goBackToRootView: $goBackToRootView, userElectionId:"" , nameOfParticipant: nameOfPolledPerson, setAndGetData:setAndGetData), isActive: $goToVoteView){
                         
                         
                         

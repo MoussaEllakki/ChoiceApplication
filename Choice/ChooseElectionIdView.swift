@@ -44,7 +44,7 @@ struct ChooseElectionIdView: View {
                   
                     .background(Color.white)
                     .cornerRadius(10)
-                NavigationLink(destination: VoteView(creatorElectionId: "", goBackToRootView: $goBackToRootView, userElectionId: electionId , setAndGetData: setAndGetData, nameOfParticipant:nameOfPolledPerson) , isActive: $goToVoteView){
+                NavigationLink(destination: VoteView(creatorElectionId: "", goBackToRootView: $goBackToRootView, userElectionId: electionId , nameOfParticipant : nameOfPolledPerson, setAndGetData: setAndGetData) , isActive: $goToVoteView){
                     
                     
                     Button(action: {
