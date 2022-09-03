@@ -27,7 +27,6 @@ struct ChooseElectionIdView: View {
                 Spacer(minLength: 60)
                 
                 Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫 𝒂𝒏𝒅 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆").font(.title3).padding(20)
-                
                 Text("𝑾𝒓𝒊𝒕𝒆 𝒑𝒐𝒍𝒍 𝑰𝑫").font(.title3)
                 TextField("𝑷𝒐𝒍𝒍 𝑰𝑫", text: $electionId)
                     .padding(.leading, 4.0)
@@ -35,20 +34,16 @@ struct ChooseElectionIdView: View {
                     .keyboardType(.numberPad)
                     .background(Color.white)
                     .cornerRadius(10)
-                
-                
                 Text("𝑾𝒓𝒊𝒕𝒆 𝒚𝒐𝒖𝒓 𝒏𝒂𝒎𝒆").font(.title3)
                 TextField("𝑵𝒂𝒎𝒆", text: $nameOfPolledPerson)
                     .padding(.leading, 4.0)
                     .frame(width: 300.0, height: 30.0)
-                  
+                
                     .background(Color.white)
                     .cornerRadius(10)
                 NavigationLink(destination: VoteView(creatorElectionId: "", goBackToRootView: $goBackToRootView, userElectionId: electionId , nameOfParticipant : nameOfPolledPerson, setAndGetData: setAndGetData) , isActive: $goToVoteView){
                     
-                    
                     Button(action: {
-                        
                         controlInputAndElectionID()
                         
                     }) {
@@ -60,9 +55,7 @@ struct ChooseElectionIdView: View {
                         }
                         
                     }
-                    
                 }
-                
                 Spacer(minLength: 200)
                 
             }.padding()
@@ -83,7 +76,6 @@ struct ChooseElectionIdView: View {
                 setAndGetData.controlElectionId(electionId: electionId){
                     
                     if (setAndGetData.isThereInternet == false){
-                        
                         messageToUser = "𝑵𝒐 𝑰𝒏𝒕𝒆𝒓𝒏𝒆𝒕"
                         isShowingAlert = true
                         
@@ -94,15 +86,12 @@ struct ChooseElectionIdView: View {
                         
                         let controlIfCreatorInThisView = "\(electionId)1"
                         let controlIfCreatorWantTovote = "\(electionId)2"
-                        
-                        
                         creatorInThisView = UserDefaults.standard.bool(forKey: controlIfCreatorInThisView)
                         wantCreatorVote = UserDefaults.standard.bool(forKey: controlIfCreatorWantTovote)
                         
                         if (creatorInThisView == true){
                             
                             if (wantCreatorVote == true){
-                                
                                 setAndGetData.getallChoicesFromFb(electionId: electionId){
                                     
                                     goToVoteView = true
@@ -121,19 +110,13 @@ struct ChooseElectionIdView: View {
                         else {
                             
                             if(setAndGetData.existingElectionId == true){
-                                
                                 setAndGetData.getallChoicesFromFb(electionId: electionId){
-                                    
                                     goToVoteView = true
-                                    
                                 }
                                 
                             }
                             
-                            
                             else if (setAndGetData.existingElectionId == false) {
-                                
-                  
                                 messageToUser = "𝑾𝒓𝒐𝒏𝒈 𝒑𝒐𝒍𝒍 𝑰𝑫"
                                 isShowingAlert = true
                             }
@@ -141,20 +124,14 @@ struct ChooseElectionIdView: View {
                         }
                         
                     }
-                    
                 }
-                
-                
             }
             
             
             else {
-                
                 messageToUser = "𝒀𝒐𝒖 𝒉𝒂𝒗𝒆 𝒂𝒍𝒓𝒆𝒂𝒅𝒚 𝒑𝒐𝒍𝒍𝒆𝒅"
                 isShowingAlert = true
-                
             }
-            
         }
         
         
@@ -164,7 +141,6 @@ struct ChooseElectionIdView: View {
             isShowingAlert = true
             
         }
-        
     }
     
 }

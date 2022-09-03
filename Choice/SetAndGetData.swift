@@ -44,7 +44,7 @@ class SetAndGetData : ObservableObject{
             number = number + 1
         }
         
-    
+        
         
     }
     
@@ -55,7 +55,7 @@ class SetAndGetData : ObservableObject{
         ref.child("AllElections").child(electionId).removeValue()
         ref.child("Election").child(electionId).removeValue()
         
-       
+        
         
     }
     
@@ -68,7 +68,7 @@ class SetAndGetData : ObservableObject{
         ref.child("AllElections").getData(completion:  { [self] error, snapshot in
             
             guard error == nil else {
-             
+                
                 isThereInternet = false
                 print(error!.localizedDescription)
                 completionHandler()
@@ -111,7 +111,7 @@ class SetAndGetData : ObservableObject{
             
             guard error == nil else {
                 
-            
+                
                 self.isThereInternet = false
                 
                 print(error!.localizedDescription)
@@ -135,7 +135,7 @@ class SetAndGetData : ObservableObject{
             }
             
             
-          
+            
             self.isThereInternet = true
             completionHandler()
             
@@ -275,14 +275,11 @@ class SetAndGetData : ObservableObject{
         
     }
     
- 
+    
     func poll (electionId : String , whichChoice : Int ){
         
-        
         var  ValueInFirebase = 0
-        
         ref.child("Election").child(electionId).child("AllChoices").child("Choice\(whichChoice + 1)").child("Value").getData(completion:  { [self] error, snapshot in
-            
             
             guard error == nil else {
                 
@@ -293,18 +290,12 @@ class SetAndGetData : ObservableObject{
             
             ValueInFirebase = (snapshot.value as? Int)!
             
-            
             ref.child("Election").child(electionId).child("AllChoices").child("Choice\(whichChoice + 1)").child("Value").setValue( ValueInFirebase + 1)
             
         });
     }
-  
-    
-    
     
 }
-
-
 
 class Choice {
     var name = ""

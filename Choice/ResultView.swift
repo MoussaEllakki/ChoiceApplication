@@ -4,19 +4,13 @@ import SwiftUI
 struct ResultView: View {
     
     
-    
-    
     @Binding var  goBackToRootView  : Bool
-    
     @State private var goToAllParticipantView = false
     @ObservedObject var setAndGetData = SetAndGetData()
-    
     @State var electionId = ""
-    
     @State private var isShowingAlertForLogOut = false
     @State private var isShowingAlert = false
     @State private var showResult = false
-    
     @State var isCreatorHereInThisView = false
     
     
@@ -136,9 +130,7 @@ struct ResultView: View {
                     
                     
                     Button(action: {
-                        
                         isShowingAlertForLogOut = true
-                        
                         
                     }) {
                         
@@ -147,9 +139,7 @@ struct ResultView: View {
                     }.padding(.top).alert("𝒀𝒐𝒖 𝒔𝒉𝒐𝒖𝒍𝒅 𝒓𝒆𝒎𝒆𝒎𝒃𝒆𝒓 𝒚𝒐𝒖𝒓 𝒑𝒐𝒍𝒍 𝑰𝑫 \(electionId) 𝒊𝒇 𝒚𝒐𝒖 𝒘𝒂𝒏𝒕 𝒕𝒐 𝒍𝒐𝒈 𝒐𝒖𝒕", isPresented :$isShowingAlertForLogOut ){
                         
                         Button("𝑶𝒌 𝒍𝒐𝒈 𝒐𝒖𝒕", role: .destructive) {
-                            
                             showResult = false
-                            
                             goBackToRootView = false
                         }
                         

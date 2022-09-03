@@ -35,7 +35,6 @@ struct VoteView: View {
                     
                     Button(action: {
                         goBackToRootView = false
-                        
                     }) {
                         
                         ButtonView(buttonText: "𝑶𝒌 𝒍𝒐𝒈 𝒐𝒖𝒕")
